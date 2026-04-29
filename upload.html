@@ -114,7 +114,7 @@
         )
 
         client.auth.onAuthStateChange((event, session) => {
-            if (event === 'INITIAL_SESSION' && !session) location.href = '/login'
+            if (event === 'INITIAL_SESSION' && !session) location.href = '/login?redirect=/upload'
         })
         
 
@@ -141,6 +141,10 @@
             msg.textContent = '업로드 중...'
 
             const { data: { session } } = await client.auth.getSession()
+            if (!session) {
+                window.location.href = '/login?redirect=/upload'
+                return
+            }
             const filename = `${Date.now()}_${file.name}`
 
             const { error: uploadError } = await client.storage

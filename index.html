@@ -144,8 +144,7 @@
         async function init() {
             const { data: { session } } = await client.auth.getSession()
             const btn = document.getElementById('upload-btn')
-            btn.href = session ? '/upload' : '/login'
-            
+            btn.href = session ? '/upload' : '/login?redirect=/upload'
 
             const { data: posts } = await client
                 .from('posts')

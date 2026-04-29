@@ -4,135 +4,93 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏢</text></svg>">
-    <title>Oggulnam Dashboard</title>
+    <title>로그인 | Oggulnam</title>
     <style>
+        * { box-sizing: border-box; }
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
             display: flex;
             justify-content: center;
-            align-items: flex-start;
+            align-items: center;
             min-height: 100vh;
             margin: 0;
             background-color: #ffffff;
             color: #333;
-            padding: 3rem 1rem;
+            padding: 1rem;
         }
         .container {
             width: 100%;
-            max-width: 560px;
-        }
-        .header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 2rem;
+            max-width: 420px;
+            padding: 2rem;
+            border: 1px solid #eee;
+            border-radius: 16px;
+            box-shadow: 0 12px 40px rgba(0,0,0,.06);
         }
         h1 {
-            font-size: 1.5rem;
-            font-weight: 600;
+            margin: 0 0 1.5rem;
+            font-size: 1.4rem;
             letter-spacing: -0.5px;
-            margin: 0;
         }
-        .upload-btn {
-            text-decoration: none;
-            font-size: 0.8rem;
+        label {
+            display: block;
+            margin-bottom: 6px;
             color: #666;
+            font-size: 0.85rem;
+        }
+        input {
+            width: 100%;
+            padding: 12px 14px;
+            margin-bottom: 16px;
             border: 1px solid #ddd;
-            padding: 6px 12px;
-            border-radius: 6px;
-            display: none;
-            transition: all 0.2s;
+            border-radius: 10px;
+            font-size: 0.95rem;
+            outline: none;
         }
-        .upload-btn:hover { background: #000; color: #fff; border-color: #000; }
-        nav {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
+        input:focus { border-color: #000; }
+        button {
+            width: 100%;
+            padding: 12px;
+            background: #000;
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            font-size: 0.95rem;
+            cursor: pointer;
         }
-        a.item {
-            text-decoration: none;
-            color: #000;
-            border: 1px solid #ddd;
-            padding: 12px 24px;
-            border-radius: 6px;
+        button:disabled { background: #aaa; cursor: not-allowed; }
+        .msg {
+            margin-top: 12px;
+            min-height: 20px;
             font-size: 0.9rem;
-            transition: all 0.2s ease;
-            box-sizing: border-box;
-            display: flex;
-            gap: 10px;
-            align-items: center;
-            text-align: left;
+            text-align: center;
         }
-        a.item:hover { background-color: #000; color: #fff; border-color: #000; }
-        a.item:hover .date { color: #ccc; }
-        .date {
-            font-size: 0.75rem;
-            color: #aaa;
-            white-space: nowrap;
-            flex-shrink: 0;
+        .err { color: #e00; }
+        .ok { color: #090; }
+        .helper {
+            margin-top: 18px;
+            font-size: 0.85rem;
+            color: #555;
+            text-align: center;
         }
-        .divider {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin: 20px 0 10px;
-            color: #bbb;
-            font-size: 0.75rem;
-        }
-        .divider::before, .divider::after {
-            content: '';
-            flex: 1;
-            height: 1px;
-            background: #eee;
-        }
-        #user-posts { display: flex; flex-direction: column; gap: 10px; }
-        a.user-item {
+        .helper a {
+            color: #111;
             text-decoration: none;
-            color: #000;
-            border: 1px solid #eee;
-            padding: 12px 24px;
-            border-radius: 6px;
-            font-size: 0.9rem;
-            transition: all 0.2s ease;
-            box-sizing: border-box;
-            display: flex;
-            gap: 10px;
-            align-items: center;
-            justify-content: space-between;
         }
-        a.user-item:hover { background-color: #000; color: #fff; border-color: #000; }
-        a.user-item:hover .date { color: #ccc; }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="header">
-            <h1>영끌남 특강 복습</h1>
-            <a href="/upload" class="upload-btn" id="upload-btn">+ 업로드</a>
+        <h1>로그인</h1>
+        <label for="email">이메일</label>
+        <input id="email" type="email" placeholder="you@example.com" autocomplete="email" />
+        <label for="password">비밀번호</label>
+        <input id="password" type="password" placeholder="비밀번호" autocomplete="current-password" />
+        <button id="btn" onclick="login()">로그인</button>
+        <div class="msg" id="msg"></div>
+        <div class="helper">
+            <div>로그인 후 업로드할 수 있습니다.</div>
+            <div><a href="/">← 목록으로 돌아가기</a></div>
         </div>
-        <nav>
-            <a href="/npl-0429" class="item">
-                <span class="date">04/29</span>NPL컨설팅 복습하기
-            </a>
-            <a href="/sellresult-0429" class="item">
-                <span class="date">04/29</span>영끌남 컨설팅 매각 완료 실적 포트폴리오
-            </a>
-            <a href="/suga-0426" class="item">
-                <span class="date">04/26</span>영끌남x슈가 정책자금 특강 💰 — 5년 2,900억 집행한 슈가컴퍼니의 진짜 노하우
-            </a>
-            <a href="/loan-0425" class="item">
-                <span class="date">04/25</span>영끌남 대출 특강 💰 - 0원에서 시작하는 대출 레버리지 완전 정복
-            </a>
-            <a href="/consulting-0422" class="item">
-                <span class="date">04/22</span>영끌남 컨설팅 v1 🏢 — 안 산 건물에서 배우는 진짜 통찰
-            </a>
-            <a href="/npl-0327" class="item">
-                <span class="date">03/27</span>영끌남 9기 NPL 특강 💰 - 곽지훈 대표 (아카이브 부동산)
-            </a>
-        </nav>
-
-        <div class="divider" id="divider" style="display:none">유저 업로드</div>
-        <div id="user-posts"></div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
@@ -142,27 +100,44 @@
             'sb_publishable_hUXcNvjScqIRigCfGwpfUQ_2rcLJMHy'
         )
 
+        function getRedirect() {
+            const params = new URLSearchParams(window.location.search)
+            return params.get('redirect') || '/'
+        }
+
+        async function login() {
+            const email = document.getElementById('email').value.trim()
+            const password = document.getElementById('password').value.trim()
+            const msg = document.getElementById('msg')
+            const btn = document.getElementById('btn')
+
+            if (!email || !password) {
+                msg.className = 'msg err'
+                msg.textContent = '이메일과 비밀번호를 모두 입력해주세요.'
+                return
+            }
+
+            btn.disabled = true
+            msg.className = 'msg'
+            msg.textContent = '로그인 중입니다...'
+
+            const { error } = await client.auth.signInWithPassword({ email, password })
+            if (error) {
+                msg.className = 'msg err'
+                msg.textContent = '로그인 실패: ' + error.message
+                btn.disabled = false
+                return
+            }
+
+            msg.className = 'msg ok'
+            msg.textContent = '로그인 성공! 이동 중입니다...'
+            window.location.href = getRedirect()
+        }
+
         async function init() {
             const { data: { session } } = await client.auth.getSession()
-            if (session) document.getElementById('upload-btn').style.display = 'block'
-
-            const { data: posts } = await client
-                .from('posts')
-                .select('*')
-                .order('created_at', { ascending: false })
-
-            if (posts && posts.length > 0) {
-                document.getElementById('divider').style.display = 'flex'
-                const container = document.getElementById('user-posts')
-                posts.forEach(post => {
-                    const date = new Date(post.created_at).toLocaleDateString('ko-KR', { month: '2-digit', day: '2-digit' })
-                    const a = document.createElement('a')
-                    a.className = 'user-item'
-                    a.href = post.url
-                    a.target = '_blank'
-                    a.innerHTML = `<span>📄 ${post.title}</span><span class="date">${date}</span>`
-                    container.appendChild(a)
-                })
+            if (session) {
+                window.location.href = getRedirect()
             }
         }
 
