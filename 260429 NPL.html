@@ -1,0 +1,2225 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NPL컨설팅 복습하기</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" />
+<style>
+:root {
+    --background: #f8fafc;
+    --foreground: #0a0a0a;
+    --card: #ffffff;
+    --card-foreground: #0a0a0a;
+    --muted: #f1f5f9;
+    --muted-foreground: #64748b;
+    --border: #e2e8f0;
+    --primary: #18181b;
+    --primary-foreground: #fafafa;
+    --accent: #0ea5e9;
+    --accent-light: #e0f2fe;
+    --success: #22c55e;
+    --warning: #eab308;
+    --error: #ef4444;
+    --violet: #8b5cf6;
+    --radius: 12px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    font-family: 'Pretendard Variable', 'Pretendard', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.6;
+    background: var(--background);
+    color: var(--foreground);
+    min-height: 100vh;
+    position: relative;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: -50%; left: -50%;
+    width: 200%; height: 200%;
+    background:
+        radial-gradient(circle at 20% 20%, rgba(14, 165, 233, 0.08) 0%, transparent 50%),
+        radial-gradient(circle at 80% 30%, rgba(139, 92, 246, 0.06) 0%, transparent 40%),
+        radial-gradient(circle at 40% 80%, rgba(34, 197, 94, 0.05) 0%, transparent 45%),
+        radial-gradient(circle at 90% 80%, rgba(249, 115, 22, 0.04) 0%, transparent 40%);
+    z-index: -1;
+    animation: gradientFloat 20s ease-in-out infinite;
+}
+
+@keyframes gradientFloat {
+    0%, 100% { transform: translate(0, 0) rotate(0deg); }
+    25% { transform: translate(2%, 1%) rotate(1deg); }
+    50% { transform: translate(0, 2%) rotate(0deg); }
+    75% { transform: translate(-1%, 1%) rotate(-1deg); }
+}
+
+body::after {
+    content: '';
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background-image:
+        linear-gradient(rgba(148, 163, 184, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(148, 163, 184, 0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+    z-index: -1;
+    pointer-events: none;
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 32px 24px;
+    position: relative;
+    z-index: 1;
+}
+
+/* 헤더 */
+.header { margin-bottom: 32px; text-align: center; }
+
+.header-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 14px;
+    background: linear-gradient(135deg, rgba(14, 165, 233, 0.15) 0%, rgba(139, 92, 246, 0.1) 100%);
+    color: #0284c7;
+    font-size: 13px;
+    font-weight: 600;
+    border-radius: 100px;
+    letter-spacing: -0.01em;
+    border: 1px solid rgba(14, 165, 233, 0.2);
+    margin-bottom: 12px;
+}
+
+h1 {
+    font-size: 33px;
+    font-weight: 700;
+    color: var(--foreground);
+    letter-spacing: -0.03em;
+    margin-bottom: 8px;
+    line-height: 1.3;
+}
+
+.subtitle {
+    color: var(--muted-foreground);
+    font-size: 16px;
+    line-height: 1.5;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* 섹션 */
+section { margin-bottom: 72px; }
+section:last-child { margin-bottom: 0; }
+
+.section-title {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--foreground);
+    margin-bottom: 24px;
+    letter-spacing: -0.02em;
+    flex-direction: row;
+}
+
+.section-title-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    color: white;
+    flex-shrink: 0;
+}
+
+.section-title-icon.blue { background: linear-gradient(135deg, #0071e3 0%, #40a9ff 100%); }
+.section-title-icon.green { background: linear-gradient(135deg, #34c759 0%, #30d158 100%); }
+.section-title-icon.violet { background: linear-gradient(135deg, #af52de 0%, #bf5af2 100%); }
+.section-title-icon.orange { background: linear-gradient(135deg, #ff9500 0%, #ffaa33 100%); }
+.section-title-icon.teal { background: linear-gradient(135deg, #5ac8fa 0%, #64d2ff 100%); }
+.section-title-icon.red { background: linear-gradient(135deg, #ff3b30 0%, #ff6961 100%); }
+.section-title-icon.yellow { background: linear-gradient(135deg, #ff9f0a 0%, #ffb340 100%); }
+
+/* 메트릭 카드 */
+.metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+}
+
+.metric-card {
+    padding: 24px 20px;
+    background: linear-gradient(135deg, rgba(241, 245, 249, 0.9) 0%, rgba(226, 232, 240, 0.5) 100%);
+    border-radius: 14px;
+    text-align: center;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(226, 232, 240, 0.5);
+}
+
+.metric-card:hover {
+    background: linear-gradient(135deg, rgba(224, 242, 254, 0.8) 0%, rgba(186, 230, 253, 0.4) 100%);
+    border-color: rgba(14, 165, 233, 0.2);
+    transform: translateY(-2px);
+}
+
+.metric-label { font-size: 14px; font-weight: 500; color: var(--muted-foreground); margin-bottom: 8px; }
+.metric-value { font-size: 29px; font-weight: 700; color: var(--foreground); letter-spacing: -0.02em; }
+.metric-unit { font-size: 13px; color: var(--muted-foreground); margin-top: 4px; }
+
+/* 카드 */
+.card {
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(226, 232, 240, 0.8);
+    border-radius: var(--radius);
+    overflow: hidden;
+    transition: all 0.3s ease;
+    margin-bottom: 40px;
+}
+
+.card:hover {
+    background: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
+    border-color: rgba(203, 213, 225, 0.8);
+    transform: translateY(-2px);
+}
+
+.card-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 24px 24px 20px;
+    border-bottom: 1px solid rgba(226, 232, 240, 0.6);
+    background: linear-gradient(180deg, rgba(248, 250, 252, 0.5) 0%, transparent 100%);
+    flex-direction: row;
+}
+
+.card-title {
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--foreground);
+    margin: 0;
+    letter-spacing: -0.01em;
+}
+
+.card-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    flex-shrink: 0;
+    color: white;
+}
+
+.card-icon.blue { background: linear-gradient(135deg, #0071e3 0%, #40a9ff 100%); }
+.card-icon.green { background: linear-gradient(135deg, #34c759 0%, #30d158 100%); }
+.card-icon.yellow { background: linear-gradient(135deg, #ff9f0a 0%, #ffb340 100%); }
+.card-icon.red { background: linear-gradient(135deg, #ff3b30 0%, #ff6961 100%); }
+.card-icon.violet { background: linear-gradient(135deg, #af52de 0%, #bf5af2 100%); }
+.card-icon.teal { background: linear-gradient(135deg, #5ac8fa 0%, #64d2ff 100%); }
+.card-icon.orange { background: linear-gradient(135deg, #ff9500 0%, #ffaa33 100%); }
+.card-icon.gray { background: linear-gradient(135deg, #8e8e93 0%, #aeaeb2 100%); }
+.card-icon.dark { background: linear-gradient(135deg, #1d1d1f 0%, #3a3a3c 100%); }
+
+.card-body { padding: 24px; }
+
+.card-body p {
+    font-size: 16px;
+    color: var(--foreground);
+    margin-bottom: 14px;
+    line-height: 1.75;
+}
+
+.card-body p:last-child { margin-bottom: 0; }
+
+.card-body strong { color: #0284c7; font-weight: 600; }
+
+.card-body h3 {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--foreground);
+    margin: 20px 0 12px;
+    letter-spacing: -0.01em;
+}
+
+.card-body h3:first-child { margin-top: 0; }
+
+.card-body ul {
+    list-style: none;
+    padding: 0;
+    margin: 12px 0;
+}
+
+.card-body ul li {
+    position: relative;
+    padding-left: 22px;
+    margin-bottom: 8px;
+    font-size: 15px;
+    line-height: 1.7;
+}
+
+.card-body ul li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: #16a34a;
+    font-weight: 700;
+}
+
+/* Callout */
+.callout {
+    display: flex;
+    flex-direction: column;
+    padding: 20px 24px;
+    border-radius: 14px;
+    margin-bottom: 32px;
+    background: #ffffff;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06), 0 0 1px rgba(0,0,0,0.1);
+}
+
+.callout-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 18px;
+    flex-direction: row;
+}
+
+.callout-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    flex-shrink: 0;
+    color: white;
+}
+
+.callout-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--foreground);
+    letter-spacing: -0.01em;
+}
+
+.callout-text {
+    font-size: 15px;
+    color: #515154;
+    line-height: 1.75;
+    margin-bottom: 10px;
+}
+
+.callout-text:last-child { margin-bottom: 0; }
+
+.callout-text strong { color: var(--foreground); font-weight: 600; }
+
+.callout.blue .callout-icon { background: linear-gradient(135deg, #0071e3 0%, #40a9ff 100%); }
+.callout.green .callout-icon { background: linear-gradient(135deg, #34c759 0%, #30d158 100%); }
+.callout.yellow .callout-icon { background: linear-gradient(135deg, #ff9f0a 0%, #ffb340 100%); }
+.callout.red .callout-icon { background: linear-gradient(135deg, #ff3b30 0%, #ff6961 100%); }
+.callout.violet .callout-icon { background: linear-gradient(135deg, #af52de 0%, #bf5af2 100%); }
+.callout.teal .callout-icon { background: linear-gradient(135deg, #5ac8fa 0%, #64d2ff 100%); }
+.callout.orange .callout-icon { background: linear-gradient(135deg, #ff9500 0%, #ffaa33 100%); }
+.callout.gray .callout-icon { background: linear-gradient(135deg, #8e8e93 0%, #aeaeb2 100%); }
+
+/* Timeline */
+.timeline-card {
+    display: flex;
+    flex-direction: column;
+    padding: 24px;
+    border-radius: 16px;
+    margin-bottom: 28px;
+    background: #ffffff;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+}
+
+.timeline-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 24px;
+    flex-direction: row;
+}
+
+.timeline-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    flex-shrink: 0;
+    color: white;
+}
+
+.timeline-icon.violet { background: linear-gradient(135deg, #af52de 0%, #bf5af2 100%); }
+.timeline-icon.blue { background: linear-gradient(135deg, #0071e3 0%, #40a9ff 100%); }
+.timeline-icon.green { background: linear-gradient(135deg, #34c759 0%, #30d158 100%); }
+.timeline-icon.orange { background: linear-gradient(135deg, #ff9500 0%, #ffaa33 100%); }
+.timeline-icon.teal { background: linear-gradient(135deg, #5ac8fa 0%, #64d2ff 100%); }
+.timeline-icon.red { background: linear-gradient(135deg, #ff3b30 0%, #ff6961 100%); }
+.timeline-icon.yellow { background: linear-gradient(135deg, #ff9f0a 0%, #ffb340 100%); }
+
+.timeline-title {
+    font-size: 18px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.timeline-badge {
+    font-size: 13px;
+    font-weight: 600;
+    padding: 4px 12px;
+    border-radius: 100px;
+    background: rgba(0,0,0,0.06);
+    color: var(--muted-foreground);
+}
+
+.timeline-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+}
+
+.timeline-grid-2 { grid-template-columns: repeat(2, 1fr); }
+.timeline-grid-1 { grid-template-columns: 1fr; }
+.timeline-grid-4 { grid-template-columns: repeat(4, 1fr); }
+
+.timeline-item {
+    background: var(--muted);
+    padding: 16px;
+    border-radius: 12px;
+}
+
+.timeline-item-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 14px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+    gap: 10px;
+}
+
+.timeline-item-label {
+    display: inline-flex;
+    padding: 5px 12px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.timeline-item-label.blue { background: rgba(0, 113, 227, 0.1); color: #0071e3; }
+.timeline-item-label.yellow { background: rgba(255, 159, 10, 0.1); color: #b45309; }
+.timeline-item-label.green { background: rgba(52, 199, 89, 0.1); color: #16a34a; }
+.timeline-item-label.violet { background: rgba(175, 82, 222, 0.1); color: #af52de; }
+.timeline-item-label.red { background: rgba(255, 59, 48, 0.1); color: #ff3b30; }
+.timeline-item-label.orange { background: rgba(255, 149, 0, 0.1); color: #b45309; }
+.timeline-item-label.teal { background: rgba(90, 200, 250, 0.15); color: #0891b2; }
+
+.timeline-item-body p {
+    font-size: 14px;
+    color: #515154;
+    line-height: 1.65;
+    margin: 0;
+}
+
+.timeline-item-body p + p { margin-top: 8px; }
+
+/* Compare 카드 */
+.compare-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+}
+
+.compare-grid-3 { grid-template-columns: repeat(3, 1fr); }
+
+.compare-card {
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+    transition: all 0.3s ease;
+}
+
+.compare-card:hover {
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+    transform: translateY(-3px);
+}
+
+.compare-card-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 24px;
+    flex-direction: row;
+}
+
+.compare-card-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    flex-shrink: 0;
+    color: white;
+}
+
+.compare-card-icon.blue { background: linear-gradient(135deg, #0071e3 0%, #40a9ff 100%); }
+.compare-card-icon.green { background: linear-gradient(135deg, #34c759 0%, #30d158 100%); }
+.compare-card-icon.red { background: linear-gradient(135deg, #ff3b30 0%, #ff6961 100%); }
+.compare-card-icon.violet { background: linear-gradient(135deg, #af52de 0%, #bf5af2 100%); }
+.compare-card-icon.orange { background: linear-gradient(135deg, #ff9500 0%, #ffaa33 100%); }
+.compare-card-icon.teal { background: linear-gradient(135deg, #5ac8fa 0%, #64d2ff 100%); }
+.compare-card-icon.yellow { background: linear-gradient(135deg, #ff9f0a 0%, #ffb340 100%); }
+.compare-card-icon.gray { background: linear-gradient(135deg, #8e8e93 0%, #aeaeb2 100%); }
+
+.compare-card-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--foreground);
+    letter-spacing: -0.01em;
+}
+
+.compare-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+    gap: 12px;
+}
+
+.compare-item:last-child { border-bottom: none; }
+
+.compare-item-label {
+    font-size: 14px;
+    color: var(--muted-foreground);
+    flex-shrink: 0;
+}
+
+.compare-item-value {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--foreground);
+    text-align: right;
+}
+
+.compare-item-value.success { color: #16a34a; }
+.compare-item-value.error { color: #dc2626; }
+.compare-item-value.warning { color: #ca8a04; }
+.compare-item-value.accent { color: #0284c7; }
+
+/* 테이블 */
+.table-wrap {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    background: white;
+    margin: 16px 0;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table th {
+    padding: 16px 20px;
+    text-align: left;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--muted-foreground);
+    border-bottom: 1px solid var(--border);
+    background: rgba(248, 250, 252, 0.5);
+    white-space: nowrap;
+}
+
+.table td {
+    padding: 16px 20px;
+    font-size: 15px;
+    color: var(--foreground);
+    border-bottom: 1px solid rgba(226, 232, 240, 0.6);
+}
+
+.table tbody tr:hover { background: rgba(241, 245, 249, 0.5); }
+.table tbody tr:last-child td { border-bottom: none; }
+
+.table .accent-cell { color: #0284c7; font-weight: 600; }
+.table .success-cell { color: #16a34a; font-weight: 600; }
+.table .error-cell { color: #dc2626; font-weight: 600; }
+.table .warning-cell { color: #ca8a04; font-weight: 600; }
+.table .nowrap { white-space: nowrap; }
+.table tfoot td {
+    background: rgba(241, 245, 249, 0.7);
+    font-weight: 600;
+    border-top: 2px solid var(--border);
+}
+
+/* 뱃지 */
+.badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px 10px;
+    font-size: 13px;
+    font-weight: 500;
+    border-radius: 100px;
+}
+
+.badge-success { background: rgba(34, 197, 94, 0.1); color: #16a34a; }
+.badge-warning { background: rgba(234, 179, 8, 0.1); color: #ca8a04; }
+.badge-error { background: rgba(239, 68, 68, 0.1); color: #dc2626; }
+.badge-info { background: rgba(14, 165, 233, 0.1); color: #0284c7; }
+.badge-violet { background: rgba(139, 92, 246, 0.1); color: #7c3aed; }
+
+/* 단계 리스트 */
+.step-list { list-style: none; counter-reset: step; padding: 0; }
+
+.step-list li {
+    counter-increment: step;
+    position: relative;
+    padding: 14px 16px 14px 56px;
+    margin-bottom: 12px;
+    background: var(--muted);
+    border-radius: 10px;
+    font-size: 15px;
+    line-height: 1.65;
+}
+
+.step-list li::before {
+    content: counter(step);
+    position: absolute;
+    left: 14px;
+    top: 14px;
+    width: 28px;
+    height: 28px;
+    background: linear-gradient(135deg, #0071e3 0%, #40a9ff 100%);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 14px;
+    flex-shrink: 0;
+}
+
+.step-list li strong { color: #0284c7; }
+
+/* 핵심 포인트 */
+.key-points {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin: 8px 0;
+}
+
+.key-point {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 24px 20px;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.key-point:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+    border-color: rgba(14, 165, 233, 0.3);
+}
+
+.key-point-icon { font-size: 36px; margin-bottom: 14px; }
+
+.key-point-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--foreground);
+    margin-bottom: 8px;
+}
+
+.key-point-desc {
+    font-size: 14px;
+    color: var(--muted-foreground);
+    line-height: 1.6;
+}
+
+/* 강조 박스 */
+.highlight-box {
+    background: linear-gradient(135deg, rgba(14, 165, 233, 0.06) 0%, rgba(139, 92, 246, 0.04) 100%);
+    border: 1px solid rgba(14, 165, 233, 0.15);
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin: 16px 0;
+}
+
+.highlight-box-title {
+    font-size: 15px;
+    font-weight: 600;
+    color: #0284c7;
+    margin-bottom: 8px;
+}
+
+.highlight-box-text {
+    font-size: 15px;
+    color: var(--foreground);
+    line-height: 1.75;
+}
+
+/* 토스트 */
+.toast-container {
+    position: fixed;
+    top: 24px;
+    right: 24px;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* 모바일 반응형 */
+@media (max-width: 1024px) {
+    .metrics-grid { grid-template-columns: repeat(2, 1fr); }
+    .key-points { grid-template-columns: repeat(2, 1fr); }
+    .compare-grid-3 { grid-template-columns: 1fr; }
+    .timeline-grid-4 { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 900px) {
+    .timeline-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 768px) {
+    .container { padding: 20px 16px; }
+
+    section { margin-bottom: 48px; }
+
+    h1 { font-size: 26px; }
+    .subtitle { font-size: 15px; }
+
+    .section-title { font-size: 18px; flex-direction: row; }
+    .section-title-icon { width: 36px; height: 36px; font-size: 18px; }
+
+    .card { margin-bottom: 28px; }
+    .card-header { padding: 20px 18px 16px; flex-direction: row; gap: 12px; }
+    .card-title { font-size: 18px; }
+    .card-icon { width: 48px; height: 48px; font-size: 20px; }
+    .card-body { padding: 18px; }
+    .card-body p { font-size: 15px; }
+    .card-body h3 { font-size: 16px; }
+
+    .callout { padding: 16px; margin-bottom: 24px; }
+    .callout-header { gap: 12px; margin-bottom: 16px; flex-direction: row; }
+    .callout-icon { width: 40px; height: 40px; font-size: 18px; }
+    .callout-title { font-size: 16px; }
+    .callout-text { font-size: 14px; }
+
+    .timeline-card { padding: 18px; margin-bottom: 20px; }
+    .timeline-header { margin-bottom: 18px; flex-direction: row; }
+    .timeline-icon { width: 44px; height: 44px; font-size: 20px; }
+    .timeline-title { font-size: 16px; }
+    .timeline-grid { gap: 10px; }
+
+    .compare-grid, .compare-grid-3 { grid-template-columns: 1fr; gap: 16px; }
+    .compare-card { padding: 20px; }
+    .compare-card-header { margin-bottom: 20px; flex-direction: row; }
+    .compare-card-icon { width: 40px; height: 40px; font-size: 18px; }
+    .compare-card-title { font-size: 20px; }
+
+    .table-wrap { margin: 12px -16px; border-radius: 0; border-left: none; border-right: none; }
+    .table-wrap table { min-width: 600px; }
+    .table-wrap::after {
+        content: '← 좌우로 스크롤하세요 →';
+        display: block;
+        text-align: center;
+        font-size: 13px;
+        color: #86868b;
+        padding: 8px 0;
+    }
+
+    .key-points { grid-template-columns: 1fr; }
+
+    .step-list li { padding: 12px 14px 12px 50px; font-size: 14px; }
+    .step-list li::before { left: 12px; top: 12px; width: 26px; height: 26px; font-size: 13px; }
+
+    .timeline-grid-4 { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 480px) {
+    h1 { font-size: 22px; }
+    .subtitle { font-size: 14px; }
+
+    .metrics-grid { grid-template-columns: 1fr; }
+    .metric-value { font-size: 26px; }
+
+    .card-title { font-size: 16px; }
+    .card-icon { width: 44px; height: 44px; font-size: 18px; }
+
+    .compare-card-title { font-size: 18px; }
+    .compare-item-value { font-size: 14px; }
+}
+
+@media print {
+    @page { size: A4 portrait; margin: 15mm; }
+    body::before, body::after { display: none !important; }
+    .toast-container { display: none !important; }
+    .card, .callout, .timeline-card, .compare-card {
+        box-shadow: none !important;
+        page-break-inside: avoid;
+    }
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+    <!-- ===== 헤더 ===== -->
+    <header class="header">
+        <span class="header-badge">🏢 영끌남 NPL 특별 컨설팅 · 2026.04.29</span>
+        <h1>NPL컨설팅 복습하기 💎</h1>
+        <p class="subtitle">감정가 대비 69% 매입 · 양도세 0원 · 레버리지 70% 활용 · 정책자금 1.47% 결합 · 내 돈 0원으로 등기 치는 규모의 경제 💰📊✨</p>
+    </header>
+
+    <!-- ===== KPI ===== -->
+    <section>
+        <div class="metrics-grid">
+            <div class="metric-card">
+                <div class="metric-label">감정가 대비 매입가 📉</div>
+                <div class="metric-value">69%</div>
+                <div class="metric-unit">1.85억 → 1.25억</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-label">정책자금 금리 💰</div>
+                <div class="metric-value">1.47%</div>
+                <div class="metric-unit">실 사례 (5천만원)</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-label">단기임대 주당 🏨</div>
+                <div class="metric-value">35만원</div>
+                <div class="metric-unit">현재 운영가</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-label">월세 시세 💸</div>
+                <div class="metric-value">60만원</div>
+                <div class="metric-unit">보증금 1,000만원</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== 섹션 1: 이팔빌딩 검증 ===== -->
+    <section>
+        <h2 class="section-title">
+            <span class="section-title-icon orange">🛠️</span>
+            이팔빌딩 대표의 자재 납품 검증 — "이 건물, 진짜 좋은 거 맞다" ✅
+        </h2>
+
+        <div class="callout blue">
+            <div class="callout-header">
+                <div class="callout-icon">📦</div>
+                <div class="callout-title">자재 납품 직접 경험자가 보증한다</div>
+            </div>
+            <div class="callout-text">
+                이팔빌딩 대표는 <strong>삼정 건설과 두 차례 자재 납품 거래</strong>를 진행한 인물입니다. 첫 거래는 정상 결제되었고, 두 번째 거래(해운대 반얀트리 화재 건)에서 약 2억 원 미수금이 발생했습니다. 즉, 삼정의 회생 신청 → 부전역 삼정그린코아 더시티 경매행이라는 흐름을 <strong>현장에서 직접 겪은 사람</strong>이 이번 NPL 투자의 신뢰도를 검증해줬다는 의미입니다. 🏗️
+            </div>
+        </div>
+
+        <div class="callout orange">
+            <div class="callout-header">
+                <div class="callout-icon">💎</div>
+                <div class="callout-title">원래는 통매각 800억짜리, 시니어 레지던스 후보지였다</div>
+            </div>
+            <div class="callout-text">
+                <strong>송도 병원장</strong>이 800억에 통매각으로 인수해 시니어 레지던스로 분양하려던 프로젝트였습니다. 투룸 분양가 7억 600만원(평당 2,300만원), 쓰리룸 분양가 8억 1,300만원이 책정되어 있었죠.
+            </div>
+            <div class="callout-text">
+                지금 우리는 그 분양가의 <strong>1/3도 안 되는 가격</strong>으로 동일한 호실을 채권 매입할 수 있습니다. 더구나 <strong>2026년 3월 부전역 복합환승센터 호재</strong>가 발표되었지만, 경매 감정평가 시점에는 이 호재가 반영되지 않았습니다. 호재 미반영 + 자재비 폭등 시기 = 두 번 다시 못 짓는 신축 1군 브랜드를 헐값에 가져오는 구조입니다. 🔥
+            </div>
+        </div>
+
+        <div class="callout violet">
+            <div class="callout-header">
+                <div class="callout-icon">📈</div>
+                <div class="callout-title">왜 자재비/건축비 폭등이 메리트인가</div>
+            </div>
+            <div class="callout-text">
+                벽지 같은 안 오르던 자재도 <strong>20~30% 인상</strong>, 텅스텐 등 원자재는 <strong>약 20배</strong> 상승했습니다. 시행사가 신축 오피스텔을 짓는 것 자체가 사실상 불가능해진 시기입니다.
+            </div>
+            <div class="callout-text">
+                즉, 같은 입지·같은 1군 브랜드 신축은 <strong>앞으로 몇 년간 공급될 수 없습니다</strong>. 이번 NPL 매입은 "공급이 막힌 시장에서 신축급 매물을 헐값에 잡는" 것이고, 이게 바로 규모의 경제의 본질입니다. 📊
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== 섹션 2: NPL 기초 ===== -->
+    <section>
+        <h2 class="section-title">
+            <span class="section-title-icon blue">📚</span>
+            NPL이란? 1시간이면 나도 안다 (기본 개념)
+        </h2>
+
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon blue">💡</div>
+                <h3 class="card-title">한 줄 정의: 3개월 이상 연체된 채권</h3>
+            </div>
+            <div class="card-body">
+                <p>NPL(Non-Performing Loan)은 <strong>3개월 이상 연체된 채권</strong>을 의미합니다. 한국에서는 같은 의미를 다음 세 가지 용어로 부릅니다.</p>
+                <div class="table-wrap">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>용어</th>
+                                <th>주 사용처</th>
+                                <th>의미</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="accent-cell">NPL</td>
+                                <td>실무·투자 시장</td>
+                                <td>영어 원어 표현 (Non-Performing Loan)</td>
+                            </tr>
+                            <tr>
+                                <td class="accent-cell">부실채권</td>
+                                <td>언론·신문</td>
+                                <td>일반인이 가장 많이 접하는 용어</td>
+                            </tr>
+                            <tr>
+                                <td class="accent-cell">고정이하 여신</td>
+                                <td>금융권 내부</td>
+                                <td>은행 자산 분류 기준 (정상→요주의→고정→회수의문→추정손실)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <h3>📞 연체 단계별 은행 대응 시나리오</h3>
+                <ul>
+                    <li><strong>1개월 연체</strong>: "이자가 안 들어왔어요" 안내 전화 ☎️</li>
+                    <li><strong>2개월 연체</strong>: "두 달 분 갚으실 수 있죠?" 독촉 ⚠️</li>
+                    <li><strong>3개월 연체</strong>: "경매 넘어갈 것 같습니다" → <strong>NPL 분류 시작</strong> 🚨</li>
+                </ul>
+                <p>대출을 받으면 NPL이 발생할 수 있고, NPL이 있는 곳에는 결국 경매가 따라옵니다. 우리는 <strong>경매보다 한 발 앞에서 채권을 사오는 투자</strong>를 합니다. 그게 NPL 투자의 핵심입니다. 🎯</p>
+            </div>
+        </div>
+
+        <div class="timeline-card">
+            <div class="timeline-header">
+                <div class="timeline-icon blue">🔄</div>
+                <div class="timeline-title">NPL 발생 흐름 5단계</div>
+            </div>
+            <div class="timeline-grid timeline-grid-4">
+                <div class="timeline-item">
+                    <div class="timeline-item-header">
+                        <div class="timeline-item-label blue">1단계</div>
+                    </div>
+                    <div class="timeline-item-body">
+                        <p><strong>대출 실행</strong></p>
+                        <p>1금융~2금융권에서 부동산 담보 또는 신용 대출이 실행됩니다.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-item-header">
+                        <div class="timeline-item-label yellow">2단계</div>
+                    </div>
+                    <div class="timeline-item-body">
+                        <p><strong>연체 발생</strong></p>
+                        <p>차주의 자금난·시행사 부도 등으로 이자 또는 원금 상환이 밀립니다.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-item-header">
+                        <div class="timeline-item-label orange">3단계</div>
+                    </div>
+                    <div class="timeline-item-body">
+                        <p><strong>3개월 미납 → NPL 분류</strong></p>
+                        <p>은행 내부에서 부실채권으로 처리됩니다.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-item-header">
+                        <div class="timeline-item-label red">4단계</div>
+                    </div>
+                    <div class="timeline-item-body">
+                        <p><strong>NPL 회사로 이관</strong></p>
+                        <p>대부채권매입추심업 등록 법인이 채권을 매입합니다.</p>
+                    </div>
+                </div>
+                <div class="timeline-item" style="grid-column: 1 / -1;">
+                    <div class="timeline-item-header">
+                        <div class="timeline-item-label green">5단계</div>
+                    </div>
+                    <div class="timeline-item-body">
+                        <p><strong>경매 진행 → 우리(투자자)가 사후정산 계약으로 매수</strong></p>
+                        <p>NPL 회사와 사후정산 계약을 체결한 투자자가 매수대리인을 통해 경매에서 낙찰받고, 차액(페이백)을 환급받습니다. 이 5단계가 NPL 수익의 마지막 단계입니다.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="compare-grid">
+            <div class="compare-card">
+                <div class="compare-card-header">
+                    <div class="compare-card-icon red">⚠️</div>
+                    <span class="compare-card-title">고위험 NPL (담보 없음)</span>
+                </div>
+                <div class="compare-item">
+                    <span class="compare-item-label">예시</span>
+                    <span class="compare-item-value">카드 할부, 정수기 렌탈</span>
+                </div>
+                <div class="compare-item">
+                    <span class="compare-item-label">담보</span>
+                    <span class="compare-item-value error">없음</span>
+                </div>
+                <div class="compare-item">
+                    <span class="compare-item-label">회수 방식</span>
+                    <span class="compare-item-value">전화 추심 / 소송</span>
+                </div>
+                <div class="compare-item">
+                    <span class="compare-item-label">투자 적합성</span>
+                    <span class="compare-item-value error">부적합</span>
+                </div>
+            </div>
+            <div class="compare-card">
+                <div class="compare-card-header">
+                    <div class="compare-card-icon green">🏠</div>
+                    <span class="compare-card-title">저위험 NPL (부동산 담보)</span>
+                </div>
+                <div class="compare-item">
+                    <span class="compare-item-label">예시</span>
+                    <span class="compare-item-value">아파트, 오피스텔 담보대출</span>
+                </div>
+                <div class="compare-item">
+                    <span class="compare-item-label">담보</span>
+                    <span class="compare-item-value success">부동산</span>
+                </div>
+                <div class="compare-item">
+                    <span class="compare-item-label">회수 방식</span>
+                    <span class="compare-item-value">경매 → 낙찰</span>
+                </div>
+                <div class="compare-item">
+                    <span class="compare-item-label">투자 적합성</span>
+                    <span class="compare-item-value success">최적</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== 섹션 3: NPL이 어떻게 돈이 되는가 ===== -->
+    <section>
+        <h2 class="section-title">
+            <span class="section-title-icon yellow">💸</span>
+            NPL이 어떻게 돈이 되나? — 신발 비유 & 식권 비유로 단번에 이해하기
+        </h2>
+
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon yellow">👟</div>
+                <h3 class="card-title">신발 비유: 백화점 vs 아울렛 vs 상품권 (NPL)</h3>
+            </div>
+            <div class="card-body">
+                <p>같은 나이키 신발을 사는 세 가지 경로를 비교해보면 NPL의 본질이 보입니다.</p>
+                <div class="table-wrap">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>경로</th>
+                                <th>가격</th>
+                                <th>비유 대응</th>
+                                <th>설명</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>백화점 정상가</td>
+                                <td class="error-cell">11만 9천원</td>
+                                <td>감정평가 금액</td>
+                                <td>일반 시세 그대로</td>
+                            </tr>
+                            <tr>
+                                <td>아울렛 할인가</td>
+                                <td class="warning-cell">10만원</td>
+                                <td>경매 낙찰가</td>
+                                <td>일반 경매로 싸게 사는 수준</td>
+                            </tr>
+                            <tr>
+                                <td>상품권으로 결제</td>
+                                <td class="success-cell">9만원 (상품권 9만 = 10만 사용)</td>
+                                <td><strong>NPL 매입가</strong></td>
+                                <td><strong>경매보다 한 단계 더 깊은 할인</strong></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="highlight-box">
+                    <div class="highlight-box-title">🎯 토포필리아 실거래 사례 (지훈 대표 본인 투자 건)</div>
+                    <div class="highlight-box-text">
+                        2021년 실거래가 <strong>1억 8,500만원</strong> · 법원 감정가 1억 5천만원 · 일반 경매 낙찰가 1억 2천만원 · <strong>NPL 실 매입가 9,800만원</strong>(낙찰가 기준 페이백 2,200만원 환급) → 감정가 대비 75% 가격에 매입 완료. 🎯
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon orange">🍱</div>
+                <h3 class="card-title">식권 비유: 공사현장 함밥집 식권 (10장 = 9만원)</h3>
+            </div>
+            <div class="card-body">
+                <p>공사 현장 앞 한식 뷔페에서 식권 10장(1만원짜리)을 사면 9만원에 줍니다. 사장님이 법카로 10만원 결제하면 이모님이 현금 1만원을 페이백 해줍니다.</p>
+                <ul>
+                    <li>식권 한 장 = 1만원, NPL 채권 한 장 = 1억원</li>
+                    <li>식권 10장 사면 1만원 페이백 = NPL 채권 10억 사면 1억 페이백</li>
+                    <li>사용처에서는 "10만원" 사용으로 인정 = 경매에서는 "낙찰가" 그대로 인정</li>
+                    <li>실제로 들어간 돈은 "9만원" = NPL 실 매입가</li>
+                </ul>
+                <p>이 페이백 구조 덕분에 <strong>매매가는 똑같지만 실 투자금은 적게 들고, 양도세는 0원</strong>이 되는 마법이 만들어집니다. 🪄</p>
+            </div>
+        </div>
+
+        <div class="callout teal">
+            <div class="callout-header">
+                <div class="callout-icon">🎯</div>
+                <div class="callout-title">NPL의 본질은 "협의의 연속"이다</div>
+            </div>
+            <div class="callout-text">
+                NPL은 단순히 싸게 사는 시장이 아니라, <strong>처음부터 끝까지 협의의 연속</strong>입니다. NPL 회사는 매일 은행 지점장·상무이사를 만나 "오늘도 그냥 인사 도장 찍으러 왔다"는 식으로 관계를 쌓습니다.
+            </div>
+            <div class="callout-text">
+                "오피스텔 물건 좀 없을까요?"를 반복적으로 흘리면, 어느 날 은행 직원이 "그 곽 대표가 오피스텔 찾는다고 했는데..." 하며 먼저 채권을 가져옵니다. 이게 일반인이 NPL에 직접 접근할 수 없는 이유이자, NPL이 "그들만의 리그"였던 이유입니다. 🤝
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== 섹션 4: 은행이 왜 NPL을 싸게 파는가 ===== -->
+    <section>
+        <h2 class="section-title">
+            <span class="section-title-icon red">🏦</span>
+            은행은 왜 NPL을 싸게 파는가? — 금감원 부실채권 비율 규제
+        </h2>
+
+        <div class="callout red">
+            <div class="callout-header">
+                <div class="callout-icon">📉</div>
+                <div class="callout-title">금감원의 부실채권 비율 규제 (3% 이하)</div>
+            </div>
+            <div class="callout-text">
+                금감원은 은행에 <strong>"부실채권 비율 3% 이하 유지"</strong>를 요구합니다. 이걸 못 지키면 어떻게 될까요?
+            </div>
+            <div class="callout-text">
+                <strong>다음 해 대출 한도가 반토막</strong> 납니다. 은행의 핵심 수익은 대출 이자인데, 1천억 한도가 500억으로 줄면 매출이 반으로 깎입니다. 그러니 <strong>"손해를 보더라도 부실채권을 빨리 털어내자"</strong>가 은행의 정답이 됩니다. 이게 우리(NPL 투자자)에게 기회가 되는 이유입니다. 🎯
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon yellow">⚖️</div>
+                <h3 class="card-title">왜 NPL 회사는 2금융권만 매입하는가?</h3>
+            </div>
+            <div class="card-body">
+                <p>1금융권에서는 한 번에 수백억 단위 채권 묶음을 통째로 던져야 합니다. 빌라 5개·오피스텔 10개·빌딩 2개를 다 떠안아야 한다는 의미입니다. 너무 부담스럽죠.</p>
+                <p>반면 <strong>2금융권(신협·농협·수협·새마을금고)</strong>은 원하는 물건만 골라 매입할 수 있습니다.</p>
+                <ul>
+                    <li>오피스텔 1개만 가져와도 OK ✅</li>
+                    <li>모텔·건물 등 원하는 카테고리만 선별 가능 ✅</li>
+                    <li>채권 가격 협의도 1:1로 진행 ✅</li>
+                    <li>오히려 1금융권보다 매입가가 더 저렴하게 협의됩니다 ✅</li>
+                </ul>
+                <p>이번 부전역 삼정그린코아 더시티도 <strong>신협 채권</strong>이며, 150개 호실을 한 번에 협의해 채권 매입가를 더 깎았습니다. 이게 규모의 경제의 핵심입니다. 📊</p>
+            </div>
+        </div>
+
+        <div class="timeline-card">
+            <div class="timeline-header">
+                <div class="timeline-icon green">💰</div>
+                <div class="timeline-title">NPL 수익이 발생하는 두 구간</div>
+            </div>
+            <div class="timeline-grid timeline-grid-2">
+                <div class="timeline-item">
+                    <div class="timeline-item-header">
+                        <div class="timeline-item-label yellow">구간 1</div>
+                    </div>
+                    <div class="timeline-item-body">
+                        <p><strong>연체 이자 구간 (4.5% → 19.9%)</strong></p>
+                        <p>대출 약정 이자 4.5% + 연체 가산 이자 약 3% + 법정 최고이율 19.9%까지 가산됩니다. 이게 채권의 "이자 부분"이고, 이 구간이 페이백 환급의 1차 재원입니다.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-item-header">
+                        <div class="timeline-item-label green">구간 2</div>
+                    </div>
+                    <div class="timeline-item-body">
+                        <p><strong>원금 할인 구간</strong></p>
+                        <p>원금이 10억이면 채권최고액 12억(120%)이 설정됩니다. 우리는 이 원금 자체를 "9억에 처리해드릴게요"라고 협의해 매입합니다. 1억은 그대로 우리 수익으로 남습니다.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== 섹션 5: NPL의 두 가지 결정적 장점 ===== -->
+    <section>
+        <h2 class="section-title">
+            <span class="section-title-icon green">🎯</span>
+            NPL의 두 가지 결정적 장점 — 양도세 절세 + 레버리지 극대화
+        </h2>
+
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon green">📑</div>
+                <h3 class="card-title">장점 1. 양도세 0원 — "샀다 가격 = 팔았다 가격" 구조</h3>
+            </div>
+            <div class="card-body">
+                <p>일반 경매와 NPL의 가장 큰 차이는 <strong>장부상 매입가</strong>입니다. NPL은 낙찰가가 곧 매입가로 잡히기 때문에, 같은 가격에 매도하면 <strong>차익이 0원으로 잡혀 양도세도 0원</strong>이 됩니다.</p>
+                <div class="table-wrap">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>구분</th>
+                                <th>일반 경매</th>
+                                <th class="accent-cell">NPL 사후정산</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>실제 매입가</td>
+                                <td>9,700만원</td>
+                                <td class="accent-cell">9,800만원</td>
+                            </tr>
+                            <tr>
+                                <td>장부상 매입가 (낙찰가)</td>
+                                <td>9,700만원</td>
+                                <td class="accent-cell">1억 2천만원</td>
+                            </tr>
+                            <tr>
+                                <td>매도가</td>
+                                <td>1억 2천만원</td>
+                                <td>1억 2천만원</td>
+                            </tr>
+                            <tr>
+                                <td>장부상 차익</td>
+                                <td class="error-cell">2,300만원</td>
+                                <td class="success-cell">0원</td>
+                            </tr>
+                            <tr>
+                                <td>양도세 (1년 내 매도, 70%)</td>
+                                <td class="error-cell">1,610만원</td>
+                                <td class="success-cell">0원</td>
+                            </tr>
+                            <tr>
+                                <td><strong>실제 수익</strong></td>
+                                <td>690만원</td>
+                                <td class="success-cell"><strong>2,200만원 (페이백)</strong></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="highlight-box">
+                    <div class="highlight-box-title">💡 핵심 포인트</div>
+                    <div class="highlight-box-text">
+                        같은 물건, 같은 가격에 팔아도 <strong>실제 수익은 약 3배 차이</strong>입니다. 1년 내 단타로 양도세 70%를 맞으면 천6백만원이 국가로 흘러들어갑니다. NPL은 이 세금을 0원으로 만드는 합법적 구조입니다. 📊
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon blue">🏦</div>
+                <h3 class="card-title">장점 2. 레버리지 — 경락잔금 대출 한도가 더 커진다</h3>
+            </div>
+            <div class="card-body">
+                <p>경락잔금 대출은 <strong>낙찰가 기준 70%</strong>로 실행됩니다. NPL은 낙찰가가 더 높게 잡히기 때문에, 같은 물건도 대출 한도가 커집니다.</p>
+                <div class="table-wrap">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>구분</th>
+                                <th>일반 경매</th>
+                                <th class="accent-cell">NPL 사후정산</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>낙찰가</td>
+                                <td>9,700만원</td>
+                                <td class="accent-cell">1억 2천만원</td>
+                            </tr>
+                            <tr>
+                                <td>대출 한도 (70%)</td>
+                                <td>6,790만원</td>
+                                <td class="accent-cell">8,400만원</td>
+                            </tr>
+                            <tr>
+                                <td>대출 차이</td>
+                                <td colspan="2" class="success-cell">+ 1,610만원</td>
+                            </tr>
+                            <tr>
+                                <td>실제 매입가</td>
+                                <td>9,700만원</td>
+                                <td>9,800만원</td>
+                            </tr>
+                            <tr>
+                                <td><strong>내 자기자금</strong></td>
+                                <td>2,910만원</td>
+                                <td class="success-cell"><strong>1,400만원 (약 50% ↓)</strong></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p><strong>같은 매입금액인데도 내 돈은 약 0.5배만 들어가고, 수익금은 약 3배가 큰</strong> 구조입니다. 그래서 NPL은 "사면 좋은 투자"가 아니라 <strong>"안 할 이유가 없는 투자"</strong>입니다. 🚀</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== 섹션 6: 계약 구조 ===== -->
+    <section>
+        <h2 class="section-title">
+            <span class="section-title-icon violet">📜</span>
+            NPL 계약 구조 — 론세일 vs 사후정산 (개인이 진입하는 길)
+        </h2>
+
+        <div class="callout violet">
+            <div class="callout-header">
+                <div class="callout-icon">⚖️</div>
+                <div class="callout-title">왜 개인은 NPL을 직접 사기 힘들까?</div>
+            </div>
+            <div class="callout-text">
+                NPL 채권 매입은 <strong>대부채권매입추심업 등록 법인</strong>만 가능합니다. 금융감독위원회 인가 + 자본금 5억 이상이 필요한 영역이죠.
+            </div>
+            <div class="callout-text">
+                개인이 직접 은행에 "이 채권 살게요" 하면 <strong>100% 문전박대</strong>당합니다. 은행은 부실채권을 처리하려는데, 모르는 개인에게 넘겼다가 또 부실 나면 곤란하기 때문입니다. 그래서 NPL 회사가 은행과 <strong>론세일 계약</strong>으로 채권을 매입하고, 우리(투자자)는 NPL 회사와 <strong>사후정산 계약</strong>으로 들어가는 2단 구조가 만들어집니다. 🔗
+            </div>
+        </div>
+
+        <div class="compare-grid">
+            <div class="compare-card">
+                <div class="compare-card-header">
+                    <div class="compare-card-icon blue">🏛️</div>
+                    <span class="compare-card-title">론세일 계약 (Loan Sale)</span>
+                </div>
+                <div class="compare-item">
+                    <span class="compare-item-label">계약 당사자</span>
+                    <span class="compare-item-value">은행 ↔ NPL 회사</span>
+                </div>
+                <div class="compare-item">
+                    <span class="compare-item-label">의미</span>
+                    <span class="compare-item-value">대출 채권을 통째로 판매</span>
+                </div>
+                <div class="compare-item">
+                    <span class="compare-item-label">가능 주체</span>
+                    <span class="compare-item-value error">대부법인만 가능</span>
+                </div>
+                <div class="compare-item">
+                    <span class="compare-item-label">개인 진입</span>
+                    <span class="compare-item-value error">불가능</span>
+                </div>
+            </div>
+            <div class="compare-card">
+                <div class="compare-card-header">
+                    <div class="compare-card-icon green">📝</div>
+                    <span class="compare-card-title">사후정산 계약 (우리가 쓰는 방식)</span>
+                </div>
+                <div class="compare-item">
+                    <span class="compare-item-label">계약 당사자</span>
+                    <span class="compare-item-value">NPL 회사 ↔ 투자자</span>
+                </div>
+                <div class="compare-item">
+                    <span class="compare-item-label">의미</span>
+                    <span class="compare-item-value">낙찰 후 차액 환급</span>
+                </div>
+                <div class="compare-item">
+                    <span class="compare-item-label">가능 주체</span>
+                    <span class="compare-item-value success">개인·법인 모두 가능</span>
+                </div>
+                <div class="compare-item">
+                    <span class="compare-item-label">개인 진입</span>
+                    <span class="compare-item-value success">가능 (이번 컨설팅의 핵심)</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon violet">📑</div>
+                <h3 class="card-title">사후정산 계약서의 핵심 3가지 (외워두기)</h3>
+            </div>
+            <div class="card-body">
+                <p>계약서가 NPL의 생명입니다. 말로만 약속하는 회사는 절대 거르세요. 반드시 <strong>법인 인감 + 투자자 동의 도장</strong>이 양쪽 다 찍힌 계약서로 진행해야 합니다.</p>
+                <div class="key-points">
+                    <div class="key-point">
+                        <div class="key-point-icon">💵</div>
+                        <div class="key-point-title">낙찰가</div>
+                        <div class="key-point-desc">매각 기일에 얼마에 낙찰받을지 명시 (예: 1억 4천만원)</div>
+                    </div>
+                    <div class="key-point">
+                        <div class="key-point-icon">📦</div>
+                        <div class="key-point-title">매입가 (양도대금)</div>
+                        <div class="key-point-desc">실제 채권 매입 금액 (예: 1억 2,500만원)</div>
+                    </div>
+                    <div class="key-point">
+                        <div class="key-point-icon">💰</div>
+                        <div class="key-point-title">페이백 환급액</div>
+                        <div class="key-point-desc">차액 + 환급 시점 명시 (배당 완료 다음 날 즉시)</div>
+                    </div>
+                </div>
+                <div class="highlight-box">
+                    <div class="highlight-box-title">📌 특약 3항 (반드시 들어가야 하는 문구)</div>
+                    <div class="highlight-box-text">
+                        "매각 기일에 입찰한 금액(낙찰가)이 양도대금(매입가)을 초과할 경우, 그 차액은 <strong>배당 완료 다음 날 즉시 환급</strong>한다." → 이 문구가 없으면 페이백을 받을 법적 근거가 사라집니다. ⚠️
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon teal">🛡️</div>
+                <h3 class="card-title">NPL 회사가 해주는 3가지 핵심 역할</h3>
+            </div>
+            <div class="card-body">
+                <p>이번 컨설팅에서 아카이브 중개법인이 컨설팅고객 대표님들 대신 다음 3가지를 처리합니다.</p>
+                <div class="key-points">
+                    <div class="key-point">
+                        <div class="key-point-icon">🔍</div>
+                        <div class="key-point-title">권리 분석</div>
+                        <div class="key-point-desc">등기부 · 임차권 · 우선변제권 등 권리 관계 정리</div>
+                    </div>
+                    <div class="key-point">
+                        <div class="key-point-icon">📊</div>
+                        <div class="key-point-title">권리 금액 계산</div>
+                        <div class="key-point-desc">NPL 회사 1차 → 직원 검토 → 대표 → 은행 지점장까지 3중 검증</div>
+                    </div>
+                    <div class="key-point">
+                        <div class="key-point-icon">🤝</div>
+                        <div class="key-point-title">금융권 인맥</div>
+                        <div class="key-point-desc">매일 은행 방문해 신협·새마을금고 채권 선점</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== 섹션 8: 부전역 삼정그린코아 더시티 ===== -->
+    <section>
+        <h2 class="section-title">
+            <span class="section-title-icon teal">🏢</span>
+            부전역 삼정그린코아 더시티 — 물건 개요 & 입지 분석
+        </h2>
+
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon teal">📋</div>
+                <h3 class="card-title">물건 기본 정보</h3>
+            </div>
+            <div class="card-body">
+                <div class="table-wrap">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>항목</th>
+                                <th>내용</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>주소</td>
+                                <td class="accent-cell">부산광역시 부전동 (부전역 5번 출구 도보 1초)</td>
+                            </tr>
+                            <tr>
+                                <td>건물명</td>
+                                <td><strong>삼정그린코아 더시티</strong> (1군 브랜드 신축)</td>
+                            </tr>
+                            <tr>
+                                <td>사용 승인일</td>
+                                <td>2020년 11월</td>
+                            </tr>
+                            <tr>
+                                <td>세대수</td>
+                                <td>314세대</td>
+                            </tr>
+                            <tr>
+                                <td>층수</td>
+                                <td>지상 19층 / 지하 4층</td>
+                            </tr>
+                            <tr>
+                                <td>주차</td>
+                                <td class="success-cell">지하 1~4층 자주식 + 타워파킹</td>
+                            </tr>
+                            <tr>
+                                <td>경매 진행 호실</td>
+                                <td class="accent-cell">약 150개 (선착순 배정)</td>
+                            </tr>
+                            <tr>
+                                <td>당초 통매각 제안가</td>
+                                <td class="warning-cell">800억원 (송도 병원장, 시니어 레지던스 용도)</td>
+                            </tr>
+                            <tr>
+                                <td>현재 NPL 합계 (호재 반영 후)</td>
+                                <td class="success-cell">500억원 미만 (통매각 대비 ↓ 300억)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="callout blue">
+            <div class="callout-header">
+                <div class="callout-icon">📍</div>
+                <div class="callout-title">입지 분석 — 부전역 5번 출구 도보 1초</div>
+            </div>
+            <div class="callout-text">
+                <strong>부산에서 부산역 다음으로 큰 역</strong>이 부전역입니다. 더시티는 5번 출구에서 <strong>도보 1초 거리</strong>(역 출구 바로 앞)에 위치합니다. 30분 이내로 서면·남포동·동래·광안리·해운대까지 모두 도달 가능한 교통 요충지입니다. 🚇
+            </div>
+            <div class="callout-text">
+                주변 수요 구성: ① <strong>롯데호텔 백화점</strong> ② <strong>메디컬 스트릿</strong>(성형외과 실장 등 거주) ③ <strong>대기업 부산지사</strong>(KB국민은행·새마을금고 본사 인근) ④ <strong>전포카페거리 도보 3분</strong> ⑤ <strong>시민공원</strong>(서울로 치면 서울숲급) — 단기임대 + 일반 임대 둘 다 수요 폭발. 🌟
+            </div>
+        </div>
+
+        <div class="callout orange">
+            <div class="callout-header">
+                <div class="callout-icon">🚀</div>
+                <div class="callout-title">호재: 부전역 복합환승센터 (2026.03 발표)</div>
+            </div>
+            <div class="callout-text">
+                <strong>2026년 3월 12일</strong> 부전역 복합환승센터 호재가 공식 발표되었습니다. 2030년 착공 예정이며, <strong>서울에서 부산역이 아닌 부전역으로 KTX 직행</strong>이 가능해집니다.
+            </div>
+            <div class="callout-text">
+                중요한 포인트: <strong>경매 감정평가 시점에는 이 호재가 반영되어 있지 않습니다</strong>. 즉, 1.85억 감정가는 호재 발표 전 가격이고, 우리는 그보다 더 낮은 1.25억에 매입하는 셈입니다. 부전역 일대 숙박 수요가 부산역 수준까지 따라잡는 게 시간문제입니다. ⏰
+            </div>
+        </div>
+
+        <div class="callout violet">
+            <div class="callout-header">
+                <div class="callout-icon">💎</div>
+                <div class="callout-title">왜 같은 물건을 시행사가 직접 못 짓는가</div>
+            </div>
+            <div class="callout-text">
+                코로나 이후 <strong>건축비·자재비·타워파킹 가격이 2배 이상 폭등</strong>했습니다. 36세대 오피스텔 타워파킹이 1.5억 → 2.2억으로 올랐다는 시행사 사장의 증언이 있을 정도입니다.
+            </div>
+            <div class="callout-text">
+                즉, 같은 입지에 같은 1군 브랜드 신축 오피스텔은 <strong>지금 짓는 것 자체가 NPL 매입가보다 비쌉니다</strong>. 공급 절벽 상황에서 신축급 매물을 헐값에 잡는 사이클입니다. 🏗️
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== 섹션 9: 호실별 정보 ===== -->
+    <section>
+        <h2 class="section-title">
+            <span class="section-title-icon green">🏠</span>
+            호실별 정보 — 원룸 / 투룸 / 쓰리룸 비교 (S급 매물)
+        </h2>
+
+        <div class="compare-grid compare-grid-3">
+            <div class="compare-card">
+                <div class="compare-card-header">
+                    <div class="compare-card-icon blue">🛏️</div>
+                    <span class="compare-card-title">원룸 (가장 많은 물건)</span>
+                </div>
+                <div class="compare-item">
+                    <span class="compare-item-label">감정가</span>
+                    <span class="compare-item-value">1억 8천만원</span>
+                </div>
+                <div class="compare-item">
+                    <span class="compare-item-label">낙찰 예정가</span>
+                    <span class="compare-item-value">1억 4천만원</span>
+                </div>
+                <div class="compare-item">
+                    <span class="compare-item-label">매입가</span>
+                    <span class="compare-item-value accent">1억 2,500만원</span>
+                </div>
+                <div class="compare-item">
+                    <span class="compare-item-label">감정가 대비</span>
+                    <span class="compare-item-value success">69%</span>
+                </div>
+                <div class="compare-item">
+                    <span class="compare-item-label">대출 70% 한도</span>
+                    <span class="compare-item-value">9,800만원</span>
+                </div>
+                <div class="compare-item">
+                    <span class="compare-item-label">최종 에쿼티</span>
+                    <span class="compare-item-value success">2,700만원</span>
+                </div>
+                <div class="compare-item">
+                    <span class="compare-item-label">물건 비중</span>
+                    <span class="compare-item-value">약 90%</span>
+                </div>
+            </div>
+            <div class="compare-card">
+                <div class="compare-card-header">
+                    <div class="compare-card-icon green">🛋️</div>
+                    <span class="compare-card-title">투룸 (방1+거실1, 희소)</span>
+                </div>
+                <div class="compare-item">
+                    <span class="compare-item-label">매입가</span>
+                    <span class="compare-item-value accent">2억 5천만원</span>
+                </div>
+                <div class="compare-item">
+                    <span class="compare-item-label">낙찰 예정가</span>
+                    <span class="compare-item-value">약 2억 4,500만원</span>
+                </div>
+                <div class="compare-item">
+                    <span class="compare-item-label">분양 평당가 (당초)</span>
+                    <span class="compare-item-value warning">2,300만원 / 7억 600만원</span>
+                </div>
+                <div class="compare-item">
+                    <span class="compare-item-label">대출 70% 한도</span>
+                    <span class="compare-item-value">1억 7,500만원</span>
+                </div>
+                <div class="compare-item">
+                    <span class="compare-item-label">최종 에쿼티</span>
+                    <span class="compare-item-value success">5,850만원</span>
+                </div>
+                <div class="compare-item">
+                    <span class="compare-item-label">보증금 2천 차감 후</span>
+                    <span class="compare-item-value success">3,850만원</span>
+                </div>
+                <div class="compare-item">
+                    <span class="compare-item-label">물건 비중</span>
+                    <span class="compare-item-value warning">매우 희소 (20개 중 3개)</span>
+                </div>
+            </div>
+            <div class="compare-card">
+                <div class="compare-card-header">
+                    <div class="compare-card-icon violet">👨‍👩‍👧</div>
+                    <span class="compare-card-title">쓰리룸 (방2+거실1+팬트리)</span>
+                </div>
+                <div class="compare-item">
+                    <span class="compare-item-label">매입가</span>
+                    <span class="compare-item-value accent">2억 6,500만원</span>
+                </div>
+                <div class="compare-item">
+                    <span class="compare-item-label">평형</span>
+                    <span class="compare-item-value">약 15~16평</span>
+                </div>
+                <div class="compare-item">
+                    <span class="compare-item-label">분양 평당가 (당초)</span>
+                    <span class="compare-item-value warning">8억 1,300만원</span>
+                </div>
+                <div class="compare-item">
+                    <span class="compare-item-label">대출 70% 한도</span>
+                    <span class="compare-item-value">1억 8,500만원</span>
+                </div>
+                <div class="compare-item">
+                    <span class="compare-item-label">최종 에쿼티</span>
+                    <span class="compare-item-value success">6,450만원</span>
+                </div>
+                <div class="compare-item">
+                    <span class="compare-item-label">법인 90% 대출 시</span>
+                    <span class="compare-item-value success">약 2,650만원</span>
+                </div>
+                <div class="compare-item">
+                    <span class="compare-item-label">권장 타겟</span>
+                    <span class="compare-item-value">신혼부부 · 성형외과 실장</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="callout teal">
+            <div class="callout-header">
+                <div class="callout-icon">📐</div>
+                <div class="callout-title">왜 모든 호실이 인기 타입인가</div>
+            </div>
+            <div class="callout-text">
+                ① <strong>층고가 매우 높음</strong>(186cm 키 + 팔 뻗어도 안 닿는 높이) → 탁 트인 개방감.<br>
+                ② <strong>일직선 구조 + 풍부한 수납</strong> → 부산 임대 시장에서 가장 선호하는 타입.<br>
+                ③ <strong>붙박이 가전 풀세트</strong>(세탁기·냉장고·에어컨·공기청정기·붙박이장) → 신혼부부 전세 수요 직격탄.<br>
+                ④ 화장실·부엌까지 신축 마감 그대로 유지.
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== 섹션 10: 수익 시뮬레이션 ===== -->
+    <section>
+        <h2 class="section-title">
+            <span class="section-title-icon yellow">💵</span>
+            원룸 수익 시뮬레이션 — 자금 흐름 단계별 계산
+        </h2>
+
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon yellow">📊</div>
+                <h3 class="card-title">원룸 자금 흐름표 (대출 70% 기준)</h3>
+            </div>
+            <div class="card-body">
+                <div class="table-wrap">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>단계</th>
+                                <th>항목</th>
+                                <th>금액</th>
+                                <th>누적 자기자금</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1단계</td>
+                                <td>가계약금 (오늘 입금)</td>
+                                <td>500만원</td>
+                                <td class="warning-cell">500만원</td>
+                            </tr>
+                            <tr>
+                                <td>2단계</td>
+                                <td>경매 입찰 보증금 (낙찰가 10%)</td>
+                                <td>1,260만원</td>
+                                <td class="warning-cell">1,260만원 (가계약금 충당)</td>
+                            </tr>
+                            <tr>
+                                <td>3단계</td>
+                                <td>잔금 시 추가 자금</td>
+                                <td>4,200만원</td>
+                                <td class="error-cell">4,200만원 (일시적 최고점)</td>
+                            </tr>
+                            <tr>
+                                <td>4단계</td>
+                                <td>경락잔금 대출 70%</td>
+                                <td class="success-cell">+ 9,800만원</td>
+                                <td class="warning-cell">4,200만원 유지</td>
+                            </tr>
+                            <tr>
+                                <td>5단계</td>
+                                <td>NPL 페이백 (배당 다음날)</td>
+                                <td class="success-cell">+ 1,500만원</td>
+                                <td class="success-cell">2,700만원</td>
+                            </tr>
+                            <tr>
+                                <td>6단계</td>
+                                <td>월세 보증금 2,000만원 수취</td>
+                                <td class="success-cell">+ 2,000만원</td>
+                                <td class="success-cell">700만원</td>
+                            </tr>
+                            <tr>
+                                <td>7단계 (옵션)</td>
+                                <td>보증금 2,800만원 (최우선변제 한도)</td>
+                                <td class="success-cell">+ 2,800만원</td>
+                                <td class="success-cell">- 100만원 (오히려 환급)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="highlight-box">
+                    <div class="highlight-box-title">🎯 월 수익 (원룸 기준)</div>
+                    <div class="highlight-box-text">
+                        월세 55만원(보증금 2,000) - 대출이자 약 36만 8천원(9,800만원 × 4.5% / 12) = <strong>월 13만 2천원</strong> 순수익. 한 호실당 13만원이지만, <strong>10채 = 130만원, 30채 = 약 400만원</strong>. 어머니 노후 연금처럼 굴러가는 사이클입니다. 🌱
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon orange">📈</div>
+                <h3 class="card-title">레버리지별 수익률 (원룸)</h3>
+            </div>
+            <div class="card-body">
+                <div class="table-wrap">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>대출 비율</th>
+                                <th>대출 금액</th>
+                                <th>최종 자기자금 (보증금 2천)</th>
+                                <th>수익률</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>65%</td>
+                                <td>9,100만원</td>
+                                <td>1,400만원</td>
+                                <td class="warning-cell">약 18%</td>
+                            </tr>
+                            <tr>
+                                <td>70% (기본)</td>
+                                <td>9,800만원</td>
+                                <td>700만원</td>
+                                <td class="success-cell">약 31%</td>
+                            </tr>
+                            <tr>
+                                <td>75%</td>
+                                <td>1억 500만원</td>
+                                <td class="success-cell">0원 (또는 마이너스)</td>
+                                <td class="success-cell"><strong>무한대 ∞</strong></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p>🚀 <strong>법인 대표가 90% 대출을 받으면 자기자금이 마이너스</strong>가 되어 사실상 "돈 받고 등기 치는" 구조가 됩니다.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== 섹션 11: 임대 전략 ===== -->
+    <section>
+        <h2 class="section-title">
+            <span class="section-title-icon violet">🏨</span>
+            임대 전략 — 단기임대 vs 월세 임대 비교
+        </h2>
+
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon teal">💵</div>
+                <h3 class="card-title">월세 시세 (인근 동일 평형)</h3>
+            </div>
+            <div class="card-body">
+                <div class="table-wrap">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>보증금</th>
+                                <th>월세</th>
+                                <th>특징</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1,000만원</td>
+                                <td>60만원</td>
+                                <td>가장 일반적인 월세 시세</td>
+                            </tr>
+                            <tr>
+                                <td>2,000만원</td>
+                                <td>55만원</td>
+                                <td>보증금 1천만원 올릴 때마다 월세 5만원 차감</td>
+                            </tr>
+                            <tr>
+                                <td class="accent-cell">2,800만원</td>
+                                <td>50만원</td>
+                                <td class="accent-cell"><strong>최우선 변제 한도</strong> · HUG 렌트홈 신고 면제</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="highlight-box">
+                    <div class="highlight-box-title">⚠️ 보증금 2,800만원 한도가 중요한 이유</div>
+                    <div class="highlight-box-text">
+                        부산 최우선변제 보증금 한도가 <strong>2,800만원</strong>입니다. 이 이하로 받으면 ① <strong>임차인이 안전하게 보호</strong>되고 ② <strong>HUG 렌트홈(초량 LH 사무소) 신고 의무 면제</strong>됩니다. 2,800만원 이상 받으면 매번 신고해야 하고, 누락 시 벌금 300~500만원이 부과될 수 있습니다. 그래서 임대인·임차인 양쪽이 편한 한도가 정확히 2,800만원입니다. 📌
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="compare-grid">
+            <div class="compare-card">
+                <div class="compare-card-header">
+                    <div class="compare-card-icon green">📅</div>
+                    <span class="compare-card-title">월세 임대 (안정형)</span>
+                </div>
+                <div class="compare-item">
+                    <span class="compare-item-label">월 수익</span>
+                    <span class="compare-item-value">약 55만원</span>
+                </div>
+                <div class="compare-item">
+                    <span class="compare-item-label">관리 부담</span>
+                    <span class="compare-item-value success">매우 낮음</span>
+                </div>
+                <div class="compare-item">
+                    <span class="compare-item-label">공실 리스크</span>
+                    <span class="compare-item-value success">매우 낮음 (수요 폭발)</span>
+                </div>
+                <div class="compare-item">
+                    <span class="compare-item-label">매칭 채널</span>
+                    <span class="compare-item-value">아카이브 인스타 1.9만 팔로워</span>
+                </div>
+                <div class="compare-item">
+                    <span class="compare-item-label">예상 매칭 기간</span>
+                    <span class="compare-item-value success">잔금 후 1주일 내</span>
+                </div>
+            </div>
+            <div class="compare-card">
+                <div class="compare-card-header">
+                    <div class="compare-card-icon orange">🏨</div>
+                    <span class="compare-card-title">단기임대 (수익 극대화형)</span>
+                </div>
+                <div class="compare-item">
+                    <span class="compare-item-label">주당 수익</span>
+                    <span class="compare-item-value accent">35만원 (현 운영가)</span>
+                </div>
+                <div class="compare-item">
+                    <span class="compare-item-label">월 수익 (4주 만실)</span>
+                    <span class="compare-item-value success">140만원</span>
+                </div>
+                <div class="compare-item">
+                    <span class="compare-item-label">관리 부담</span>
+                    <span class="compare-item-value warning">중간 (운영 손 필요)</span>
+                </div>
+                <div class="compare-item">
+                    <span class="compare-item-label">운영 지원</span>
+                    <span class="compare-item-value">숙사장 협력 / 위탁 가능</span>
+                </div>
+                <div class="compare-item">
+                    <span class="compare-item-label">호재 효과</span>
+                    <span class="compare-item-value success">부전역 환승센터 → 폭발 예상</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="callout red">
+            <div class="callout-header">
+                <div class="callout-icon">⛔</div>
+                <div class="callout-title">⚠️ 절대 하지 말 것 — 자격증 없는 중개인의 "200/55 4달치 더 살아도 됩니다" 함정</div>
+            </div>
+            <div class="callout-text">
+                네이버 부동산에 보면 <strong>"보증금 200만원 / 월세 55만원, 경매 넘어가도 4달 더 살면 OK"</strong>라고 권유하는 매물이 있습니다. <strong>자격증 없는 중개 보조원</strong>이 자격증을 빌려 진행하는 케이스인데, 절대 들어가면 안 됩니다.
+            </div>
+            <div class="callout-text">
+                실제로는 ① 월세 2~3달 밀리면 <strong>전기·수도 끊김</strong> ② 사람이 정상적으로 살 수 없는 상태가 됩니다 ③ <strong>보증금 회수도 어려움</strong>. 정상적인 임대인이라면 이런 조건을 절대 권하지 않습니다. 🚫
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== 섹션 12: 신청 절차 ===== -->
+    <section>
+        <h2 class="section-title">
+            <span class="section-title-icon orange">📝</span>
+            신청 절차 — 6단계 타임라인 (오늘부터 배당까지 약 6개월)
+        </h2>
+
+        <div class="timeline-card">
+            <div class="timeline-header">
+                <div class="timeline-icon orange">⏱️</div>
+                <div class="timeline-title">전체 진행 흐름 <span class="timeline-badge">최대 6개월</span></div>
+            </div>
+            <div class="timeline-grid">
+                <div class="timeline-item">
+                    <div class="timeline-item-header">
+                        <div class="timeline-item-label blue">D-Day</div>
+                    </div>
+                    <div class="timeline-item-body">
+                        <p><strong>매수의향서 제출 + 가계약금 500만원</strong></p>
+                        <p>구글폼 4페이지 작성 → 호실 타입(원룸/투룸/쓰리룸) 선택 → 계약금 500만원 즉시 입금. 입금 순서대로 사건번호 배정.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-item-header">
+                        <div class="timeline-item-label yellow">D+1주</div>
+                    </div>
+                    <div class="timeline-item-body">
+                        <p><strong>사후정산 계약서 작성</strong></p>
+                        <p>부산 거주자 → 아카이브 사무실 / 서울 거주자 → 곽 대표가 서울 출장 직접 진행. 법인 인감 + 투자자 도장 양면 날인.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-item-header">
+                        <div class="timeline-item-label orange">D+1~3개월</div>
+                    </div>
+                    <div class="timeline-item-body">
+                        <p><strong>경매 1차 기일 (안 들어감)</strong></p>
+                        <p>1차에서는 입찰하지 않음. 감정가 기준 30% 떨어진 2차 기일을 노립니다.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-item-header">
+                        <div class="timeline-item-label red">D+2~4개월</div>
+                    </div>
+                    <div class="timeline-item-body">
+                        <p><strong>경매 2차 기일 → 매수대리인 낙찰</strong></p>
+                        <p>아카이브 매수대리인이 입찰 보증금(낙찰가 10%) 수표로 입찰 → 약속한 1억 4천에 낙찰 완료.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-item-header">
+                        <div class="timeline-item-label violet">D+3~5개월</div>
+                    </div>
+                    <div class="timeline-item-body">
+                        <p><strong>경락잔금 대출 + 잔금 납부</strong></p>
+                        <p>은행 자서 1회 부산 방문 (또는 비대면) → 잔금 납부 → 등기 이전 완료.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-item-header">
+                        <div class="timeline-item-label green">D+4~6개월</div>
+                    </div>
+                    <div class="timeline-item-body">
+                        <p><strong>배당 → 페이백 환급 → 임대 매칭</strong></p>
+                        <p>배당 완료 다음 날 즉시 페이백 입금 → 아카이브 임대 채널로 1주일 내 임차 매칭 → 보증금 수취 → 운영 시작.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon blue">💼</div>
+                <h3 class="card-title">신청 시 알아야 할 핵심 조건</h3>
+            </div>
+            <div class="card-body">
+                <ul>
+                    <li><strong>1인당 최대 3개 호실</strong>까지 신청 가능 (형평성)</li>
+                    <li>호실당 가계약금 <strong>500만원</strong> (3개면 1,500만원)</li>
+                    <li>매수대리 비용: <strong>감정가의 1%</strong> (수수료·컨설팅비는 영끌남 협의로 면제)</li>
+                    <li><strong>결손법인·신용불량자·국세 체납자는 대출 불가</strong> → 신청 자제</li>
+                    <li>법인 90% 대출 / 개인 평균 70% (신용도 차이)</li>
+                    <li>1주택자도 <strong>주택임대사업자 등록</strong> 시 매입 가능</li>
+                    <li>매매·임대사업자 외 신규 사업자 → 정책자금 결합 가능</li>
+                    <li>취득세: <strong>4.6%</strong> (오피스텔 일반 기준)</li>
+                    <li>신청 후 <strong>입금 완료 시 채권 매입 즉시 진행</strong> → 취소 불가</li>
+                </ul>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- ===== 섹션 13: 핵심 체크포인트 ===== -->
+    <section>
+        <h2 class="section-title">
+            <span class="section-title-icon green">✅</span>
+            핵심 체크포인트 — 4박자 매물의 진짜 가치
+        </h2>
+
+        <div class="key-points">
+            <div class="key-point">
+                <div class="key-point-icon">💰</div>
+                <div class="key-point-title">1. 안전한 소액</div>
+                <div class="key-point-desc">원룸 기준 최종 자기자금 700만원~2,700만원. 첫 사이클을 소액으로 돌려볼 수 있습니다.</div>
+            </div>
+            <div class="key-point">
+                <div class="key-point-icon">🏦</div>
+                <div class="key-point-title">2. 높은 레버리지</div>
+                <div class="key-point-desc">낙찰가 1억 4천 기준 70% 대출 = 9,800만원. 정책자금 결합 시 자기자금 0원도 가능.</div>
+            </div>
+            <div class="key-point">
+                <div class="key-point-icon">📊</div>
+                <div class="key-point-title">3. 3박자 수익률</div>
+                <div class="key-point-desc">월세/단기임대 운영 수익 + 매각 시세 차익 + 양도세 0원 절세 = 트리플 수익.</div>
+            </div>
+            <div class="key-point">
+                <div class="key-point-icon">🏗️</div>
+                <div class="key-point-title">4. 신축급 황금입지</div>
+                <div class="key-point-desc">2020년 사용승인 1군 브랜드 + 부전역 5번 출구 도보 1초 + 환승센터 호재.</div>
+            </div>
+            <div class="key-point">
+                <div class="key-point-icon">🚇</div>
+                <div class="key-point-title">5. 교통 30분 커버</div>
+                <div class="key-point-desc">서면·남포·동래·광안리·해운대까지 모두 30분 이내. 부산 어디든 도달 가능.</div>
+            </div>
+            <div class="key-point">
+                <div class="key-point-icon">🏨</div>
+                <div class="key-point-title">6. 단기+월세 이중 수요</div>
+                <div class="key-point-desc">메디컬 스트릿·대기업 지사·전포카페거리·시민공원 → 두 시장 모두 수요 폭발.</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== 섹션 14: 영끌남이 OP왕이 되는 이유 ===== -->
+    <section>
+        <h2 class="section-title">
+            <span class="section-title-icon violet">👑</span>
+            "전세사기 빌라왕"과 다른 이유 — 진짜 규모의 경제
+        </h2>
+
+        <div class="callout violet">
+            <div class="callout-header">
+                <div class="callout-icon">🛡️</div>
+                <div class="callout-title">3중 안전장치로 만든 시스템</div>
+            </div>
+            <div class="callout-text">
+                전세사기 빌라왕은 <strong>비싸게 사서 보증금 돌려막는</strong> 구조였습니다. 영끌남 NPL 매입은 정반대입니다.
+            </div>
+            <div class="callout-text">
+                ① <strong>1차 할인</strong>: 시행사가 들인 800억 → 우리는 500억 미만으로 매입.<br>
+                ② <strong>2차 할인</strong>: 은행 채권을 규모의 경제로 추가 협의 인하.<br>
+                ③ <strong>3차 할인</strong>: 부전역·서면·해운대·광안리 등 핵심 입지에서만 매수 (송정·기장 등 공실 위험 지역 회피).<br>
+                같은 부산이라도 <strong>대로변 + 역세권 + 공실 無 + 개발 호재</strong> 4박자 교집합만 매입하는 원칙입니다. 🎯
+            </div>
+        </div>
+
+        <div class="callout teal">
+            <div class="callout-header">
+                <div class="callout-icon">🤝</div>
+                <div class="callout-title">규모의 경제는 "한 명이 욕심내면 깨진다"</div>
+            </div>
+            <div class="callout-text">
+                이 구조가 가능한 유일한 이유는 <strong>모두가 욕심을 부리지 않기 때문</strong>입니다.
+            </div>
+            <div class="callout-text">
+                ① 아카이브가 컨설팅비를 받지 않음<br>
+                ② 슈가가 정책자금 수수료를 무리하게 받지않음<br>
+                ③ 영끌남이 은행에 추가 수수료를 요구하지 않음<br>
+                ④ NPL 회사가 무리한 요구를 하지 않음<br>
+                → 누구 하나라도 욕심을 내면 이 구조는 즉시 깨집니다. 그래서 영끌남은 이번 컨설팅에서 무료 컨설팅 모집도 안 했습니다(평소 1회 4억 매출). 🌱
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== 섹션 15: 주의사항 ===== -->
+    <section>
+        <h2 class="section-title">
+            <span class="section-title-icon red">⚠️</span>
+            주의사항 — 이런 분들은 신청하지 마세요
+        </h2>
+
+        <div class="callout red">
+            <div class="callout-header">
+                <div class="callout-icon">🚫</div>
+                <div class="callout-title">대출 불가 케이스 (반드시 확인)</div>
+            </div>
+            <div class="callout-text">
+                다음에 해당되면 경락잔금 대출이 거절될 수 있어 신청을 권하지 않습니다.
+            </div>
+            <div class="callout-text">
+                ① <strong>결손법인</strong> (적자 누적 법인) → 절대 불가<br>
+                ② <strong>국세·지방세 체납</strong> → 불가<br>
+                ③ <strong>신용불량자 / 개인 회생 진행자</strong> → 불가<br>
+                ④ <strong>신용점수 600점 미만</strong> → 정책자금도 어려움<br>
+                ⑤ <strong>외도민(외국인 도시민박)</strong> → 정책자금 금리 1% 이상 적용, 불리
+            </div>
+        </div>
+
+        <div class="callout orange">
+            <div class="callout-header">
+                <div class="callout-icon">⏰</div>
+                <div class="callout-title">"바로 팔 생각"으로 들어오지 마세요</div>
+            </div>
+            <div class="callout-text">
+                경매 사건이 <strong>150개 일괄 진행</strong>되기 때문에, 채권 매입부터 배당까지 짧으면 4개월·길면 6개월~1년이 걸릴 수 있습니다.
+            </div>
+            <div class="callout-text">
+                "1년 뒤에 1억만 벌어도 좋다"고 했다가, 실제로 1년 뒤 시세가 오르면 <strong>"고작 1억 먹자고 이걸 한 거예요?"</strong>로 마음이 바뀝니다. 사람은 간사합니다(삼성전자 5만 → 6만 사례와 동일). 그래서 <strong>장기 보유 + 운영 수익</strong>을 우선시하는 분들에게 적합합니다. 🌱
+            </div>
+        </div>
+
+        <div class="callout yellow">
+            <div class="callout-header">
+                <div class="callout-icon">📋</div>
+                <div class="callout-title">선착순 + 호실 타입 매칭 원칙</div>
+            </div>
+            <div class="callout-text">
+                ① <strong>경매 사건</strong>은 입금 순서대로 배정됩니다.<br>
+                ② 같은 사건에 원룸이 20개·투룸 1개·쓰리룸 1개 나오는 식이라, <strong>희소 타입(투/쓰리룸) 신청자는 다음 사건으로 밀릴 수 있습니다</strong>.<br>
+                ③ 30번째에 쓰리룸 신청 + 첫 사건에 쓰리룸 3개만 나옴 → 다음 사건으로 자동 이월.<br>
+                ④ <strong>정책자금 처리 기다리는 분</strong>은 별도 카톡으로 순서 조정 협의 가능.
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== 섹션 16: 신청 방법 요약 ===== -->
+    <section>
+        <h2 class="section-title">
+            <span class="section-title-icon green">📌</span>
+            신청 방법 한눈에 보기
+        </h2>
+
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon green">✅</div>
+                <h3 class="card-title">신청 4단계 체크리스트</h3>
+            </div>
+            <div class="card-body">
+                <ol class="step-list">
+                    <li><strong>NPL 오픈 카톡방 입장</strong> — 영끌남 카톡방에서 공식 링크 확인 (10시 30분 공지)</li>
+                    <li><strong>구글폼 매수의향서 작성</strong> — 4페이지에 호실 타입(원룸/투룸/쓰리룸) + 개수(최대 3개) + 명의(개인/법인) 체크</li>
+                    <li><strong>가계약금 입금</strong> — 호실당 500만원 (3개 = 1,500만원). 입금 순서대로 사건번호 배정</li>
+                    <li><strong>다음 날 곽 대표 전화 상담</strong> — 호실 매칭·계약서 일정·서울 출장 일정 확정</li>
+                </ol>
+                <div class="highlight-box">
+                    <div class="highlight-box-title">💬 추가 문의 채널</div>
+                    <div class="highlight-box-text">
+                        ① <strong>NPL 오픈 카톡방</strong> — 일반 문의<br>
+                        ② <strong>아카이브 오픈 카톡방 QR</strong> — 호실·계약·명도 등 NPL 관련<br>
+                        ③ <strong>슈가 정책자금 카톡 채널</strong> — 정책자금 + 사업자 + 신용도 관련 (실패 시 컨설팅비 100% 환불)
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== 예상 추가 질문 ===== -->
+    <section>
+        <h2 class="section-title">
+            <span class="section-title-icon violet">❓</span>
+            예상 추가 질문
+        </h2>
+
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon violet">💡</div>
+                <h3 class="card-title">이어서 더 알아볼 만한 5가지</h3>
+            </div>
+            <div class="card-body">
+                <ol class="step-list">
+                    <li><strong>1)</strong> 부전역 삼정그린코아 더시티 호실(원룸/투룸/쓰리룸) 중 내 자금에 맞는 추천 시뮬레이션을 단계별로 만들어줄까? 📊</li>
+                    <li><strong>2)</strong> 정책자금 5천만원 받기 위한 쇼핑몰/공간임대 사업자 세팅 절차(홈택스 → 쿠팡/스마트스토어/에어비앤비) 단계별 가이드를 만들어줄까? 🛒</li>
+                    <li><strong>3)</strong> 경락잔금 대출 70% 받기 위한 신용점수·DSR 점검 체크리스트와 결손법인 회피 방법을 정리해줄까? 🏦</li>
+                    <li><strong>4)</strong> 보증금 2,800만원 최우선변제 한도에 맞춘 임대차 계약서 작성 시 꼭 들어가야 할 특약 문구를 정리해줄까? 📑</li>
+                    <li><strong>5)</strong> 단기임대 주당 35만원 운영 시 발생하는 청소·체크인·플랫폼 수수료 등 실 비용 구조와 월세 임대 비교 시뮬레이션을 만들어줄까? 🏨</li>
+                </ol>
+            </div>
+        </div>
+    </section>
+
+</div>
+
+<div class="toast-container" id="toastContainer"></div>
+
+<script>
+const $ = (id) => document.getElementById(id);
+
+function showToast(message, type = 'info', title = '') {
+    const container = $('toastContainer');
+    if (!container) return;
+
+    const icons = { success: '✓', error: '✕', warning: '!', info: 'i' };
+    const titles = { success: '완료', error: '오류', warning: '주의', info: '안내' };
+
+    const toast = document.createElement('div');
+    toast.className = `toast toast-${type}`;
+    toast.style.cssText = `
+        display: flex; align-items: center; gap: 14px; padding: 16px 20px;
+        background: #ffffff; border-radius: 14px;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.12), 0 0 1px rgba(0,0,0,0.1);
+        min-width: 280px; max-width: 400px;
+    `;
+    toast.innerHTML = `
+        <div style="width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:600;color:white;background:linear-gradient(135deg,#0071e3 0%,#40a9ff 100%);flex-shrink:0;">${icons[type] || 'i'}</div>
+        <div style="flex:1;">
+            <div style="font-size:14px;font-weight:600;color:#1d1d1f;margin-bottom:2px;">${title || titles[type] || '알림'}</div>
+            <div style="font-size:13px;color:#515154;line-height:1.4;">${message}</div>
+        </div>
+        <button onclick="this.parentElement.remove()" style="width:28px;height:28px;border-radius:50%;border:none;background:#f5f5f7;color:#86868b;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;">✕</button>
+    `;
+    container.appendChild(toast);
+
+    setTimeout(() => toast.remove(), 4500);
+}
+
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+        document.querySelectorAll('.toast').forEach(t => t.remove());
+    }
+});
+</script>
+
+</body>
+</html>

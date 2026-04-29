@@ -1,0 +1,2640 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>영끌남x슈가 정책자금 특강 💰 — 5년 2,900억 집행한 슈가컴퍼니의 진짜 노하우</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css" />
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --background: #f8fafc;
+            --foreground: #0a0a0a;
+            --card: #ffffff;
+            --muted: #f1f5f9;
+            --muted-foreground: #64748b;
+            --border: #e2e8f0;
+            --primary: #18181b;
+            --primary-foreground: #fafafa;
+            --accent: #0ea5e9;
+            --accent-light: #e0f2fe;
+            --success: #22c55e;
+            --warning: #eab308;
+            --error: #ef4444;
+            --violet: #8b5cf6;
+            --radius: 12px;
+        }
+
+        body {
+            font-family: 'Pretendard Variable', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            line-height: 1.6;
+            background: var(--background);
+            color: var(--foreground);
+            min-height: 100vh;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background:
+                radial-gradient(circle at 20% 20%, rgba(14, 165, 233, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 80% 30%, rgba(139, 92, 246, 0.06) 0%, transparent 40%),
+                radial-gradient(circle at 40% 80%, rgba(34, 197, 94, 0.05) 0%, transparent 45%),
+                radial-gradient(circle at 90% 80%, rgba(249, 115, 22, 0.04) 0%, transparent 40%);
+            z-index: -1;
+            animation: gradientFloat 20s ease-in-out infinite;
+        }
+
+        @keyframes gradientFloat {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            25% { transform: translate(2%, 1%) rotate(1deg); }
+            50% { transform: translate(0, 2%) rotate(0deg); }
+            75% { transform: translate(-1%, 1%) rotate(-1deg); }
+        }
+
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image:
+                linear-gradient(rgba(148, 163, 184, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(148, 163, 184, 0.03) 1px, transparent 1px);
+            background-size: 60px 60px;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 32px 24px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* 헤더 */
+        .header { margin-bottom: 40px; text-align: center; }
+
+        .header-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 14px;
+            background: linear-gradient(135deg, rgba(14, 165, 233, 0.15) 0%, rgba(139, 92, 246, 0.1) 100%);
+            color: #0284c7;
+            font-size: 13px;
+            font-weight: 600;
+            border-radius: 100px;
+            letter-spacing: -0.01em;
+            border: 1px solid rgba(14, 165, 233, 0.2);
+            margin-bottom: 12px;
+        }
+
+        h1 {
+            font-size: 33px;
+            font-weight: 700;
+            color: var(--foreground);
+            letter-spacing: -0.03em;
+            margin-bottom: 8px;
+        }
+
+        .subtitle {
+            color: var(--muted-foreground);
+            font-size: 16px;
+        }
+
+        /* 섹션 */
+        .section { margin-bottom: 72px; }
+
+        .section-title {
+            font-size: 26px;
+            font-weight: 700;
+            color: var(--foreground);
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            letter-spacing: -0.02em;
+        }
+
+        .section-subtitle {
+            color: var(--muted-foreground);
+            font-size: 15px;
+            margin-bottom: 32px;
+            margin-top: -16px;
+        }
+
+        /* 카드 */
+        .card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(226, 232, 240, 0.8);
+            border-radius: var(--radius);
+            overflow: hidden;
+            transition: all 0.3s ease;
+            margin-bottom: 40px;
+        }
+
+        .card:hover {
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
+            border-color: rgba(203, 213, 225, 0.8);
+            transform: translateY(-2px);
+        }
+
+        .card-header {
+            padding: 24px;
+            border-bottom: 1px solid rgba(226, 232, 240, 0.6);
+            background: linear-gradient(180deg, rgba(248, 250, 252, 0.5) 0%, transparent 100%);
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .card-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            flex-shrink: 0;
+            color: white;
+        }
+
+        .card-icon.blue { background: linear-gradient(135deg, #0071e3 0%, #40a9ff 100%); }
+        .card-icon.green { background: linear-gradient(135deg, #34c759 0%, #30d158 100%); }
+        .card-icon.yellow { background: linear-gradient(135deg, #ff9f0a 0%, #ffb340 100%); }
+        .card-icon.red { background: linear-gradient(135deg, #ff3b30 0%, #ff6961 100%); }
+        .card-icon.violet { background: linear-gradient(135deg, #af52de 0%, #bf5af2 100%); }
+        .card-icon.teal { background: linear-gradient(135deg, #5ac8fa 0%, #64d2ff 100%); }
+        .card-icon.orange { background: linear-gradient(135deg, #ff9500 0%, #ffaa33 100%); }
+        .card-icon.gray { background: linear-gradient(135deg, #8e8e93 0%, #aeaeb2 100%); }
+        .card-icon.dark { background: linear-gradient(135deg, #1d1d1f 0%, #3a3a3c 100%); }
+
+        .card-title-wrap { flex: 1; }
+
+        .card-title {
+            font-size: 22px;
+            font-weight: 600;
+            color: var(--foreground);
+            margin: 0;
+            letter-spacing: -0.01em;
+        }
+
+        .card-subtitle {
+            font-size: 14px;
+            color: var(--muted-foreground);
+            margin-top: 4px;
+        }
+
+        .card-body { padding: 24px; }
+
+        /* 그리드 */
+        .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+        .grid-3 { grid-template-columns: repeat(3, 1fr); gap: 20px; }
+        .grid-4 { grid-template-columns: repeat(4, 1fr); gap: 16px; }
+        .full-width { grid-column: 1 / -1; }
+
+        /* 메트릭 */
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+        }
+
+        .metric-card {
+            padding: 20px;
+            background: linear-gradient(135deg, rgba(241, 245, 249, 0.9) 0%, rgba(226, 232, 240, 0.5) 100%);
+            border-radius: 10px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(226, 232, 240, 0.5);
+        }
+
+        .metric-card:hover {
+            background: linear-gradient(135deg, rgba(224, 242, 254, 0.8) 0%, rgba(186, 230, 253, 0.4) 100%);
+            border-color: rgba(14, 165, 233, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .metric-label {
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--muted-foreground);
+            margin-bottom: 8px;
+        }
+
+        .metric-value {
+            font-size: 29px;
+            font-weight: 700;
+            color: var(--foreground);
+            letter-spacing: -0.02em;
+        }
+
+        .metric-unit {
+            font-size: 13px;
+            color: var(--muted-foreground);
+            margin-top: 4px;
+        }
+
+        /* 테이블 */
+        .table-wrap {
+            width: 100%;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .table th {
+            padding: 16px 20px;
+            text-align: left;
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--muted-foreground);
+            border-bottom: 1px solid var(--border);
+            background: rgba(248, 250, 252, 0.5);
+        }
+
+        .table td {
+            padding: 16px 20px;
+            font-size: 16px;
+            color: var(--foreground);
+            border-bottom: 1px solid rgba(226, 232, 240, 0.6);
+        }
+
+        .table tbody tr:hover { background: rgba(241, 245, 249, 0.5); }
+
+        .table strong { color: #0284c7; font-weight: 700; }
+
+        /* 뱃지 */
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            padding: 4px 10px;
+            font-size: 13px;
+            font-weight: 500;
+            border-radius: 100px;
+        }
+        .badge-success { background: rgba(34, 197, 94, 0.1); color: #16a34a; }
+        .badge-warning { background: rgba(234, 179, 8, 0.1); color: #ca8a04; }
+        .badge-error { background: rgba(239, 68, 68, 0.1); color: #dc2626; }
+        .badge-info { background: rgba(14, 165, 233, 0.1); color: #0284c7; }
+        .badge-violet { background: rgba(139, 92, 246, 0.1); color: #7c3aed; }
+        .badge-orange { background: rgba(255, 149, 0, 0.1); color: #c2410c; }
+
+        /* Callout */
+        .callout {
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+            border-radius: 14px;
+            margin-bottom: 32px;
+            background: #ffffff;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06), 0 0 1px rgba(0,0,0,0.1);
+        }
+
+        .callout-header {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 20px;
+        }
+
+        .callout-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            flex-shrink: 0;
+            color: white;
+        }
+
+        .callout-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--foreground);
+        }
+
+        .callout-body { padding-left: 0; }
+        .callout-text { font-size: 14px; color: #515154; line-height: 1.7; }
+        .callout-text + .callout-text { margin-top: 10px; }
+        .callout-text strong { color: #0a0a0a; font-weight: 600; }
+
+        .callout.blue .callout-icon { background: linear-gradient(135deg, #0071e3 0%, #40a9ff 100%); }
+        .callout.green .callout-icon { background: linear-gradient(135deg, #34c759 0%, #30d158 100%); }
+        .callout.yellow .callout-icon { background: linear-gradient(135deg, #ff9f0a 0%, #ffb340 100%); }
+        .callout.red .callout-icon { background: linear-gradient(135deg, #ff3b30 0%, #ff6961 100%); }
+        .callout.violet .callout-icon { background: linear-gradient(135deg, #af52de 0%, #bf5af2 100%); }
+        .callout.teal .callout-icon { background: linear-gradient(135deg, #5ac8fa 0%, #64d2ff 100%); }
+        .callout.orange .callout-icon { background: linear-gradient(135deg, #ff9500 0%, #ffaa33 100%); }
+        .callout.gray .callout-icon { background: linear-gradient(135deg, #8e8e93 0%, #aeaeb2 100%); }
+
+        /* 비교 카드 */
+        .compare-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+        }
+
+        .compare-card {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 24px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+            transition: all 0.3s ease;
+        }
+
+        .compare-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+        }
+
+        .compare-card-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 28px;
+        }
+
+        .compare-card-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            flex-shrink: 0;
+            color: white;
+        }
+
+        .compare-card-icon.bad { background: linear-gradient(135deg, #ff3b30 0%, #ff6961 100%); }
+        .compare-card-icon.good { background: linear-gradient(135deg, #34c759 0%, #30d158 100%); }
+        .compare-card-icon.blue { background: linear-gradient(135deg, #0071e3 0%, #40a9ff 100%); }
+        .compare-card-icon.violet { background: linear-gradient(135deg, #af52de 0%, #bf5af2 100%); }
+
+        .compare-card-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--foreground);
+        }
+
+        .compare-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding: 14px 0;
+            border-bottom: 1px solid rgba(0,0,0,0.06);
+            gap: 16px;
+        }
+
+        .compare-item:last-child { border-bottom: none; }
+
+        .compare-item-label {
+            font-size: 14px;
+            color: var(--muted-foreground);
+            flex-shrink: 0;
+        }
+
+        .compare-item-value {
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--foreground);
+            text-align: right;
+        }
+
+        /* Timeline (단계) */
+        .timeline-card {
+            display: flex;
+            flex-direction: column;
+            padding: 24px;
+            border-radius: 16px;
+            margin-bottom: 28px;
+            background: #ffffff;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+        }
+
+        .timeline-header {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 24px;
+        }
+
+        .timeline-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            flex-shrink: 0;
+            color: white;
+        }
+
+        .timeline-icon.violet { background: linear-gradient(135deg, #af52de 0%, #bf5af2 100%); }
+        .timeline-icon.blue { background: linear-gradient(135deg, #0071e3 0%, #40a9ff 100%); }
+        .timeline-icon.green { background: linear-gradient(135deg, #34c759 0%, #30d158 100%); }
+        .timeline-icon.orange { background: linear-gradient(135deg, #ff9500 0%, #ffaa33 100%); }
+        .timeline-icon.red { background: linear-gradient(135deg, #ff3b30 0%, #ff6961 100%); }
+
+        .timeline-title {
+            font-size: 18px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .timeline-badge {
+            font-size: 13px;
+            font-weight: 600;
+            padding: 4px 12px;
+            border-radius: 100px;
+            background: rgba(0,0,0,0.06);
+            color: var(--muted-foreground);
+        }
+
+        .timeline-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+        }
+
+        .timeline-item {
+            background: var(--muted);
+            padding: 16px;
+            border-radius: 12px;
+        }
+
+        .timeline-item-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 14px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid rgba(0,0,0,0.06);
+        }
+
+        .timeline-item-label {
+            display: inline-flex;
+            padding: 5px 12px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .timeline-item-label.blue { background: rgba(0, 113, 227, 0.1); color: #0071e3; }
+        .timeline-item-label.green { background: rgba(52, 199, 89, 0.1); color: #16a34a; }
+        .timeline-item-label.yellow { background: rgba(255, 159, 10, 0.1); color: #b45309; }
+        .timeline-item-label.violet { background: rgba(175, 82, 222, 0.1); color: #7c3aed; }
+        .timeline-item-label.red { background: rgba(255, 59, 48, 0.1); color: #dc2626; }
+
+        .timeline-item-body p {
+            font-size: 14px;
+            color: #515154;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        /* 리스트 */
+        .check-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .check-list li {
+            padding: 10px 0;
+            font-size: 15px;
+            color: #1a1a1a;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            line-height: 1.6;
+        }
+
+        .check-list li::before {
+            content: '✓';
+            color: #16a34a;
+            font-weight: 700;
+            flex-shrink: 0;
+            margin-top: 1px;
+        }
+
+        .x-list { list-style: none; padding: 0; }
+        .x-list li {
+            padding: 10px 0;
+            font-size: 15px;
+            color: #1a1a1a;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            line-height: 1.6;
+        }
+        .x-list li::before {
+            content: '✗';
+            color: #dc2626;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        /* 강조 박스 */
+        .highlight-box {
+            background: linear-gradient(135deg, rgba(255, 159, 10, 0.08) 0%, rgba(255, 59, 48, 0.06) 100%);
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 16px;
+            border: 1px solid rgba(255, 159, 10, 0.2);
+        }
+
+        .highlight-box-title {
+            font-size: 15px;
+            font-weight: 700;
+            color: #c2410c;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .highlight-box-text {
+            font-size: 14px;
+            color: #515154;
+            line-height: 1.7;
+        }
+
+        /* 사례 박스 */
+        .case-box {
+            background: linear-gradient(135deg, rgba(14, 165, 233, 0.05) 0%, rgba(139, 92, 246, 0.04) 100%);
+            border-radius: 12px;
+            padding: 18px 20px;
+            margin-bottom: 12px;
+            border: 1px solid rgba(14, 165, 233, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .case-box-info { flex: 1; }
+        .case-box-amount {
+            font-size: 20px;
+            font-weight: 700;
+            color: #0a0a0a;
+            letter-spacing: -0.02em;
+        }
+        .case-box-desc {
+            font-size: 13px;
+            color: var(--muted-foreground);
+            margin-top: 4px;
+        }
+        .case-box-rate {
+            font-size: 24px;
+            font-weight: 700;
+            color: #0284c7;
+            letter-spacing: -0.02em;
+            white-space: nowrap;
+        }
+
+        /* CTA */
+        .cta-card {
+            background: linear-gradient(135deg, #1d1d1f 0%, #3a3a3c 100%);
+            color: white;
+            border-radius: 16px;
+            padding: 40px 32px;
+            text-align: center;
+            margin: 24px 0;
+        }
+
+        .cta-card h2 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            letter-spacing: -0.02em;
+        }
+
+        .cta-card p {
+            font-size: 16px;
+            opacity: 0.85;
+            margin-bottom: 24px;
+            line-height: 1.7;
+        }
+
+        .cta-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 28px;
+            background: linear-gradient(135deg, #0071e3 0%, #40a9ff 100%);
+            color: white;
+            border-radius: 12px;
+            font-size: 15px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+
+        .cta-btn:hover {
+            transform: scale(1.03);
+            box-shadow: 0 4px 14px rgba(0, 113, 227, 0.4);
+        }
+
+        /* 모바일 반응형 */
+        @media (max-width: 1024px) {
+            .metrics-grid { grid-template-columns: repeat(2, 1fr); }
+            .grid-4 { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 900px) {
+            .timeline-grid { grid-template-columns: 1fr; }
+        }
+
+        @media (max-width: 768px) {
+            .container { padding: 20px 16px; }
+            h1 { font-size: 26px; }
+            .subtitle { font-size: 15px; }
+            .section { margin-bottom: 48px; }
+            .section-title { font-size: 22px; }
+            .card { margin-bottom: 28px; }
+            .card-title { font-size: 18px; }
+            .card-icon { width: 48px; height: 48px; font-size: 20px; }
+            .card-body { padding: 20px; }
+            .grid, .grid-3 { grid-template-columns: 1fr; }
+            .metrics-grid { grid-template-columns: 1fr; }
+            .compare-grid { grid-template-columns: 1fr; gap: 16px; }
+            .compare-card { padding: 20px; }
+            .compare-card-header { margin-bottom: 20px; flex-direction: row; align-items: center; }
+            .compare-card-icon { width: 40px; height: 40px; font-size: 18px; }
+            .compare-card-title { font-size: 20px; }
+            .callout { padding: 16px; margin-bottom: 24px; }
+            .callout-header { gap: 12px; margin-bottom: 16px; flex-direction: row; align-items: center; }
+            .callout-icon { width: 40px; height: 40px; font-size: 18px; }
+            .callout-title { font-size: 16px; }
+            .callout-text { font-size: 13px; }
+            .timeline-card { padding: 18px; margin-bottom: 20px; }
+            .timeline-header { margin-bottom: 18px; flex-direction: row; align-items: center; }
+            .timeline-icon { width: 44px; height: 44px; font-size: 20px; }
+            .timeline-title { font-size: 16px; }
+            .timeline-grid { gap: 10px; }
+            .case-box { flex-direction: column; align-items: flex-start; gap: 8px; }
+            .case-box-rate { font-size: 22px; }
+            .table-wrap { margin: 0 -20px; padding: 0 20px; }
+            .table-wrap table { min-width: 600px; }
+            .table-wrap::after {
+                content: '← 좌우로 스크롤하세요 →';
+                display: block;
+                text-align: center;
+                font-size: 13px;
+                color: #86868b;
+                padding: 8px 0;
+            }
+            .cta-card { padding: 28px 20px; }
+            .cta-card h2 { font-size: 22px; }
+        }
+
+        @media (max-width: 480px) {
+            h1 { font-size: 22px; }
+            .subtitle { font-size: 14px; }
+            .card-body { padding: 16px; }
+            .card-title { font-size: 16px; }
+            .card-icon { width: 44px; height: 44px; }
+            .compare-card-title { font-size: 18px; }
+            .compare-item-value { font-size: 14px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+
+        <!-- 헤더 -->
+        <div class="header">
+            <span class="header-badge">💰 영끌남x슈가 정책자금 특강</span>
+            <h1>5년 4,200명 · 2,900억 집행한 슈가가 푸는 진짜 노하우 🎯</h1>
+            <p class="subtitle">담보 없이 1.02% 금리로 5억까지 — 사기 안 당하고 받는 법</p>
+        </div>
+
+        <!-- 1. 강사 소개 -->
+        <div class="section">
+            <h2 class="section-title">👋 강사 소개 — 슈가컴퍼니</h2>
+            <p class="section-subtitle">전속 영끌남, 그리고 4,200명의 사장님을 대출시킨 컨설턴트</p>
+
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon dark">🍯</div>
+                    <div class="card-title-wrap">
+                        <h3 class="card-title">슈가 (Sugar Company 대표)</h3>
+                        <p class="card-subtitle">94년생 · ISO 국제 인증 선임 심사원 · 제조업 운영 중</p>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="metrics-grid">
+                        <div class="metric-card">
+                            <div class="metric-label">📊 누적 진행</div>
+                            <div class="metric-value">4,200명</div>
+                            <div class="metric-unit">5년 동안 대출 진행</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-label">💰 집행 금액</div>
+                            <div class="metric-value">2,900억</div>
+                            <div class="metric-unit">5년 누적 대출 집행</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-label">📅 1월 진행</div>
+                            <div class="metric-value">350명</div>
+                            <div class="metric-unit">한 달 진행 건수</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-label">🏆 영끌남 전속</div>
+                            <div class="metric-value">1.02%</div>
+                            <div class="metric-unit">최저 금리 신기록</div>
+                        </div>
+                    </div>
+
+                    <div class="callout blue" style="margin-top: 24px;">
+                        <div class="callout-header">
+                            <div class="callout-icon">🤝</div>
+                            <div class="callout-title">함께 일하는 인플루언서들</div>
+                        </div>
+                        <div class="callout-body">
+                            <div class="callout-text">
+                                <strong>쿠팡:</strong> 오른쪽 날개, 100억 디노 · <strong>요식업:</strong> 깡대표 ·
+                                <strong>네이버 스토어:</strong> 돈 버는 형님들 · <strong>부동산:</strong> 제네시스 박 ·
+                                <strong>전속:</strong> 영끌남 대표
+                            </div>
+                            <div class="callout-text">
+                                💡 광고비 받고 출연한 게 아니라 <strong>찐으로 초청받아 협업</strong>한 사례들. 출연 채널: 장사 건물주, 오른쪽 날개, 장사 건프로 등.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 슈가 본인 대출 인증 -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon orange">🔥</div>
+                    <div class="card-title-wrap">
+                        <h3 class="card-title">슈가 본인 대출 현황 — 매출 5.7억에 8.7억 영끌</h3>
+                        <p class="card-subtitle">"남한테만 해주는 게 아니라 본인이 제일 먼저 받고 남도 해주는 케이스"</p>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <p style="font-size: 15px; color: #515154; margin-bottom: 20px; line-height: 1.7;">
+                        🏭 운영 중인 제조업(한솔공산) 매출 약 <strong>5.7억</strong>인데 담보 없이 누적 대출 <strong>8억 7천만 원</strong> 보유. 대출은 갚지 않고 계속 굴리는 게 슈가 스타일. 가장 최근 대출은 <strong>25년 10월 16일·10월 1일 각 1억</strong> (메인비즈 활용).
+                    </p>
+
+                    <div class="callout violet">
+                        <div class="callout-header">
+                            <div class="callout-icon">📑</div>
+                            <div class="callout-title">슈가 본인 대출 명세 — 담보 없이 8.7억 (대출 안 갚음 ㅋㅋ)</div>
+                        </div>
+                        <div class="callout-body">
+                            <div class="callout-text">
+                                <strong>🏦 일반 정책자금 대출 (10건):</strong><br>
+                                9,500만 · 7,600만 · 6,800만 · 5,200만 · 3,400만 · 2,800만 · 2,500만 · 2,500만 · 910만 · 260만 원
+                            </div>
+                            <div class="callout-text">
+                                <strong>🚀 중진공 직접대출:</strong> 22년 1억 + 24년 1억 + 25년 1억 = <strong>3억</strong> (매년 영끌 갱신)
+                            </div>
+                            <div class="callout-text">
+                                💡 "260만 원짜리도 안 갚아요" — 영끌남 정신 = <strong>일단 있는 거 다 긁어와서 박는 것</strong>. 갚지 않고 굴려야 진짜 자산 형성.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="callout yellow">
+                        <div class="callout-header">
+                            <div class="callout-icon">⚠️</div>
+                            <div class="callout-title">경고 — 자기는 2~3천밖에 안 받아본 컨설턴트는 거르세요</div>
+                        </div>
+                        <div class="callout-body">
+                            <div class="callout-text">
+                                "지는 대출 2~3천밖에 안 받아봤으면서 남한테 돈 받고 훈수 두는 사람이 제일 문제다." — 본인이 영끌해본 적 없는 사람한테 영끌 컨설팅 받지 마세요.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2. 실제 고객 사례 -->
+        <div class="section">
+            <h2 class="section-title">🎬 실제 고객 대출 사례</h2>
+            <p class="section-subtitle">금리에 주목 — 4.15% → 3%대 → 2.48% → 1.02%까지 (조건 차이 = 후술)</p>
+
+            <div class="grid">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon blue">📈</div>
+                        <div class="card-title-wrap">
+                            <h3 class="card-title">1군 — 표준 케이스</h3>
+                            <p class="card-subtitle">평범한 사장님들 대출 결과</p>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="case-box">
+                            <div class="case-box-info">
+                                <div class="case-box-amount">💰 1억 원</div>
+                                <div class="case-box-desc">작년 대출 · 일반 사업자</div>
+                            </div>
+                            <div class="case-box-rate">4.15%</div>
+                        </div>
+                        <div class="case-box">
+                            <div class="case-box-info">
+                                <div class="case-box-amount">💰 3억 5천</div>
+                                <div class="case-box-desc">재작년 · 인증 보유</div>
+                            </div>
+                            <div class="case-box-rate">3%대</div>
+                        </div>
+                        <div class="case-box">
+                            <div class="case-box-info">
+                                <div class="case-box-amount">💰 2억 6천</div>
+                                <div class="case-box-desc">25년 11월 28일 최근 건</div>
+                            </div>
+                            <div class="case-box-rate">4.35%</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon violet">🏆</div>
+                        <div class="card-title-wrap">
+                            <h3 class="card-title">레전드 — 영끌남 1.02%</h3>
+                            <p class="card-subtitle">올해 1월 슈가 진행 350명 중 최저 금리</p>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="case-box">
+                            <div class="case-box-info">
+                                <div class="case-box-amount">💰 5억 대출</div>
+                                <div class="case-box-desc">중진공 + 2차 보전 적용</div>
+                            </div>
+                            <div class="case-box-rate">1.02%</div>
+                        </div>
+                        <div class="highlight-box">
+                            <div class="highlight-box-title">🤯 5억 빌리고 월 이자 43만 3천 원</div>
+                            <div class="highlight-box-text">
+                                일반 신용대출 5억이면 월 이자 <strong>500만 원 이상</strong>. 정책자금이 왜 미친 제도냐? 이거 한 줄로 끝.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon green">💸</div>
+                        <div class="card-title-wrap">
+                            <h3 class="card-title">2군 — 다양한 업종 대출 결과</h3>
+                            <p class="card-subtitle">업종·매출 따라 금액 달라지는 패턴</p>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="case-box">
+                            <div class="case-box-info">
+                                <div class="case-box-amount">💰 2억 (6개월 변동금리)</div>
+                                <div class="case-box-desc">중간 규모 · 변동금리 선택</div>
+                            </div>
+                            <div class="case-box-rate">2.48%</div>
+                        </div>
+                        <div class="case-box">
+                            <div class="case-box-info">
+                                <div class="case-box-amount">💰 7천 / 3천 / 7천 대환</div>
+                                <div class="case-box-desc">도소매·중개사·음식점 등 업종별 차이</div>
+                            </div>
+                            <div class="case-box-rate">대환</div>
+                        </div>
+                        <div class="case-box">
+                            <div class="case-box-info">
+                                <div class="case-box-amount">💰 1억 → 1.5억 추가</div>
+                                <div class="case-box-desc">한 사장님 누적 대출 케이스</div>
+                            </div>
+                            <div class="case-box-rate">2회차</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon teal">🍳</div>
+                        <div class="card-title-wrap">
+                            <h3 class="card-title">매출 2억 3천 → 1억 받은 사례</h3>
+                            <p class="card-subtitle">"매출 적어도 가능"의 증거</p>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <ul class="check-list">
+                            <li>소상공인진흥공단 — <strong>3,000만 원</strong></li>
+                            <li>경기신용보증재단 — <strong>5,000만 원</strong></li>
+                            <li>소상공인시장진흥공단(직접) — <strong>2,000만 원</strong></li>
+                        </ul>
+                        <div class="highlight-box">
+                            <div class="highlight-box-title">🎯 합계 1억 — 쿠팡이면 5바퀴 굴려서 5억 매출</div>
+                            <div class="highlight-box-text">
+                                쿠팡 정산주기 2~2.5개월. 1억으로 5번 회전시키면 매출 5억 만들 수 있다. <strong>정책자금 = 운영자금 레버리지의 시작</strong>.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 3. 정책자금 vs 일반대출 -->
+        <div class="section">
+            <h2 class="section-title">🆚 정책자금 vs 일반대출 — 무조건 정책자금 먼저</h2>
+            <p class="section-subtitle">신용대출/카드론 쓸 시간에 정책자금부터 알아봤어야 하는 이유</p>
+
+            <div class="compare-grid">
+                <div class="compare-card">
+                    <div class="compare-card-header">
+                        <div class="compare-card-icon bad">💀</div>
+                        <span class="compare-card-title">일반 대출 (지옥)</span>
+                    </div>
+                    <div class="compare-item">
+                        <span class="compare-item-label">📌 종류</span>
+                        <span class="compare-item-value">신용대출, 카드론, 현금서비스, 캐피탈</span>
+                    </div>
+                    <div class="compare-item">
+                        <span class="compare-item-label">💸 금리</span>
+                        <span class="compare-item-value">12%~16% (저축은행 기준)</span>
+                    </div>
+                    <div class="compare-item">
+                        <span class="compare-item-label">📊 DSR</span>
+                        <span class="compare-item-value">전세/주담대 영향 ⚠️</span>
+                    </div>
+                    <div class="compare-item">
+                        <span class="compare-item-label">🎯 함정</span>
+                        <span class="compare-item-value">토스/카카오에서 "3% 가능" → 찍으면 16%</span>
+                    </div>
+                    <div class="compare-item">
+                        <span class="compare-item-label">🏠 부동산 영향</span>
+                        <span class="compare-item-value">전세 대출도 막힘</span>
+                    </div>
+                </div>
+
+                <div class="compare-card">
+                    <div class="compare-card-header">
+                        <div class="compare-card-icon good">✨</div>
+                        <span class="compare-card-title">정책자금 (천국)</span>
+                    </div>
+                    <div class="compare-item">
+                        <span class="compare-item-label">📌 종류</span>
+                        <span class="compare-item-value">소진공, 중진공, 재단, 신보, 기보</span>
+                    </div>
+                    <div class="compare-item">
+                        <span class="compare-item-label">💸 금리</span>
+                        <span class="compare-item-value">1%~4% (높아도 4% 이하)</span>
+                    </div>
+                    <div class="compare-item">
+                        <span class="compare-item-label">📊 DSR</span>
+                        <span class="compare-item-value">전혀 영향 없음 ✅</span>
+                    </div>
+                    <div class="compare-item">
+                        <span class="compare-item-label">🎯 한도</span>
+                        <span class="compare-item-value">신용대출/카드론 5개 있어도 OK</span>
+                    </div>
+                    <div class="compare-item">
+                        <span class="compare-item-label">🏠 부동산 영향</span>
+                        <span class="compare-item-value">전세·주담대에 영향 0</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 4. 매출별 대출 한도 (제조업 제외) -->
+        <div class="section">
+            <h2 class="section-title">📊 매출별 대출 한도표 — 제조업 제외</h2>
+            <p class="section-subtitle">⭐ 캡처해두면 사기 안 당함. 이게 절대 기준입니다.</p>
+
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon blue">📋</div>
+                    <div class="card-title-wrap">
+                        <h3 class="card-title">2025년 매출 기준 — 도소매·서비스·음식·쇼핑몰 등</h3>
+                        <p class="card-subtitle">지금 부가세 신고 끝난 상태 기준</p>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="table-wrap">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>📈 매출 구간</th>
+                                    <th>💰 대출 가능 한도</th>
+                                    <th>📌 비고</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>3,000만 원 미만</td>
+                                    <td><strong>2,000만 ~ 5,000만 원</strong></td>
+                                    <td>매출 10만 원도 포함 (사업자만 있으면 OK)</td>
+                                </tr>
+                                <tr>
+                                    <td>3,000만 ~ 7,000만 원</td>
+                                    <td><strong>4,000만 ~ 7,000만 원</strong></td>
+                                    <td>신용 점수 좋으면 7천까지</td>
+                                </tr>
+                                <tr>
+                                    <td>7,000만 ~ 2.2억 원</td>
+                                    <td><strong>최대 1억 원</strong></td>
+                                    <td>매출 2억에 대출 1억 — 50% 레버리지</td>
+                                </tr>
+                                <tr>
+                                    <td>3억 ~ 7억 원</td>
+                                    <td><strong>최대 1억 6천만 원</strong></td>
+                                    <td>대리·직접 합산 시 더 가능</td>
+                                </tr>
+                                <tr>
+                                    <td>7억 ~ 13억 원</td>
+                                    <td><strong>1억 1천 ~ 3억 5천</strong></td>
+                                    <td>벤처/연구소/ISO 있어야 최고치 도달</td>
+                                </tr>
+                                <tr>
+                                    <td>13억 이상</td>
+                                    <td><strong>3.5억 ~ 그 이상</strong></td>
+                                    <td>인증 필수 — 없으면 우측값 불가</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="callout red" style="margin-top: 20px;">
+                        <div class="callout-header">
+                            <div class="callout-icon">⚠️</div>
+                            <div class="callout-title">개인사업자·법인사업자 둘 다 동일 적용</div>
+                        </div>
+                        <div class="callout-body">
+                            <div class="callout-text">
+                                💡 매출 7억 이상부터 우측 최고 한도를 받으려면 <strong>벤처 인증 / 연구소 / ISO 인증</strong> 등 하나는 있어야 합니다 (자세한 내용은 아래 섹션).
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="callout violet" style="margin-top: 16px;">
+                        <div class="callout-header">
+                            <div class="callout-icon">💎</div>
+                            <div class="callout-title">매출 7억 이상 + 인증 없음 = 그림의 떡 🌬️</div>
+                        </div>
+                        <div class="callout-body">
+                            <div class="callout-text">
+                                존예·존잘한테 인스타 DM 보내면 까이듯, <strong>벤처/연구소/ISO 없이 매출 7억 넘어도 우측 최고 한도는 절대 안 나옵니다</strong>. 인증 = "DM에 답장 받는 조건" — 없으면 만나주질 않아요.
+                            </div>
+                            <div class="callout-text">
+                                💡 영끌남 대표님도 사업자 10년+인데 ISO/벤처/연구소/메인비즈/이노비즈 진행하는 이유 = <strong>저금리 + 고한도 동시 확보</strong>. 매출 8억 이상이면 무조건 인증부터.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 5. 매출별 대출 한도 (제조업 전용) -->
+        <div class="section">
+            <h2 class="section-title">🏭 매출별 대출 한도표 — 제조업 전용</h2>
+            <p class="section-subtitle">제조업이면 매출의 200%까지 가능 — 한국이 제조업에 미친 이유</p>
+
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon orange">🔥</div>
+                    <div class="card-title-wrap">
+                        <h3 class="card-title">제조업 전용 한도 — 똑같은 매출인데 한도 2배</h3>
+                        <p class="card-subtitle">총균쇠 — 한국이 제조업 키우려고 만든 미친 한도</p>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="table-wrap">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>📈 매출 구간</th>
+                                    <th>💰 대출 가능 한도</th>
+                                    <th>📌 비고</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>5,000만 원 미만</td>
+                                    <td><strong>최대 1억 원</strong></td>
+                                    <td>완화 적용 (제조업이라서)</td>
+                                </tr>
+                                <tr>
+                                    <td>5,000만 원 (구체 케이스)</td>
+                                    <td><strong>1억 원 즉시</strong></td>
+                                    <td>커피콩 볶는 공장 매출 2,300 → 1억 OK 사례</td>
+                                </tr>
+                                <tr>
+                                    <td>1.5억 이상</td>
+                                    <td><strong>벤처/연구소/ISO 필요</strong></td>
+                                    <td>인증 있어야 1.5억 이상 가능</td>
+                                </tr>
+                                <tr>
+                                    <td>3억 이상</td>
+                                    <td><strong>2억 3천 가능</strong></td>
+                                    <td>매출 5억대면 8.7억까지도 (슈가 본인 사례)</td>
+                                </tr>
+                                <tr>
+                                    <td>9억 ~ 13억</td>
+                                    <td><strong>5~10억 가능</strong></td>
+                                    <td>—</td>
+                                </tr>
+                                <tr>
+                                    <td>13억 ~ 25억</td>
+                                    <td><strong>최대 16억까지</strong></td>
+                                    <td>인증 + 직접대출 합산</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="highlight-box" style="margin-top: 20px;">
+                        <div class="highlight-box-title">📌 핵심 룰: 제조업은 매출의 200%까지 대출</div>
+                        <div class="highlight-box-text">
+                            매출 5천만 원 → 대출 2억 (200%). <strong>제조업인데 정책자금 안 쓰는 사람은 바보다.</strong> 그냥 건물 사면 됩니다.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 6. 한도 평가 매출 기준 (업종별) -->
+        <div class="section">
+            <h2 class="section-title">📐 업종별 한도 평가 기준 — 매출의 몇 %까지?</h2>
+            <p class="section-subtitle">절대 수치예요. 컨설턴트가 이 표보다 적게 부른다면 거르세요.</p>
+
+            <div class="grid-3">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon orange">🏭</div>
+                        <div class="card-title-wrap">
+                            <h3 class="card-title">제조업</h3>
+                            <p class="card-subtitle">매출의 200%</p>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <p style="font-size: 14px; color: #515154; line-height: 1.7;">
+                            매출 5천만 원 → <strong>대출 2억</strong>. 한국이 제조업에 미쳐 있어서 가장 큰 레버리지 가능. 무조건 제조업 사장님은 정책자금부터.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon blue">🛒</div>
+                        <div class="card-title-wrap">
+                            <h3 class="card-title">도소매</h3>
+                            <p class="card-subtitle">매출의 33%</p>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <p style="font-size: 14px; color: #515154; line-height: 1.7;">
+                            매출 10억 → <strong>대출 3억 3천</strong>. 컨설팅 안 받으면 보통 16% (6분의 1)밖에 안 나옴. 33% 풀어내는 게 컨설팅 목적.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon red">🎬</div>
+                        <div class="card-title-wrap">
+                            <h3 class="card-title">유튜버 / 미디어 콘텐츠 창작자</h3>
+                            <p class="card-subtitle">달러벌이 → 200% 가능</p>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <p style="font-size: 14px; color: #515154; line-height: 1.7;">
+                            유튜브 매출 5천만 원 → <strong>대출 2억</strong>. 외화 벌이라서 기보(기술보증기금)가 우대. 매출 1,500만 원이어도 5천 이상 가능.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="callout teal">
+                <div class="callout-header">
+                    <div class="callout-icon">💡</div>
+                    <div class="callout-title">유튜버 매출 합산 꿀팁</div>
+                </div>
+                <div class="callout-body">
+                    <div class="callout-text">
+                        유튜브 애드센스 수익만이 아니라 <strong>유튜브 통해 발생한 다른 매출(쇼핑·강의·광고협찬)</strong>도 통합 신고 가능. 합산하면 한도 더 커짐. 부가세 신고 기간이라면 무조건 컨설턴트와 상의.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 7. 추천 지역 -->
+        <div class="section">
+            <h2 class="section-title">🗺️ 추천 지역 vs 비추천 지역</h2>
+            <p class="section-subtitle">사업자등록증 주소가 어디냐에 따라 한도 2배 차이</p>
+
+            <div class="compare-grid">
+                <div class="compare-card">
+                    <div class="compare-card-header">
+                        <div class="compare-card-icon bad">🚫</div>
+                        <span class="compare-card-title">비추천 지역</span>
+                    </div>
+                    <div class="compare-item">
+                        <span class="compare-item-label">🏙️ 서울</span>
+                        <span class="compare-item-value">한도 1/2 깎임</span>
+                    </div>
+                    <div class="compare-item">
+                        <span class="compare-item-label">🏘️ 용인</span>
+                        <span class="compare-item-value">한도 일부 깎임</span>
+                    </div>
+                    <div class="compare-item">
+                        <span class="compare-item-label">📌 이유</span>
+                        <span class="compare-item-value">자영업자 1/3이 서울에 몰려서 예산 부족</span>
+                    </div>
+                </div>
+
+                <div class="compare-card">
+                    <div class="compare-card-header">
+                        <div class="compare-card-icon good">✨</div>
+                        <span class="compare-card-title">추천 지역</span>
+                    </div>
+                    <div class="compare-item">
+                        <span class="compare-item-label">🏞️ 이천 / 인천 서구·부평구</span>
+                        <span class="compare-item-value">한도 정상 유지</span>
+                    </div>
+                    <div class="compare-item">
+                        <span class="compare-item-label">🏛️ 세종 (👑 추천)</span>
+                        <span class="compare-item-value">매출 2천만 원에 1억 대출</span>
+                    </div>
+                    <div class="compare-item">
+                        <span class="compare-item-label">📍 조건</span>
+                        <span class="compare-item-value">실사 가능 (30분 내 거리)</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="callout violet" style="margin-top: 24px;">
+                <div class="callout-header">
+                    <div class="callout-icon">👑</div>
+                    <div class="callout-title">세종특별자치시 — 미친 혜택의 도시</div>
+                </div>
+                <div class="callout-body">
+                    <div class="callout-text">
+                        세종은 공무원 도시라서 사업 촉진 정책이 따로 있어요. <strong>월 매출 180만 원(연 2천만 원)만 돼도 1억 대출</strong>이 가능합니다. 비상주 사무실(월세 2만 원)도 OK.
+                    </div>
+                    <div class="callout-text">
+                        💡 단, 24년부터 시작된 제도라 아무도 모름. <strong>실사 의무</strong>가 있으니 30분 내 갈 수 있는 거리에 있어야 합니다.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 8. 정책자금 받는 5가지 이유 -->
+        <div class="section">
+            <h2 class="section-title">🎯 정책자금을 받아야 하는 5가지 이유</h2>
+            <p class="section-subtitle">"왜 굳이 받아야 하나"에 대한 슈가식 답변</p>
+
+            <div class="grid">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon green">🛡️</div>
+                        <div class="card-title-wrap">
+                            <h3 class="card-title">1. 담보 없이 자금 해소</h3>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <p style="font-size: 14px; color: #515154; line-height: 1.7;">
+                            신용대출 꽉 차 있어도 가능. 담보 없어도 가능. 카드론 5개 있어도 가능. <strong>한도가 별도로 운영</strong>되니까 일반 대출이랑 무관하게 돌아갑니다.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon blue">💼</div>
+                        <div class="card-title-wrap">
+                            <h3 class="card-title">2. 비용 절감 (이자 비용 처리)</h3>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <p style="font-size: 14px; color: #515154; line-height: 1.7;">
+                            슈가 본인 케이스: 월 이자 1,000만 원 → 연 1.2억 소득공제. <strong>소득세 약 4,000만 원 절약</strong>. 사업자 이자는 다 비용 처리 가능.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon yellow">📈</div>
+                        <div class="card-title-wrap">
+                            <h3 class="card-title">3. 대출이 또 다른 대출의 가점</h3>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <p style="font-size: 14px; color: #515154; line-height: 1.7;">
+                            처음에 한도 3억인데 1.5억만 나옴. <strong>6개월 동안 이자 잘 내면 추가 1.5억</strong>. 대출 받으면 또 받을 수 있는 미친 시스템 = 영끌이 가능한 이유.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon red">🆘</div>
+                        <div class="card-title-wrap">
+                            <h3 class="card-title">4. 망해도 175만 원만 갚으면 탕감</h3>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <p style="font-size: 14px; color: #515154; line-height: 1.7;">
+                            정책자금 1억 → 회생 시 약 <strong>175만 원만 갚으면 전액 탕감</strong>. 1년 후 다시 대출 가능. 일반 대출 1억은 회생 시 1,500~2,000만 원 갚아야 함.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="card full-width">
+                    <div class="card-header">
+                        <div class="card-icon violet">🏢</div>
+                        <div class="card-title-wrap">
+                            <h3 class="card-title">5. 건물 매입 에쿼티 마련 — 진짜 핵심</h3>
+                            <p class="card-subtitle">슈가 본인이 정책자금으로 16억짜리 공장 매입한 방법</p>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="callout green">
+                            <div class="callout-header">
+                                <div class="callout-icon">🏗️</div>
+                                <div class="callout-title">매출 7억이면 15억짜리 건물도 0원 매입 가능</div>
+                            </div>
+                            <div class="callout-body">
+                                <div class="callout-text">
+                                    매출 7억 → 정책자금 2억 + 신한은행 건물 담보 90% (15억 건물 기준 13.5억) + 영끌남 매물 추천 = <strong>내 돈 0원으로 15억 건물 매입</strong>
+                                </div>
+                                <div class="callout-text">
+                                    💡 내 돈 1억이 있다면 <strong>15억까지도 가능</strong>. 슈가 본인은 8억짜리 공장 사서 지금 감정평가 16억으로 올라옴.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 9. 대리대출 vs 직접대출 -->
+        <div class="section">
+            <h2 class="section-title">🔀 대리대출 vs 직접대출 — 둘 다 받아라</h2>
+            <p class="section-subtitle">한도가 별도로 운영됩니다 = 양쪽으로 영끌해야 1.5배</p>
+
+            <div class="compare-grid">
+                <div class="compare-card">
+                    <div class="compare-card-header">
+                        <div class="compare-card-icon blue">🤝</div>
+                        <span class="compare-card-title">대리대출</span>
+                    </div>
+                    <div class="compare-item">
+                        <span class="compare-item-label">🏛️ 운영 기관</span>
+                        <span class="compare-item-value">신용보증재단·신용보증기금·기술보증기금</span>
+                    </div>
+                    <div class="compare-item">
+                        <span class="compare-item-label">🏦 구조</span>
+                        <span class="compare-item-value">은행 끼고 보증서 기반 대출</span>
+                    </div>
+                    <div class="compare-item">
+                        <span class="compare-item-label">💸 금리</span>
+                        <span class="compare-item-value">3~4%대</span>
+                    </div>
+                    <div class="compare-item">
+                        <span class="compare-item-label">⏰ 상환</span>
+                        <span class="compare-item-value">2년 거치 3년 분할 ~ 5년 거치</span>
+                    </div>
+                    <div class="compare-item">
+                        <span class="compare-item-label">📋 서류</span>
+                        <span class="compare-item-value">간단함 (몇 장)</span>
+                    </div>
+                    <div class="compare-item">
+                        <span class="compare-item-label">⏱️ 소요 기간</span>
+                        <span class="compare-item-value">상대적으로 짧음</span>
+                    </div>
+                </div>
+
+                <div class="compare-card">
+                    <div class="compare-card-header">
+                        <div class="compare-card-icon violet">🎯</div>
+                        <span class="compare-card-title">직접대출 (찐 핵심)</span>
+                    </div>
+                    <div class="compare-item">
+                        <span class="compare-item-label">🏛️ 운영 기관</span>
+                        <span class="compare-item-value">소상공인진흥공단·중소벤처기업진흥공단</span>
+                    </div>
+                    <div class="compare-item">
+                        <span class="compare-item-label">🏦 구조</span>
+                        <span class="compare-item-value">은행 안 끼고 직접 대출</span>
+                    </div>
+                    <div class="compare-item">
+                        <span class="compare-item-label">💸 금리</span>
+                        <span class="compare-item-value">1~3%대 (영끌남 1.02% 사례)</span>
+                    </div>
+                    <div class="compare-item">
+                        <span class="compare-item-label">📊 한도</span>
+                        <span class="compare-item-value">대리대출과 별도! 1.5배 효과</span>
+                    </div>
+                    <div class="compare-item">
+                        <span class="compare-item-label">📋 서류</span>
+                        <span class="compare-item-value">A4 약 60장 (까다로움)</span>
+                    </div>
+                    <div class="compare-item">
+                        <span class="compare-item-label">⏱️ 소요 기간</span>
+                        <span class="compare-item-value">2~3개월 (운 나쁘면 4~5개월)</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="callout orange" style="margin-top: 24px;">
+                <div class="callout-header">
+                    <div class="callout-icon">⏰</div>
+                    <div class="callout-title">2025년 직접대출 신청 일정 — 5월 전에 받아라</div>
+                </div>
+                <div class="callout-body">
+                    <div class="callout-text">
+                        🗓️ <strong>1월 12일(완료) · 2월 2일(월) · 3월 2일</strong> · 4·5·6월은 아직 미공지 — 한 회차당 약 <strong>1.5개월 소요</strong>. 오늘 준비해도 2월 2일 회차는 마감 (서류 60장 + 사업계획서 + 면접 준비).
+                    </div>
+                    <div class="callout-text">
+                        💡 사업자가 <strong>창업 후 3개월 이상</strong>이어야 신청 가능. 매출은 일부라도 발생해야 합니다. <strong>5월 이후는 예산 소진 위험</strong>이라 1~3월 회차에 무조건 진입하는 게 안전.
+                    </div>
+                </div>
+            </div>
+
+            <div class="timeline-card" style="margin-top: 24px;">
+                <div class="timeline-header">
+                    <div class="timeline-icon orange">📅</div>
+                    <div class="timeline-title">
+                        25년 직접대출 회차별 일정
+                        <span class="timeline-badge">슈가 2,900억 데이터 기반</span>
+                    </div>
+                </div>
+                <div class="timeline-grid">
+                    <div class="timeline-item">
+                        <div class="timeline-item-header">
+                            <div class="timeline-item-label red">1차 마감</div>
+                        </div>
+                        <div class="timeline-item-body">
+                            <p><strong>📌 1월 12일</strong><br>이미 종료. 가장 빠른 회차였음.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-item-header">
+                            <div class="timeline-item-label yellow">2차 진행 중</div>
+                        </div>
+                        <div class="timeline-item-body">
+                            <p><strong>📌 2월 2일(월)</strong><br>오늘부터 준비해도 마감 임박 위험.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-item-header">
+                            <div class="timeline-item-label green">3차 추천</div>
+                        </div>
+                        <div class="timeline-item-body">
+                            <p><strong>📌 3월 2일</strong><br>지금 시작하면 가장 안전한 진입.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 10. 보증기관 5곳 -->
+        <div class="section">
+            <h2 class="section-title">🏛️ 보증기관 5곳 — 어디서 뭘 받아야 하나</h2>
+            <p class="section-subtitle">중복 안 됨. 매출 키울 때마다 갚고 다시 옮겨가는 구조.</p>
+
+            <div class="grid">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon blue">🏦</div>
+                        <div class="card-title-wrap">
+                            <h3 class="card-title">신용보증재단 (지역재단)</h3>
+                            <p class="card-subtitle">초기 사업자가 가장 먼저 가는 곳</p>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <p style="font-size: 14px; color: #515154; line-height: 1.7;">
+                            📍 매출 3억일 때 → <strong>5천~7천만 원</strong> 가능. 면접 없는 대출 (홈택스 자동조회 + 사업계획서). 가장 진입 쉬움.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon green">📈</div>
+                        <div class="card-title-wrap">
+                            <h3 class="card-title">신용보증기금 (신보)</h3>
+                            <p class="card-subtitle">매출 키운 사장님이 옮겨가는 곳</p>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <p style="font-size: 14px; color: #515154; line-height: 1.7;">
+                            📍 매출 7억일 때 → <strong>1억 5천</strong>까지. 단, 재단 대출 5~7천 갚아야 가능. <strong>메인비즈 인증</strong> 보유 시 우대.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon orange">🔬</div>
+                        <div class="card-title-wrap">
+                            <h3 class="card-title">기술보증기금 (기보)</h3>
+                            <p class="card-subtitle">제조업·유튜버·기술기업 전용</p>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <p style="font-size: 14px; color: #515154; line-height: 1.7;">
+                            📍 <strong>벤처 인증</strong> 있으면 1~2억 추가. 유튜버는 달러벌이라 매출 1,500만 원에도 5천만 원 이상 가능.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon teal">🛍️</div>
+                        <div class="card-title-wrap">
+                            <h3 class="card-title">소상공인진흥공단 (소진공)</h3>
+                            <p class="card-subtitle">직접대출 — 누구나 가능 = 개꿀</p>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <p style="font-size: 14px; color: #515154; line-height: 1.7;">
+                            📍 업종 종류만 6가지. 사업자 분야에 맞는 직접대출 신청. 다른 보증기관 대출이랑 <strong>별도 한도</strong>로 운영.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="card full-width">
+                    <div class="card-header">
+                        <div class="card-icon violet">🏆</div>
+                        <div class="card-title-wrap">
+                            <h3 class="card-title">중소벤처기업진흥공단 (중진공) — 영끌남 1.02% 나온 곳</h3>
+                            <p class="card-subtitle">제조업·5인 이상 직원 시 미친 금리 가능</p>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <ul class="check-list">
+                            <li>제조업이면 직원 없어도 OK ✅</li>
+                            <li>4대보험 5명 이상 → <strong>이자 3~3.5% 지원</strong> → 실금리 1%대 가능</li>
+                            <li>2차 보전 적용 시 영끌남처럼 <strong>1.02%</strong>까지</li>
+                            <li>슈가 본인도 22년·24년·25년 매년 1억씩 영끌</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 11. 기업 인증 종류 -->
+        <div class="section">
+            <h2 class="section-title">🏅 기업 인증 5종 — 한도·금리를 결정하는 핵심</h2>
+            <p class="section-subtitle">없으면 좌측 금액, 있으면 우측 최고 금액 — DM도 인증 있어야 답장 옴</p>
+
+            <div class="timeline-card">
+                <div class="timeline-header">
+                    <div class="timeline-icon violet">🚀</div>
+                    <div class="timeline-title">
+                        영끌남 정신 일반 진행 순서
+                        <span class="timeline-badge">슈가식 추천</span>
+                    </div>
+                </div>
+                <div class="timeline-grid" style="grid-template-columns: repeat(5, 1fr);">
+                    <div class="timeline-item">
+                        <div class="timeline-item-header">
+                            <div class="timeline-item-label blue">1단계</div>
+                        </div>
+                        <div class="timeline-item-body">
+                            <p><strong>연구개발 전담부서</strong><br>(연구소)</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-item-header">
+                            <div class="timeline-item-label violet">2단계</div>
+                        </div>
+                        <div class="timeline-item-body">
+                            <p><strong>벤처 인증</strong><br>제조업 1~2억 추가</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-item-header">
+                            <div class="timeline-item-label green">3단계</div>
+                        </div>
+                        <div class="timeline-item-body">
+                            <p><strong>ISO 9001/45001/14001</strong><br>슈가가 선임심사원</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-item-header">
+                            <div class="timeline-item-label yellow">4단계</div>
+                        </div>
+                        <div class="timeline-item-body">
+                            <p><strong>메인비즈</strong><br>3년 직원 1명 필요</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-item-header">
+                            <div class="timeline-item-label red">5단계</div>
+                        </div>
+                        <div class="timeline-item-body">
+                            <p><strong>이노비즈</strong><br>최고 단계</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon blue">🔬</div>
+                        <div class="card-title-wrap">
+                            <h3 class="card-title">기업부설연구소</h3>
+                            <p class="card-subtitle">대출 한도 증가 + 이자 감소</p>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <ul class="check-list">
+                            <li>공식 대출 가점 서류로 등록</li>
+                            <li>대출 한도 1단계 상향</li>
+                            <li>이자 일정 부분 감면</li>
+                            <li>직원 10명+ 시 세금 혜택까지 가능</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon violet">🚀</div>
+                        <div class="card-title-wrap">
+                            <h3 class="card-title">벤처 인증</h3>
+                            <p class="card-subtitle">매출 7억 이상이면 무조건</p>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <ul class="check-list">
+                            <li>제조업: 중진공/기보에서 <strong>1~2억 추가</strong></li>
+                            <li>도소매: 신보에서 5천~1억 추가</li>
+                            <li>금리 <strong>0.8% 감면</strong> → 2억에 연 160만 원 절약</li>
+                            <li>창업 3년 미만이면 <strong>법인세 50% 감면</strong></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon green">📋</div>
+                        <div class="card-title-wrap">
+                            <h3 class="card-title">메인비즈 인증</h3>
+                            <p class="card-subtitle">슈가 본인이 받은 인증</p>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <ul class="check-list">
+                            <li>신보가 가장 좋아하는 인증</li>
+                            <li>최고 <strong>1.65% 이자 감면</strong> (농협 기준)</li>
+                            <li>슈가는 메인비즈로 1억 받음 (10월)</li>
+                        </ul>
+                        <div class="callout red" style="margin-top: 16px; margin-bottom: 0;">
+                            <div class="callout-header">
+                                <div class="callout-icon">⚠️</div>
+                                <div class="callout-title">단점</div>
+                            </div>
+                            <div class="callout-body">
+                                <div class="callout-text">
+                                    <strong>3년 연속 직원 1명 이상</strong>이 있어야 함. 23년 있다가 25년 없으면 NO. 많은 분들이 여기서 탈락.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon orange">🎖️</div>
+                        <div class="card-title-wrap">
+                            <h3 class="card-title">ISO 9001 / 45001 / 14001</h3>
+                            <p class="card-subtitle">슈가가 직접 국제 선임 심사원</p>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <ul class="check-list">
+                            <li><strong>대출 1억 증액 가능</strong> (모든 사업자)</li>
+                            <li>슈가가 ISO 국제 선임 심사원 = 99% 합격</li>
+                            <li>심사 권한: 품질·노동·환경</li>
+                            <li>심사 가능 국가: 한국·일본·싱가폴·캄보디아</li>
+                        </ul>
+                        <div class="callout teal" style="margin-top: 16px; margin-bottom: 0;">
+                            <div class="callout-header">
+                                <div class="callout-icon">💡</div>
+                                <div class="callout-title">제조업 추천 콤보</div>
+                            </div>
+                            <div class="callout-body">
+                                <div class="callout-text">
+                                    제조업이면 <strong>연구소 + ISO</strong>만 받아도 즉시 대출 가능. 영끌남 대표님 이번에 슈가가 ISO 진행해드림.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 12. 지식재산권 -->
+        <div class="section">
+            <h2 class="section-title">📜 지식재산권 — 가장 가성비 좋은 한도 펌프</h2>
+            <p class="section-subtitle">상표·저작권 등록은 거의 공짜로 한도 2~5천 더 뽑는 마법</p>
+
+            <div class="grid-3">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon blue">🎨</div>
+                        <div class="card-title-wrap">
+                            <h3 class="card-title">상표 등록증</h3>
+                            <p class="card-subtitle">회사 로고 = 한도 펌프</p>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <ul class="check-list">
+                            <li>회사 로고를 상표로 등록</li>
+                            <li>등록 기간: 약 1년</li>
+                            <li><strong>대출 2,000~5,000만 원 추가</strong></li>
+                            <li>이자 0.5% 감면</li>
+                            <li>안 하면 진짜 바보 (AI로 만들어도 OK)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon violet">©️</div>
+                        <div class="card-title-wrap">
+                            <h3 class="card-title">저작권 등록증</h3>
+                            <p class="card-subtitle">콘텐츠·디자인 보호</p>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <ul class="check-list">
+                            <li>홈페이지·콘텐츠·앱 등록</li>
+                            <li>대출 한도 가점</li>
+                            <li>이자 감면</li>
+                            <li>슈가 수강생은 <strong>등록 무료 진행</strong></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon teal">🎁</div>
+                        <div class="card-title-wrap">
+                            <h3 class="card-title">디자인 등록증</h3>
+                            <p class="card-subtitle">제품·패키지 디자인</p>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <ul class="check-list">
+                            <li>제품·UI·패키지 디자인 등록</li>
+                            <li>대출 한도 가점</li>
+                            <li>이자 감면</li>
+                            <li>슈가가 등록 가능하게 만들어줌</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card full-width">
+                    <div class="card-header">
+                        <div class="card-icon orange">⚖️</div>
+                        <div class="card-title-wrap">
+                            <h3 class="card-title">특허 등록증 — 고급반</h3>
+                            <p class="card-subtitle">특허 가치 평가받으면 진짜 큰 돈</p>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="callout green">
+                            <div class="callout-header">
+                                <div class="callout-icon">💎</div>
+                                <div class="callout-title">특허 가치 평가 = 추가 대출 1억</div>
+                            </div>
+                            <div class="callout-body">
+                                <div class="callout-text">
+                                    특허 등록 후 <strong>특허 가치 평가</strong> 받으면 보통 2억으로 평가. 그중 <strong>50% (1억)을 대출</strong>해줌.
+                                </div>
+                                <div class="callout-text">
+                                    💡 슈가가 변리사 직접 연결. 매출 연계 증빙만 가능하면 특허 4개 보유 사장님도 충분히 가능.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="callout yellow" style="margin-top: 24px;">
+                <div class="callout-header">
+                    <div class="callout-icon">📊</div>
+                    <div class="callout-title">금리 감면 합산 한도 — 마이너스 2.25%까지</div>
+                </div>
+                <div class="callout-body">
+                    <div class="callout-text">
+                        상표·저작·디자인·벤처·연구소가 깎을 수 있는 금리는 <strong>다 합쳐서 마이너스 2.25%</strong>가 한도. 각각 합산이 아니라 통합 한도라는 점 주의.
+                    </div>
+                </div>
+            </div>
+
+            <div class="callout teal">
+                <div class="callout-header">
+                    <div class="callout-icon">☂️</div>
+                    <div class="callout-title">노란 우산공제 — 작지만 챙기면 좋은 가산점</div>
+                </div>
+                <div class="callout-body">
+                    <div class="callout-text">
+                        ✅ <strong>개인사업자만 가입 가능</strong> (법인 ❌) · 매출 기준 일정 조건 충족 시 OK
+                    </div>
+                    <div class="callout-text">
+                        💸 <strong>이자 0.1% 감면</strong> + 승인률 소폭 상승. 다만 위 인증들에 비하면 효과는 약함 — 다른 거 다 했고 추가로 한 끗이 필요할 때 챙기세요.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 13. 법인 vs 개인 -->
+        <div class="section">
+            <h2 class="section-title">🆚 법인 vs 개인사업자 — "둘 다 하세요"</h2>
+            <p class="section-subtitle">매출 나는 사업자라면 무조건 둘 다 = 한도 1.5배</p>
+
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon dark">🤔</div>
+                    <div class="card-title-wrap">
+                        <h3 class="card-title">슈가의 답: "둘 다 하세요, 대표님"</h3>
+                        <p class="card-subtitle">왜 둘 다 하면 1.5배? 따로 대출 가능하니까</p>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <ul class="check-list">
+                        <li>개인사업자, 법인사업자 <strong>각각 따로 대출 가능</strong></li>
+                        <li>한도 약 1.5배 (단순 2배까지는 어려움)</li>
+                        <li>개인사업자도 표준재무제표 이쁘면 대출 OK</li>
+                        <li>법인은 가지급금 18억 있어도 메인비즈/ISO로 가능 (정도 경영 인증)</li>
+                        <li>개인 1개 + 법인 1개 = 한도 풀가동, <strong>개인+개인 2개는 1개만 가능</strong></li>
+                    </ul>
+                    <div class="highlight-box">
+                        <div class="highlight-box-title">⚠️ 함정</div>
+                        <div class="highlight-box-text">
+                            "개인사업자 두 개" 또는 "법인사업자 두 개" 동시 가능은 거의 안 됨. <strong>90% 케이스에서 1개만</strong> 진행됩니다. 개인+법인 조합이라야 둘 다 가능.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 14. 사기 주의 -->
+        <div class="section">
+            <h2 class="section-title">🚨 사기 안 당하는 법 — 컨설턴트 거르는 기준</h2>
+            <p class="section-subtitle">네이버 광고 단가 16만 원짜리 정책자금 키워드 = 5%~7% 수수료 함정</p>
+
+            <div class="grid">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon red">💀</div>
+                        <div class="card-title-wrap">
+                            <h3 class="card-title">사기 패턴 5가지 — 무조건 거르세요</h3>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <ul class="x-list">
+                            <li>"성공보수 5%" 요구 (1억이면 500만 원)</li>
+                            <li>"성공보수 12%" 요구 (1.2억이면 1,440만 원)</li>
+                            <li>"보험 가입하면 무료 컨설팅"</li>
+                            <li>"사업계획서 50만 원 + 출장비 50만 원 + 기타 50만 원"</li>
+                            <li>"은행 지점장을 안다" (지점장이 세상에 몇 명?)</li>
+                        </ul>
+                        <div class="callout red" style="margin-top: 16px; margin-bottom: 0;">
+                            <div class="callout-header">
+                                <div class="callout-icon">⚠️</div>
+                                <div class="callout-title">계약금만 받고 튀는 패턴</div>
+                            </div>
+                            <div class="callout-body">
+                                <div class="callout-text">
+                                    이런 컨설턴트는 애초에 <strong>대출이 안 되는데 계약금만 받고 튈 생각</strong>. 얼씬도 못하게 막아야 합니다.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon green">✅</div>
+                        <div class="card-title-wrap">
+                            <h3 class="card-title">슈가 컨설팅 차별점</h3>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <ul class="check-list">
+                            <li><strong>성공보수 0% · 보험판매 0% · 기관별 수수료 0%</strong></li>
+                            <li>고정 컨설팅 비용 (실패 시 100% 환불)</li>
+                            <li>실질적 비용 약 <strong>40만 원</strong> (부가세 환급 포함)</li>
+                            <li>상표·저작권·디자인 등록 <strong>무료 진행</strong> (수강생 한정)</li>
+                            <li>변리사 직접 연결 (특허 가치 평가)</li>
+                            <li>면접 예상 답변 100% 제공</li>
+                            <li>사업계획서 만점짜리 작성</li>
+                        </ul>
+                        <div class="callout blue" style="margin-top: 16px; margin-bottom: 0;">
+                            <div class="callout-header">
+                                <div class="callout-icon">💡</div>
+                                <div class="callout-title">왜 저렴한가</div>
+                            </div>
+                            <div class="callout-body">
+                                <div class="callout-text">
+                                    원래 보험사·일반 컨설턴트가 슈가에게 외주 주던 구조. <strong>중간 마진 제거</strong> = 직거래로 바꾼 게 슈가 가격의 정체.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 15. 사업계획서 작성 비법 -->
+        <div class="section">
+            <h2 class="section-title">📝 사업계획서 작성 비법 — 50페이지 평가 기준 공개</h2>
+            <p class="section-subtitle">중기부 평가 시스템 = 50페이지 × 4업종 = 200페이지짜리 채점표</p>
+
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon orange">🎯</div>
+                    <div class="card-title-wrap">
+                        <h3 class="card-title">평가 항목 — 이거대로 써야 만점</h3>
+                        <p class="card-subtitle">실제 평가표에서 발췌</p>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="grid">
+                        <div>
+                            <h4 style="font-size: 16px; font-weight: 600; margin-bottom: 12px; color: #0a0a0a;">📌 핵심 평가 항목</h4>
+                            <ul class="check-list">
+                                <li>경영 비전 — 명확한 방향성</li>
+                                <li>경영자의 전문 기술력 — 업종 이해도</li>
+                                <li>노사 신뢰 활동 — 직원 관리</li>
+                                <li>혁신 목표 — 향후 3년 계획</li>
+                                <li>운영 관리 — 시스템 유무</li>
+                                <li>구매 관리 — 공급망 전략</li>
+                                <li>마케팅 혁신 — 채널 다각화</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 style="font-size: 16px; font-weight: 600; margin-bottom: 12px; color: #0a0a0a;">✍️ 작성 톤 5원칙</h4>
+                            <ul class="check-list">
+                                <li>무조건 잘된다고 써야 함</li>
+                                <li>매출 줄어도 "추진력 얻기 위함"으로 표현</li>
+                                <li>한 줄 요약 + 꼭지(하위 항목) 구조</li>
+                                <li>구체적 숫자·시스템·전략 명시</li>
+                                <li>"발주만 합니다" → "유통 시스템 최적화" 등 변환</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="callout violet" style="margin-top: 24px;">
+                        <div class="callout-header">
+                            <div class="callout-icon">🍳</div>
+                            <div class="callout-title">실제 합격 사례 — 판교 타코집</div>
+                        </div>
+                        <div class="callout-body">
+                            <div class="callout-text">
+                                <strong>1페이지 한 줄 요약:</strong> "멕시코 현지 레시피 기반 타코 전문점"<br>
+                                <strong>꼭지 1:</strong> 차별성 = 본토 레시피 + 검증된 셰프 연계<br>
+                                <strong>꼭지 2:</strong> 배달 최적화 시스템 = 동선·온도·포장 별도 설계<br>
+                                <strong>꼭지 3~4:</strong> 마케팅 채널 다각화 + 향후 매장 확장 로드맵
+                            </div>
+                            <div class="callout-text">
+                                💡 4페이지 분량 사업계획서 = <strong>대출 즉시 승인</strong>. 한 줄 요약 → 꼭지 → 근거 → 결론 구조로 쓰는 게 핵심.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon teal">🎯</div>
+                    <div class="card-title-wrap">
+                        <h3 class="card-title">평가 시스템 = 50페이지 × 4업종 = 200페이지짜리 채점표</h3>
+                        <p class="card-subtitle">중기부 내부 점수 시스템 — 슈가만 푼다</p>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="grid">
+                        <div>
+                            <h4 style="font-size: 16px; font-weight: 600; margin-bottom: 12px; color: #0a0a0a;">❌ 떨어지는 답변 (감점)</h4>
+                            <ul class="x-list">
+                                <li>"고객 오면 일하는 거죠"</li>
+                                <li>"본사에서 주는 대로 씁니다"</li>
+                                <li>"그냥 발주합니다"</li>
+                                <li>"별다른 시스템 없어요"</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 style="font-size: 16px; font-weight: 600; margin-bottom: 12px; color: #0a0a0a;">✅ 합격 답변 (가점)</h4>
+                            <ul class="check-list">
+                                <li>"<strong>유통 시스템 최적화</strong>로 운영"</li>
+                                <li>"공급사 특성 분석 후 <strong>구매 전략 수립</strong>"</li>
+                                <li>"<strong>고객 시장 니즈에 부응</strong>하는 운영 체계"</li>
+                                <li>"<strong>재고 회전율 기준</strong>으로 발주 자동화"</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="callout red" style="margin-top: 24px;">
+                        <div class="callout-header">
+                            <div class="callout-icon">🚨</div>
+                            <div class="callout-title">중요 — 매출 줄어도 "긍정문"으로 쓰기</div>
+                        </div>
+                        <div class="callout-body">
+                            <div class="callout-text">
+                                ❌ <s>매출이 작년보다 30% 감소했습니다</s> → ✅ <strong>"향후 도약을 위해 추진력을 모으는 단계입니다"</strong>
+                            </div>
+                            <div class="callout-text">
+                                💡 사업계획서는 무조건 <strong>잘된다고 써야 함</strong>. 부정적 표현 = 자동 감점. GPT로 대충 끄적이면 광탈.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 16. 면접 비법 -->
+        <div class="section">
+            <h2 class="section-title">🎤 직접대출 면접 — 1시간 20문항이 한도를 결정한다</h2>
+            <p class="section-subtitle">대답 못하면 항목당 -500만 원. 면접 잘못 보면 7천 → 4천</p>
+
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon red">🎙️</div>
+                    <div class="card-title-wrap">
+                        <h3 class="card-title">면접의 진짜 메커니즘</h3>
+                        <p class="card-subtitle">대표자 본인이 무조건 직접 — 대리 불가</p>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="metrics-grid">
+                        <div class="metric-card">
+                            <div class="metric-label">⏱️ 면접 시간</div>
+                            <div class="metric-value">1시간</div>
+                            <div class="metric-unit">대표자 1인</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-label">❓ 질문 개수</div>
+                            <div class="metric-value">20문항</div>
+                            <div class="metric-unit">평균치</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-label">💸 항목당 감점</div>
+                            <div class="metric-value">-500만</div>
+                            <div class="metric-unit">잘못 답할 때마다</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-label">📅 전체 소요</div>
+                            <div class="metric-value">5주</div>
+                            <div class="metric-unit">신청 → 입금</div>
+                        </div>
+                    </div>
+
+                    <div class="highlight-box" style="margin-top: 24px;">
+                        <div class="highlight-box-title">😰 실패 시나리오 예시</div>
+                        <div class="highlight-box-text">
+                            한도 7,000만 원 측정 → 면접 6항목 잘못 답변 → <strong>3,000만 원 감점 → 4,000만 원 입금</strong>. 면접 표 없이 보면 무조건 떨어지는 구조.
+                        </div>
+                    </div>
+
+                    <div class="callout teal" style="margin-top: 16px;">
+                        <div class="callout-header">
+                            <div class="callout-icon">📋</div>
+                            <div class="callout-title">실제 면접 단골 질문 예시</div>
+                        </div>
+                        <div class="callout-body">
+                            <div class="callout-text">
+                                "구매 계획이나 공급사 특성에 따른 구매 전략을 수립하고 있습니까?"<br>
+                                "재고 관리는 어떻게 하십니까?"<br>
+                                "고객 시장 니즈에 부응할 수 있는 유통 관리 시스템이 있습니까?"
+                            </div>
+                            <div class="callout-text">
+                                💡 슈가 컨설팅 = 이 20문항 <strong>예상 답변 전부 제공</strong> + 달달 외울 수 있게 정리.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 17. 대환·아파트·건물 활용 -->
+        <div class="section">
+            <h2 class="section-title">🏠 정책자금 활용 시나리오 — 대환·아파트·건물 매입</h2>
+            <p class="section-subtitle">정책자금이 진짜 빛나는 순간 = 다른 자산으로 옮길 때</p>
+
+            <div class="grid-3">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon blue">🔄</div>
+                        <div class="card-title-wrap">
+                            <h3 class="card-title">고금리 대환</h3>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <ul class="check-list">
+                            <li>2금융 저축은행 7% 이상 → <strong>정책자금 4.5% 대환</strong></li>
+                            <li>홈페이지 공시된 공식 제도</li>
+                            <li>5% 미만은 대환 자격 미달</li>
+                            <li>개인 신용 1억 → 5천까지만 대환</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon violet">🏢</div>
+                        <div class="card-title-wrap">
+                            <h3 class="card-title">아파트 중도금</h3>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <ul class="check-list">
+                            <li>정책자금으로 중도금 충당 가능</li>
+                            <li>용도 제한 사실상 없음</li>
+                            <li>"사업용 운영자금" 명목으로 사용</li>
+                            <li>슈가도 서울 아파트·공장 16억 매입에 활용</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon green">🏗️</div>
+                        <div class="card-title-wrap">
+                            <h3 class="card-title">건물 0원 매입</h3>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <ul class="check-list">
+                            <li>매출 7억 → 정책자금 2억</li>
+                            <li>신한은행 건물 담보 90%</li>
+                            <li>영끌남 매물 추천</li>
+                            <li><strong>15억 건물 0원 매입 가능</strong></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="callout green" style="margin-top: 24px;">
+                <div class="callout-header">
+                    <div class="callout-icon">💎</div>
+                    <div class="callout-title">간이사업자 + 교육서비스업 매출 7천 케이스</div>
+                </div>
+                <div class="callout-body">
+                    <div class="callout-text">
+                        간이사업자 + 교육서비스업 매출 7,000만 원 → <strong>정책자금 7,000만 원 가능</strong>. 본인 자금 7,000만 원 + 신한은행 90% = <strong>10억짜리 건물 매입 가능</strong>.
+                    </div>
+                    <div class="callout-text">
+                        💡 자금출처조사 대응 업체도 별도 존재. 영끌남 네트워크에서 진행 가능.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 18. FAQ -->
+        <div class="section">
+            <h2 class="section-title">❓ 라이브 Q&A — 자주 나온 진짜 질문들</h2>
+            <p class="section-subtitle">2시간 강의 중 채팅 폭발한 핵심 질문 정리</p>
+
+            <div class="grid">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon blue">💬</div>
+                        <div class="card-title-wrap">
+                            <h3 class="card-title">Q. 매출 10만 원도 가능?</h3>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <p style="font-size: 14px; color: #515154; line-height: 1.7;">
+                            ✅ <strong>가능합니다.</strong> 3,000만 원 미만 구간(=빵 원~3천)에 포함되니까 2~5천만 원 대출 가능.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon green">💬</div>
+                        <div class="card-title-wrap">
+                            <h3 class="card-title">Q. 신용대출 꽉 차 있는데?</h3>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <p style="font-size: 14px; color: #515154; line-height: 1.7;">
+                            ✅ <strong>전혀 상관 없음.</strong> 카드론 5개·캐피탈 5개여도 OK. 한도가 별도 운영. DSR도 무관.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon violet">💬</div>
+                        <div class="card-title-wrap">
+                            <h3 class="card-title">Q. 창업한 지 3개월 넘었는데?</h3>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <p style="font-size: 14px; color: #515154; line-height: 1.7;">
+                            ✅ <strong>가능.</strong> 3개월만 지나고 매출이 일부라도 발생하면 OK. 매출 0원이면 별도 컨설팅 필요.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon orange">💬</div>
+                        <div class="card-title-wrap">
+                            <h3 class="card-title">Q. 폐업 예정인데 받고 폐업 가능?</h3>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <p style="font-size: 14px; color: #515154; line-height: 1.7;">
+                            ✅ <strong>가능.</strong> 대출 받고 폐업해도 무관. 스케줄대로 갚으면 됩니다. (단, 망하면 175만 원만 갚으면 탕감 가능)
+                        </p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon red">💬</div>
+                        <div class="card-title-wrap">
+                            <h3 class="card-title">Q. 부동산 임대·매매 사업자?</h3>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <p style="font-size: 14px; color: #515154; line-height: 1.7;">
+                            ❌ <strong>불가.</strong> 부동산 임대업·매매업은 정책자금 대상에서 제외됩니다.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon teal">💬</div>
+                        <div class="card-title-wrap">
+                            <h3 class="card-title">Q. 자본잠식·연체·회생은?</h3>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <p style="font-size: 14px; color: #515154; line-height: 1.7;">
+                            ❌ <strong>완전 자본잠식 → 26·27년 둘 다 불가.</strong><br>
+                            ❌ <strong>연체 5일 초과 → 불가.</strong><br>
+                            ❌ <strong>회생 진행 중 → 불가.</strong>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon yellow">💬</div>
+                        <div class="card-title-wrap">
+                            <h3 class="card-title">Q. 면세사업자 가능?</h3>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <p style="font-size: 14px; color: #515154; line-height: 1.7;">
+                            ✅ <strong>가능.</strong> 슈가 본인도 부가세 면세사업자로 대출 받음.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon blue">💬</div>
+                        <div class="card-title-wrap">
+                            <h3 class="card-title">Q. 공유 사무실·비상주 사무실?</h3>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <p style="font-size: 14px; color: #515154; line-height: 1.7;">
+                            ✅ <strong>가능.</strong> 비상주 월세 2만 원짜리도 OK. 단, 실사 가능해야 함.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon green">💬</div>
+                        <div class="card-title-wrap">
+                            <h3 class="card-title">Q. 와이프 명의로 내 대출?</h3>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <p style="font-size: 14px; color: #515154; line-height: 1.7;">
+                            ✅ <strong>가능.</strong> 와이프 명의 대출 후 본인 통장으로 이체. 가족 법인도 동일.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon violet">💬</div>
+                        <div class="card-title-wrap">
+                            <h3 class="card-title">Q. 추천 은행은?</h3>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <p style="font-size: 14px; color: #515154; line-height: 1.7;">
+                            🛍️ <strong>쇼핑몰 → KB 국민은행</strong> (소상공인 컨설팅 프로그램 → 1억 더). 그 외엔 주거래 은행 사용.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon orange">💬</div>
+                        <div class="card-title-wrap">
+                            <h3 class="card-title">Q. 유흥업소·공유숙박업?</h3>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <p style="font-size: 14px; color: #515154; line-height: 1.7;">
+                            🤔 <strong>유흥업소</strong>: "아가씨 안 나옴"이라고 하면 가능.<br>
+                            ✅ <strong>공유숙박·고시원</strong>: 가능 (에어비앤비 포함).
+                        </p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon red">💬</div>
+                        <div class="card-title-wrap">
+                            <h3 class="card-title">Q. 가지급금 18억 있는 법인?</h3>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <p style="font-size: 14px; color: #515154; line-height: 1.7;">
+                            ⚠️ <strong>최근 거절 안 당했으면 가능</strong>. ISO·메인비즈가 "정도 경영 인증" 역할 → 가지급금 있어도 통과 가능. 슈가 본인 아버님도 건설업 가지급금 10억대인데 진행 가능.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon teal">💬</div>
+                        <div class="card-title-wrap">
+                            <h3 class="card-title">Q. 노란 우산공제 효과는?</h3>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <p style="font-size: 14px; color: #515154; line-height: 1.7;">
+                            ☂️ <strong>개인사업자만 가능</strong>. 이자 0.1% 감면 + 승인률 소폭 ↑. 위 인증들에 비해 효과 약함 = 보조수단.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon blue">💬</div>
+                        <div class="card-title-wrap">
+                            <h3 class="card-title">Q. 회사원인데 부업 사업자 가능?</h3>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <p style="font-size: 14px; color: #515154; line-height: 1.7;">
+                            ✅ <strong>가능하게 만들 수 있음.</strong> 매출이 거의 없어도 "영끌남 정신" — 일단 있는 거 다 긁어와서 박는 식으로 진행 가능. 단, 컨설턴트와 시나리오 설계 필요.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon orange">💬</div>
+                        <div class="card-title-wrap">
+                            <h3 class="card-title">Q. 다음 달 19일 인수인계인데?</h3>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <p style="font-size: 14px; color: #515154; line-height: 1.7;">
+                            ❌ <strong>안 됩니다.</strong> 직접대출은 신청부터 입금까지 <strong>약 5주 소요</strong>. 한 달 안에 인수인계라면 일정상 불가.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon violet">💬</div>
+                        <div class="card-title-wrap">
+                            <h3 class="card-title">Q. 24년 신보재단 1억 + 신보기금 1억 동시?</h3>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <p style="font-size: 14px; color: #515154; line-height: 1.7;">
+                            ⚠️ <strong>특이 케이스</strong>. 원래 재단·기금 중복 ❌인데 24년에 풀린 사례. 추가 대출 원하면 <strong>상표·저작·디자인 인증으로 이자 낮추고 직접대출</strong>로 우회.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon green">💬</div>
+                        <div class="card-title-wrap">
+                            <h3 class="card-title">Q. 70세 어머님 명의 사업자?</h3>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <p style="font-size: 14px; color: #515154; line-height: 1.7;">
+                            ✅ <strong>가능.</strong> 나이 제한 없음. 어머님 명의 개인사업자 + 본인 사업자 = 한도 분리 운영 가능.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon red">💬</div>
+                        <div class="card-title-wrap">
+                            <h3 class="card-title">Q. A 사업자 폐업 후 B 사업자 만들면?</h3>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <p style="font-size: 14px; color: #515154; line-height: 1.7;">
+                            ✅ <strong>가능.</strong> B 사업자 명의로 <strong>직접대출</strong>(소진공/중진공)로 진행. 단, 매출 일부 발생 후 3개월 경과해야 함.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon yellow">💬</div>
+                        <div class="card-title-wrap">
+                            <h3 class="card-title">Q. 이미 5%대 금리인데 대환?</h3>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <p style="font-size: 14px; color: #515154; line-height: 1.7;">
+                            ❌ <strong>안 됨.</strong> 대환 자격은 <strong>금리 7% 이상</strong>부터. 5%는 충분히 낮은 편이라 대환 대상 미달.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 19. 컨설팅 안내 -->
+        <div class="section">
+            <h2 class="section-title">📞 슈가 컨설팅 신청 안내</h2>
+            <p class="section-subtitle">100% 환불 보장 · 성공보수 0% · 보험팔이 0% · 영끌남 수강생 한정 특혜</p>
+
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon dark">🎯</div>
+                    <div class="card-title-wrap">
+                        <h3 class="card-title">슈가가 진행하는 항목 (영끌남 수강생 한정)</h3>
+                        <p class="card-subtitle">실패 시 100% 환불 — 안 하실 거면 그냥 맡기세요</p>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="grid">
+                        <div>
+                            <h4 style="font-size: 16px; font-weight: 600; margin-bottom: 12px; color: #0a0a0a;">🔧 기본 진행</h4>
+                            <ul class="check-list">
+                                <li>사업계획서 작성 (만점 기준)</li>
+                                <li>대출 서류 일괄 작성</li>
+                                <li>면접 예상 답변 100% 제공</li>
+                                <li>대출 기관 서칭·매칭</li>
+                                <li>대출 로드맵 안내 (1억당 5%가 아닌 고정가)</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 style="font-size: 16px; font-weight: 600; margin-bottom: 12px; color: #0a0a0a;">🎁 무료 진행 (수강생 특혜)</h4>
+                            <ul class="check-list">
+                                <li>회사 로고 제작 (AI 기반)</li>
+                                <li>상표 등록증 진행 (공과금 별도)</li>
+                                <li>저작권 등록증 진행</li>
+                                <li>디자인 등록증 진행</li>
+                                <li>변리사 직접 연결 (특허 가치 평가)</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="callout green" style="margin-top: 24px;">
+                        <div class="callout-header">
+                            <div class="callout-icon">💰</div>
+                            <div class="callout-title">실질 비용 — 약 40만 원 (부가세 환급 포함)</div>
+                        </div>
+                        <div class="callout-body">
+                            <div class="callout-text">
+                                상담 후 "대출 A에서 얼마, B에서 얼마 가능한데 진행하실래요?" 안내 → 동의 시에만 결제. <strong>다짜고짜 돈부터 내라는 곳 = 99% 사기</strong>.
+                            </div>
+                            <div class="callout-text">
+                                💡 1회 진행만 가능. 두 번째부터는 본인이 알아서 가능 (사업계획서 만점본·면접 답변지 받았으니까).
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="cta-card">
+                        <h2>📲 컨설팅 문의 방법</h2>
+                        <p>QR코드 또는 카카오톡 채널로 문의 → 슈가가 직접 상담<br>주말 문의는 주말 내 답변 드립니다</p>
+                        <span class="cta-btn">📞 카톡 채널로 문의하기</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 20. 종합 인사이트 -->
+        <div class="section">
+            <h2 class="section-title">💡 강의 종합 인사이트 (3줄 요약)</h2>
+
+            <div class="grid-3">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon orange">1️⃣</div>
+                        <div class="card-title-wrap">
+                            <h3 class="card-title">정책자금 = 영끌의 시작</h3>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <p style="font-size: 14px; color: #515154; line-height: 1.7;">
+                            DSR 영향 0, 신용대출 무관. 매출 10만 원도 2~5천 가능. <strong>안 받으면 손해, 받아서 굴리면 레버리지</strong>.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon violet">2️⃣</div>
+                        <div class="card-title-wrap">
+                            <h3 class="card-title">한도 = 인증으로 결정</h3>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <p style="font-size: 14px; color: #515154; line-height: 1.7;">
+                            벤처·연구소·ISO·메인비즈·이노비즈 + 상표·저작·디자인. <strong>없으면 좌측, 있으면 우측 최고 한도</strong>.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon green">3️⃣</div>
+                        <div class="card-title-wrap">
+                            <h3 class="card-title">최종 목표 = 건물 매입</h3>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <p style="font-size: 14px; color: #515154; line-height: 1.7;">
+                            정책자금 + 신한 90% + 영끌남 매물 = <strong>0원으로 15억 건물 매입</strong>. 슈가도 8억 → 16억 공장 보유.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 예상 추가 질문 -->
+        <div class="section">
+            <h2 class="section-title">❓ 예상 추가 질문</h2>
+
+            <div class="card">
+                <div class="card-body" style="padding: 32px;">
+                    <ol style="list-style: none; padding: 0; counter-reset: q-counter;">
+                        <li style="padding: 14px 0; font-size: 16px; color: #1a1a1a; line-height: 1.7; counter-increment: q-counter; padding-left: 32px; position: relative; border-bottom: 1px solid rgba(0,0,0,0.06);">
+                            <span style="position: absolute; left: 0; font-weight: 700; color: #0284c7;">1)</span>
+                            제 매출(또는 업종)에 맞춰 <strong>구체적으로 어디서 얼마까지 받을 수 있는지</strong> 시뮬레이션 해줄까요?
+                        </li>
+                        <li style="padding: 14px 0; font-size: 16px; color: #1a1a1a; line-height: 1.7; counter-increment: q-counter; padding-left: 32px; position: relative; border-bottom: 1px solid rgba(0,0,0,0.06);">
+                            <span style="position: absolute; left: 0; font-weight: 700; color: #0284c7;">2)</span>
+                            <strong>벤처·연구소·ISO·메인비즈</strong> 중 제 업종에 가장 효과 큰 인증부터 추진 순서 짜드릴까요?
+                        </li>
+                        <li style="padding: 14px 0; font-size: 16px; color: #1a1a1a; line-height: 1.7; counter-increment: q-counter; padding-left: 32px; position: relative; border-bottom: 1px solid rgba(0,0,0,0.06);">
+                            <span style="position: absolute; left: 0; font-weight: 700; color: #0284c7;">3)</span>
+                            기존 신용대출·카드론을 <strong>정책자금으로 대환</strong>하는 시나리오 만들어드릴까요?
+                        </li>
+                        <li style="padding: 14px 0; font-size: 16px; color: #1a1a1a; line-height: 1.7; counter-increment: q-counter; padding-left: 32px; position: relative; border-bottom: 1px solid rgba(0,0,0,0.06);">
+                            <span style="position: absolute; left: 0; font-weight: 700; color: #0284c7;">4)</span>
+                            정책자금 + 신한 90% 조합으로 <strong>건물 0원 매입 시뮬레이션</strong> 짜볼까요?
+                        </li>
+                        <li style="padding: 14px 0; font-size: 16px; color: #1a1a1a; line-height: 1.7; counter-increment: q-counter; padding-left: 32px; position: relative;">
+                            <span style="position: absolute; left: 0; font-weight: 700; color: #0284c7;">5)</span>
+                            <strong>면접 20문항 예상 답변</strong> 제 업종 맞춤으로 만들어드릴까요?
+                        </li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>
