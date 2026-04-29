@@ -112,6 +112,7 @@
             'https://jsxzyhzltlurfbyvaoow.supabase.co',
             'sb_publishable_hUXcNvjScqIRigCfGwpfUQ_2rcLJMHy'
         )
+        const bucketName = 'html-files'
 
         client.auth.onAuthStateChange((event, session) => {
             if (event === 'INITIAL_SESSION' && !session) location.href = '/login?redirect=/upload'
@@ -148,18 +149,22 @@
             const filename = `${Date.now()}_${file.name}`
 
             const { error: uploadError } = await client.storage
-                .from('html-files')
+                .from(bucketName)
                 .upload(filename, file, { contentType: 'text/html' })
 
             if (uploadError) {
                 msg.className = 'msg err'
-                msg.textContent = '업로드 실패: ' + uploadError.message
+                if (uploadError.message.includes('Bucket not found')) {
+                    msg.textContent = '업로드 실패: 저장소 버킷이 없습니다. Supabase Storage에 "' + bucketName + '" 버킷을 생성하거나 코드의 버킷 이름을 수정하세요.'
+                } else {
+                    msg.textContent = '업로드 실패: ' + uploadError.message
+                }
                 btn.disabled = false
                 return
             }
 
             const { data: { publicUrl } } = client.storage
-                .from('html-files')
+                .from(bucketName)
                 .getPublicUrl(filename)
 
             const { error: dbError } = await client.from('posts').insert({
