@@ -128,6 +128,18 @@
             }
         }
 
+        function sanitizeFileName(name) {
+            // Supabase Storage key에는 공백, 한글, 특수문자가 들어가면 실패할 수 있습니다.
+            const extMatch = name.match(/(\.[^.]*)$/)
+            const ext = extMatch ? extMatch[1] : ''
+            const base = extMatch ? name.slice(0, -ext.length) : name
+            return base
+                .replace(/\s+/g, '_')
+                .replace(/[^a-zA-Z0-9-_\.]/g, '_')
+                .replace(/_+/g, '_')
+                .replace(/^_+|_+$/g, '') + ext
+        }
+
         async function upload() {
             const title = document.getElementById('title').value.trim()
             const file = document.getElementById('file').files[0]
@@ -146,7 +158,7 @@
                 window.location.href = '/login?redirect=/upload'
                 return
             }
-            const filename = `${Date.now()}_${file.name}`
+            const filename = `${Date.now()}_${sanitizeFileName(file.name)}`
 
             const { error: uploadError } = await client.storage
                 .from(bucketName)
