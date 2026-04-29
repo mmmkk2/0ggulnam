@@ -1,10 +1,10 @@
 {
   "rewrites": [
-    { "source": "/npl-0327", "destination": "/260327_NPL.html" },
+    { "source": "/npl_base", "destination": "/260327_NPL.html" },
     { "source": "/consulting-0422", "destination": "/260422_consulting.html" },
     { "source": "/loan-0425", "destination": "/260425_loan.html" },
     { "source": "/suga-0426", "destination": "/260426_suga.html" },
-    { "source": "/npl-0429", "destination": "/260429 NPL.html" },
+    { "source": "/npl_act", "destination": "/260429 NPL.html" },
     { "source": "/sellresult-0429", "destination": "/260429_sellresult.html" }
   ]
 }
