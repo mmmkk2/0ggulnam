@@ -115,7 +115,7 @@
         const bucketName = 'html-files'
 
         client.auth.onAuthStateChange((event, session) => {
-            if (event === 'INITIAL_SESSION' && !session) location.href = '/login?redirect=/upload'
+            if (event === 'INITIAL_SESSION' && !session) location.href = '/login.html?redirect=/upload.html'
         })
         
 
@@ -155,7 +155,7 @@
 
             const { data: { session } } = await client.auth.getSession()
             if (!session) {
-                window.location.href = '/login?redirect=/upload'
+                window.location.href = '/login.html?redirect=/upload.html'
                 return
             }
             const filename = `${Date.now()}_${sanitizeFileName(file.name)}`

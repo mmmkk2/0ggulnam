@@ -107,7 +107,7 @@
     <div class="container">
         <div class="header">
             <h1>영끌남 특강 복습</h1>
-            <a href="/upload" class="upload-btn" id="upload-btn">+ 업로드</a>
+            <a href="/upload.html" class="upload-btn" id="upload-btn">+ 업로드</a>
         </div>
         <nav>
             <a href="/npl-0429" class="item">
@@ -144,7 +144,7 @@
         async function init() {
             const { data: { session } } = await client.auth.getSession()
             const btn = document.getElementById('upload-btn')
-            btn.href = session ? '/upload' : '/login?redirect=/upload'
+            btn.href = session ? '/upload.html' : '/login.html?redirect=/upload.html'
 
             const { data: posts } = await client
                 .from('posts')
