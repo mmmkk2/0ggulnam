@@ -102,6 +102,7 @@
         </div>
         <input type="file" id="file" accept=".html" onchange="onFileChange()" />
         <button id="btn" onclick="upload()">업로드</button>
+        <button id="logout-btn" type="button" onclick="logout()" style="margin-top:10px; background:#fff; color:#000; border:1px solid #ddd;">로그아웃</button>
         <div class="msg" id="msg"></div>
         <a href="/" class="back">← 목록으로</a>
     </div>
@@ -200,6 +201,11 @@
             document.getElementById('fileArea').textContent = '클릭하여 파일 선택 (.html)'
             document.getElementById('fileArea').classList.remove('selected')
             btn.disabled = false
+        }
+
+        async function logout() {
+            await client.auth.signOut()
+            window.location.href = '/login.html'
         }
     </script>
 </body>
