@@ -113,9 +113,10 @@
             'sb_publishable_hUXcNvjScqIRigCfGwpfUQ_2rcLJMHy'
         )
 
-        client.auth.getSession().then(({ data }) => {
-            if (!data.session) location.href = '/login'
+        client.auth.onAuthStateChange((event, session) => {
+            if (event === 'INITIAL_SESSION' && !session) location.href = '/login'
         })
+        
 
         function onFileChange() {
             const file = document.getElementById('file').files[0]
