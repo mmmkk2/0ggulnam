@@ -8,6 +8,8 @@
     { "source": "/loan-0425", "destination": "/260425_loan.html" },
     { "source": "/suga-0426", "destination": "/260426_suga.html" },
     { "source": "/npl-0429", "destination": "/260429 NPL.html" },
-    { "source": "/sellresult-0429", "destination": "/260429_sellresult.html" }
+    { "source": "/sellresult-0429", "destination": "/260429_sellresult.html" },
+    { "source": "/login", "destination": "/login.html" },
+    { "source": "/upload", "destination": "/upload.html" }    
   ]
 }
