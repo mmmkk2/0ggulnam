@@ -123,6 +123,38 @@
             border-color: #e0a0a8;
             color: #a00;
         }
+        button.edit-btn {
+            border: 1px solid #ddd;
+            background: #fff;
+            color: #999;
+            padding: 8px 10px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            flex-shrink: 0;
+        }
+        button.edit-btn:hover { background: #f5f5f5; color: #000; }
+        .edit-form {
+            flex: 1;
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+        .edit-form input[type="text"] {
+            flex: 1;
+            border: 1px solid #000;
+            border-radius: 4px;
+            padding: 4px 8px;
+            font-size: 0.9rem;
+            outline: none;
+        }
+        .edit-form input[type="date"] {
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 4px 6px;
+            font-size: 0.8rem;
+            outline: none;
+        }
         .drag-handle {
             color: #ccc;
             cursor: grab;
@@ -315,6 +347,48 @@
                 itemWrapper.appendChild(link)
 
                 if (session) {
+                    const editBtn = document.createElement('button')
+                    editBtn.className = 'edit-btn'
+                    editBtn.type = 'button'
+                    editBtn.textContent = '✏️'
+                    editBtn.onclick = () => {
+                        const isEditing = itemWrapper.dataset.editing === 'true'
+                        if (isEditing) {
+                            const titleVal = itemWrapper.querySelector('.edit-title').value.trim()
+                            const dateVal = itemWrapper.querySelector('.edit-date').value
+                            client.from('posts').update({ title: titleVal, lecture_date: dateVal || null }).eq('id', post.id).then(({ error }) => {
+                                if (error) { alert('수정 실패: ' + error.message); return }
+                                post.title = titleVal
+                                post.lecture_date = dateVal
+                                const d = new Date(dateVal || post.created_at).toLocaleDateString('ko-KR', { month: '2-digit', day: '2-digit' })
+                                link.innerHTML = `<span class="date">${d}</span><span>📄 ${titleVal || '제목 없음'}</span>`
+                                link.style.display = ''
+                                itemWrapper.querySelector('.edit-form').remove()
+                                editBtn.textContent = '✏️'
+                                itemWrapper.dataset.editing = 'false'
+                            })
+                        } else {
+                            link.style.display = 'none'
+                            const form = document.createElement('div')
+                            form.className = 'edit-form'
+                            const titleInput = document.createElement('input')
+                            titleInput.type = 'text'
+                            titleInput.className = 'edit-title'
+                            titleInput.value = post.title || ''
+                            const dateInput = document.createElement('input')
+                            dateInput.type = 'date'
+                            dateInput.className = 'edit-date'
+                            dateInput.value = post.lecture_date || ''
+                            form.appendChild(titleInput)
+                            form.appendChild(dateInput)
+                            link.after(form)
+                            editBtn.textContent = '✓'
+                            itemWrapper.dataset.editing = 'true'
+                            titleInput.focus()
+                        }
+                    }
+                    itemWrapper.appendChild(editBtn)
+
                     const deleteBtn = document.createElement('button')
                     deleteBtn.className = 'delete-btn'
                     deleteBtn.type = 'button'
