@@ -85,7 +85,7 @@
             background: #eee;
         }
         #user-posts { display: flex; flex-direction: column; gap: 10px; }
-        a.user-item {
+        .user-item {
             text-decoration: none;
             color: #000;
             border: 1px solid #eee;
@@ -99,8 +99,30 @@
             align-items: center;
             justify-content: space-between;
         }
-        a.user-item:hover { background-color: #000; color: #fff; border-color: #000; }
-        a.user-item:hover .date { color: #ccc; }
+        .user-item:hover { background-color: #000; color: #fff; border-color: #000; }
+        .user-item:hover .date { color: #ccc; }
+        .user-item a.item-link {
+            flex: 1;
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        button.delete-btn {
+            border: 1px solid #ddd;
+            background: #fff;
+            color: #000;
+            padding: 8px 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.85rem;
+        }
+        button.delete-btn:hover {
+            background: #f8d7da;
+            border-color: #e0a0a8;
+            color: #a00;
+        }
     </style>
 </head>
 <body>
@@ -141,6 +163,19 @@
             'sb_publishable_hUXcNvjScqIRigCfGwpfUQ_2rcLJMHy'
         )
 
+        async function deletePost(postId, element) {
+            if (!confirm('정말 이 게시물을 삭제하시겠습니까?')) return
+            const { error } = await client.from('posts').delete().eq('id', postId)
+            if (error) {
+                alert('삭제 실패: ' + error.message)
+                return
+            }
+            element.remove()
+            if (!document.getElementById('user-posts').children.length) {
+                document.getElementById('divider').style.display = 'none'
+            }
+        }
+
         async function init() {
             const { data: { session } } = await client.auth.getSession()
             const btn = document.getElementById('upload-btn')
@@ -156,12 +191,26 @@
                 const container = document.getElementById('user-posts')
                 posts.forEach(post => {
                     const date = new Date(post.created_at).toLocaleDateString('ko-KR', { month: '2-digit', day: '2-digit' })
-                    const a = document.createElement('a')
-                    a.className = 'user-item'
-                    a.href = post.url
-                    a.target = '_blank'
-                    a.innerHTML = `<span>📄 ${post.title}</span><span class="date">${date}</span>`
-                    container.appendChild(a)
+                    const item = document.createElement('div')
+                    item.className = 'user-item'
+
+                    const link = document.createElement('a')
+                    link.className = 'item-link'
+                    link.href = post.url
+                    link.target = '_blank'
+                    link.innerHTML = `<span>📄 ${post.title}</span><span class="date">${date}</span>`
+                    item.appendChild(link)
+
+                    if (session && post.user_id === session.user.id) {
+                        const deleteBtn = document.createElement('button')
+                        deleteBtn.className = 'delete-btn'
+                        deleteBtn.type = 'button'
+                        deleteBtn.textContent = '삭제'
+                        deleteBtn.onclick = () => deletePost(post.id, item)
+                        item.appendChild(deleteBtn)
+                    }
+
+                    container.appendChild(item)
                 })
             }
         }
