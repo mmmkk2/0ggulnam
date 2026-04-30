@@ -78,7 +78,7 @@
             fetch(post.url)
                 .then(r => { if (!r.ok) throw new Error(r.status); return r.text() })
                 .then(html => {
-                    const injected = html.replace('</head>', '<style>body { padding-left: 1.5rem !important; padding-right: 1.5rem !important; }</style></head>')
+                    const injected = html.replace('</head>', '<style>@media (min-width: 768px) { body { padding-left: 1.5rem !important; padding-right: 1.5rem !important; } }</style></head>')
                     document.getElementById('viewer').srcdoc = injected
                 })
                 .catch(() => {
