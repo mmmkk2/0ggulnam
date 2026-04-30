@@ -141,8 +141,9 @@
             'sb_publishable_hUXcNvjScqIRigCfGwpfUQ_2rcLJMHy'
         )
 
-        async function deletePost(postId, element) {
+        async function deletePost(postId, filename, element) {
             if (!confirm('정말 이 게시물을 삭제하시겠습니까?')) return
+            if (filename) await client.storage.from('html-files').remove([filename])
             const { error } = await client.from('posts').delete().eq('id', postId)
             if (error) {
                 alert('삭제 실패: ' + error.message)
@@ -198,7 +199,7 @@
                     deleteBtn.className = 'delete-btn'
                     deleteBtn.type = 'button'
                     deleteBtn.textContent = '삭제'
-                    deleteBtn.onclick = () => deletePost(post.id, itemWrapper)
+                    deleteBtn.onclick = () => deletePost(post.id, post.filename, itemWrapper)
                     itemWrapper.appendChild(deleteBtn)
                 }
 
