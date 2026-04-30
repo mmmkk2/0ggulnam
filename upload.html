@@ -248,7 +248,7 @@
                 .from(bucketName)
                 .getPublicUrl(filename)
 
-            const { data: minData } = await client.from('posts').select('sort_order').order('sort_order', { ascending: true }).limit(1)
+            const { data: minData } = await client.from('posts').select('sort_order').not('sort_order', 'is', null).order('sort_order', { ascending: true }).limit(1)
             const minOrder = typeof minData?.[0]?.sort_order === 'number' ? minData[0].sort_order : 0
             const newOrder = minOrder - 1
 

@@ -277,8 +277,7 @@
             const { data: posts, error } = await client
                 .from('posts')
                 .select('*')
-                .order('sort_order', { ascending: true, nullsFirst: false })
-                .order('created_at', { ascending: false })
+                .order('sort_order', { ascending: true })
 
             console.log('posts query', { posts, error, session })
 
