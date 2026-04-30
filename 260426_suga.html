@@ -8,6 +8,7 @@
     <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css" />
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { overflow-x: hidden; }
 
         :root {
             --background: #f8fafc;
@@ -83,7 +84,14 @@
         }
 
         /* 헤더 */
-        .header { margin-bottom: 40px; text-align: center; }
+        .header {
+            margin-bottom: 40px;
+            text-align: center;
+            max-width: 1400px;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 32px 24px 0;
+        }
 
         .header-badge {
             display: inline-flex;
@@ -114,7 +122,13 @@
         }
 
         /* 섹션 */
-        .section { margin-bottom: 72px; }
+        .section {
+            margin-bottom: 72px;
+            max-width: 1400px;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 0 24px;
+        }
 
         .section-title {
             font-size: 26px;
@@ -673,7 +687,9 @@
 
         @media (max-width: 768px) {
             .container { padding: 20px 16px; }
-            h1 { font-size: 26px; }
+            .header { padding: 20px 16px 0; }
+            .section { padding: 0 16px; }
+            h1 { font-size: 24px; line-height: 1.35; word-break: keep-all; }
             .subtitle { font-size: 15px; }
             .section { margin-bottom: 48px; }
             .section-title { font-size: 22px; }
@@ -700,7 +716,7 @@
             .timeline-grid { gap: 10px; }
             .case-box { flex-direction: column; align-items: flex-start; gap: 8px; }
             .case-box-rate { font-size: 22px; }
-            .table-wrap { margin: 0 -20px; padding: 0 20px; }
+            .table-wrap { margin: 0; padding: 0; }
             .table-wrap table { min-width: 600px; }
             .table-wrap::after {
                 content: '← 좌우로 스크롤하세요 →';
@@ -715,7 +731,7 @@
         }
 
         @media (max-width: 480px) {
-            h1 { font-size: 22px; }
+            h1 { font-size: 20px; }
             .subtitle { font-size: 14px; }
             .card-body { padding: 16px; }
             .card-title { font-size: 16px; }
