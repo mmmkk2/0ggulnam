@@ -189,8 +189,8 @@
 
                 const link = document.createElement('a')
                 link.className = 'item-link'
-                link.href = post.url || '#'
-                link.target = '_blank'
+                link.href = post.url ? `/view.html?url=${encodeURIComponent(post.url)}&title=${encodeURIComponent(post.title || '')}` : '#'
+                link.target = '_self'
                 link.innerHTML = `<span>📄 ${post.title || '제목 없음'}</span><span class="date">${date}</span>`
                 itemWrapper.appendChild(link)
 

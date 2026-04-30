@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>뷰어</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { display: flex; flex-direction: column; height: 100vh; background: #fff; }
+        .topbar {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px 16px;
+            border-bottom: 1px solid #eee;
+            flex-shrink: 0;
+        }
+        .back-btn {
+            text-decoration: none;
+            color: #666;
+            font-size: 0.85rem;
+            border: 1px solid #ddd;
+            padding: 5px 12px;
+            border-radius: 6px;
+        }
+        .back-btn:hover { background: #000; color: #fff; border-color: #000; }
+        .title { font-size: 0.9rem; color: #333; font-family: -apple-system, sans-serif; }
+        iframe { flex: 1; border: none; width: 100%; }
+        .error {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #e00;
+            font-family: -apple-system, sans-serif;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="topbar">
+        <a href="/" class="back-btn">← 목록</a>
+        <span class="title" id="page-title"></span>
+    </div>
+    <iframe id="viewer" sandbox="allow-scripts allow-same-origin"></iframe>
+
+    <script>
+        const params = new URLSearchParams(location.search)
+        const url = params.get('url')
+        const title = params.get('title')
+
+        if (title) document.getElementById('page-title').textContent = title
+
+        if (!url) {
+            document.getElementById('viewer').outerHTML = '<div class="error">URL이 없습니다.</div>'
+        } else {
+            fetch(url)
+                .then(r => {
+                    if (!r.ok) throw new Error(r.status)
+                    return r.text()
+                })
+                .then(html => {
+                    document.getElementById('viewer').srcdoc = html
+                })
+                .catch(() => {
+                    document.getElementById('viewer').outerHTML = '<div class="error">파일을 불러올 수 없습니다.</div>'
+                })
+        }
+    </script>
+</body>
+</html>
