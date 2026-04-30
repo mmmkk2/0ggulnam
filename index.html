@@ -142,10 +142,11 @@
             <h1>영끌남 특강 복습</h1>
             <div style="display:flex;gap:8px;align-items:center;">
                 <button id="save-order-btn" onclick="saveOrder()" style="display:none;font-size:0.8rem;padding:6px 12px;border:1px solid #000;background:#000;color:#fff;border-radius:6px;cursor:pointer;">완료</button>
-                <a href="/upload.html" class="upload-btn" id="upload-btn">+</a>
+                <a href="/upload.html" class="upload-btn" id="upload-btn" style="display:none;">+</a>
             </div>
         </div>
         <nav id="posts-nav"></nav>
+        <div id="bottom-bar" style="margin-top:2rem;text-align:center;"></div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
@@ -166,11 +167,23 @@
             element.remove()
         }
 
+        async function logout() {
+            await client.auth.signOut()
+            location.reload()
+        }
+
         async function init() {
             const { data: { session } } = await client.auth.getSession()
-            const btn = document.getElementById('upload-btn')
-            btn.href = session ? '/upload.html' : '/login.html?redirect=/upload.html'
-            if (session) document.getElementById('save-order-btn').style.display = 'block'
+            const uploadBtn = document.getElementById('upload-btn')
+            const bottomBar = document.getElementById('bottom-bar')
+
+            if (session) {
+                uploadBtn.style.display = 'block'
+                document.getElementById('save-order-btn').style.display = 'block'
+                bottomBar.innerHTML = `<button onclick="logout()" style="background:none;border:none;color:#bbb;font-size:0.75rem;cursor:pointer;padding:4px 8px;">로그아웃</button>`
+            } else {
+                bottomBar.innerHTML = `<a href="/login.html" style="color:#bbb;font-size:0.75rem;text-decoration:none;">로그인</a>`
+            }
 
             const { data: posts, error } = await client
                 .from('posts')
