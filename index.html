@@ -133,7 +133,8 @@
         }
         .drag-handle:active { cursor: grabbing; }
         .user-item.dragging { opacity: 0.4; }
-        .user-item.drag-over { border-color: #000; border-style: dashed; }
+        .user-item.drag-above { border-top: 2px solid #000; }
+        .user-item.drag-below { border-bottom: 2px solid #000; }
     </style>
 </head>
 <body>
@@ -231,6 +232,17 @@
 
             let dragSrc = null
 
+            function clearIndicators() {
+                container.querySelectorAll('.user-item').forEach(i => {
+                    i.classList.remove('drag-above', 'drag-below')
+                })
+            }
+
+            function getInsertPosition(el, clientY) {
+                const rect = el.getBoundingClientRect()
+                return clientY < rect.top + rect.height / 2 ? 'above' : 'below'
+            }
+
             container.addEventListener('dragover', e => e.preventDefault())
             container.addEventListener('drop', e => e.preventDefault())
 
@@ -243,29 +255,26 @@
                 el.addEventListener('dragend', () => {
                     dragSrc = null
                     el.classList.remove('dragging')
-                    container.querySelectorAll('.user-item').forEach(i => i.classList.remove('drag-over'))
-                })
-                el.addEventListener('dragenter', e => {
-                    e.preventDefault()
-                    if (el !== dragSrc) el.classList.add('drag-over')
-                })
-                el.addEventListener('dragleave', () => {
-                    el.classList.remove('drag-over')
+                    clearIndicators()
                 })
                 el.addEventListener('dragover', e => {
                     e.preventDefault()
-                    e.dataTransfer.dropEffect = 'move'
+                    if (!dragSrc || el === dragSrc) return
+                    clearIndicators()
+                    const pos = getInsertPosition(el, e.clientY)
+                    el.classList.add(pos === 'above' ? 'drag-above' : 'drag-below')
+                })
+                el.addEventListener('dragleave', () => {
+                    el.classList.remove('drag-above', 'drag-below')
                 })
                 el.addEventListener('drop', e => {
                     e.preventDefault()
                     e.stopPropagation()
-                    el.classList.remove('drag-over')
                     if (!dragSrc || dragSrc === el) return
-                    const items = [...container.querySelectorAll('.user-item')]
-                    const srcIdx = items.indexOf(dragSrc)
-                    const tgtIdx = items.indexOf(el)
-                    if (srcIdx < tgtIdx) el.after(dragSrc)
-                    else el.before(dragSrc)
+                    const pos = getInsertPosition(el, e.clientY)
+                    clearIndicators()
+                    if (pos === 'above') el.before(dragSrc)
+                    else el.after(dragSrc)
                 })
             }
 
