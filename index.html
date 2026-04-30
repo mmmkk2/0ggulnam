@@ -155,6 +155,10 @@
             font-size: 0.8rem;
             outline: none;
         }
+        .edit-mode-el { display: none !important; }
+        .edit-active .drag-handle { display: inline-block !important; }
+        .edit-active button.edit-btn,
+        .edit-active button.delete-btn { display: inline-flex !important; }
         .drag-handle {
             color: #ccc;
             cursor: grab;
@@ -185,7 +189,8 @@
         <div class="header">
             <h1>영끌남 특강 복습</h1>
             <div style="display:flex;gap:8px;align-items:center;">
-                <button id="save-order-btn" onclick="saveOrder()" style="display:none;font-size:0.8rem;padding:6px 12px;border:1px solid #000;background:#000;color:#fff;border-radius:6px;cursor:pointer;">완료</button>
+                <button id="save-order-btn" onclick="saveOrder()" style="display:none;font-size:0.8rem;padding:6px 12px;border:1px solid #000;background:#000;color:#fff;border-radius:6px;cursor:pointer;">저장</button>
+                <button id="edit-toggle-btn" onclick="toggleEditMode()" style="display:none;font-size:0.8rem;padding:6px 12px;border:1px solid #ddd;background:#fff;color:#666;border-radius:6px;cursor:pointer;">수정</button>
                 <a href="/upload.html" class="upload-btn" id="upload-btn" style="display:none;">+</a>
             </div>
         </div>
@@ -216,6 +221,28 @@
             location.reload()
         }
 
+        let editMode = false
+        function toggleEditMode() {
+            editMode = !editMode
+            const nav = document.getElementById('posts-nav')
+            const toggleBtn = document.getElementById('edit-toggle-btn')
+            const saveBtn = document.getElementById('save-order-btn')
+
+            if (editMode) {
+                nav.classList.add('edit-active')
+                toggleBtn.textContent = '취소'
+                toggleBtn.style.borderColor = '#000'
+                saveBtn.style.display = 'block'
+                nav.querySelectorAll('.user-item[draggable]').forEach(el => el.draggable = true)
+            } else {
+                nav.classList.remove('edit-active')
+                toggleBtn.textContent = '수정'
+                toggleBtn.style.borderColor = '#ddd'
+                saveBtn.style.display = 'none'
+                nav.querySelectorAll('.user-item').forEach(el => el.draggable = false)
+            }
+        }
+
         async function saveOrder() {
             const btn = document.getElementById('save-order-btn')
             btn.textContent = '저장 중...'
@@ -241,7 +268,7 @@
 
             if (session) {
                 uploadBtn.style.display = 'block'
-                document.getElementById('save-order-btn').style.display = 'block'
+                document.getElementById('edit-toggle-btn').style.display = 'block'
                 bottomBar.innerHTML = `<button onclick="logout()" style="background:none;border:none;color:#bbb;font-size:0.75rem;cursor:pointer;padding:4px 8px;">로그아웃</button>`
             } else {
                 bottomBar.innerHTML = `<a href="/login.html" style="color:#bbb;font-size:0.75rem;text-decoration:none;">로그인</a>`
@@ -331,9 +358,9 @@
 
                 if (session) {
                     const handle = document.createElement('span')
-                    handle.className = 'drag-handle'
+                    handle.className = 'drag-handle edit-mode-el'
                     handle.textContent = '⠿'
-                    itemWrapper.draggable = true
+                    itemWrapper.draggable = false
                     itemWrapper.appendChild(handle)
                     addDragEvents(itemWrapper)
                 }
@@ -348,7 +375,7 @@
 
                 if (session) {
                     const editBtn = document.createElement('button')
-                    editBtn.className = 'edit-btn'
+                    editBtn.className = 'edit-btn edit-mode-el'
                     editBtn.type = 'button'
                     editBtn.textContent = '✏️'
                     editBtn.onclick = () => {
@@ -390,7 +417,7 @@
                     itemWrapper.appendChild(editBtn)
 
                     const deleteBtn = document.createElement('button')
-                    deleteBtn.className = 'delete-btn'
+                    deleteBtn.className = 'delete-btn edit-mode-el'
                     deleteBtn.type = 'button'
                     deleteBtn.textContent = '삭제'
                     deleteBtn.onclick = () => deletePost(post.id, post.filename, itemWrapper)
