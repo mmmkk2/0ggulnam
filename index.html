@@ -226,22 +226,35 @@
 
             let dragSrc = null
 
+            container.addEventListener('dragover', e => e.preventDefault())
+            container.addEventListener('drop', e => e.preventDefault())
+
             function addDragEvents(el) {
-                el.addEventListener('dragstart', () => {
+                el.addEventListener('dragstart', e => {
                     dragSrc = el
+                    e.dataTransfer.effectAllowed = 'move'
                     setTimeout(() => el.classList.add('dragging'), 0)
                 })
                 el.addEventListener('dragend', () => {
+                    dragSrc = null
                     el.classList.remove('dragging')
                     container.querySelectorAll('.user-item').forEach(i => i.classList.remove('drag-over'))
                 })
+                el.addEventListener('dragenter', e => {
+                    e.preventDefault()
+                    if (el !== dragSrc) el.classList.add('drag-over')
+                })
+                el.addEventListener('dragleave', () => {
+                    el.classList.remove('drag-over')
+                })
                 el.addEventListener('dragover', e => {
                     e.preventDefault()
-                    container.querySelectorAll('.user-item').forEach(i => i.classList.remove('drag-over'))
-                    if (el !== dragSrc) el.classList.add('drag-over')
+                    e.dataTransfer.dropEffect = 'move'
                 })
                 el.addEventListener('drop', e => {
                     e.preventDefault()
+                    e.stopPropagation()
+                    el.classList.remove('drag-over')
                     if (!dragSrc || dragSrc === el) return
                     const items = [...container.querySelectorAll('.user-item')]
                     const srcIdx = items.indexOf(dragSrc)
