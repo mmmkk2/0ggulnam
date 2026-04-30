@@ -177,7 +177,7 @@
                     const text = reader.result
                     const match = text.match(/<title[^>]*>([\s\S]*?)<\/title>/i)
                     if (match && match[1]) {
-                        titleInput.value = match[1].trim()
+                        titleInput.value = match[1].trim().replace(/^영끌남\s*/,'')
                     }
                 }
                 reader.readAsText(file)
