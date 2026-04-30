@@ -248,12 +248,17 @@
                 .from(bucketName)
                 .getPublicUrl(filename)
 
+            const { data: minData } = await client.from('posts').select('sort_order').order('sort_order', { ascending: true }).limit(1)
+            const minOrder = typeof minData?.[0]?.sort_order === 'number' ? minData[0].sort_order : 0
+            const newOrder = minOrder - 1
+
             const { error: dbError } = await client.from('posts').insert({
                 title,
                 filename,
                 url: publicUrl,
                 user_id: session.user.id,
-                lecture_date: lecture_date || null
+                lecture_date: lecture_date || null,
+                sort_order: newOrder
             })
 
             if (dbError) {
