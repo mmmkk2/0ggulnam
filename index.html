@@ -180,11 +180,14 @@
             const container = document.getElementById('posts-nav')
             const items = [...container.querySelectorAll('.user-item')]
             const results = await Promise.all(items.map((item, idx) =>
-                client.from('posts').update({ sort_order: idx }).eq('id', item.dataset.id)
+                client.from('posts').update({ sort_order: idx }).eq('id', item.dataset.id).select('id')
             ))
             const failed = results.find(r => r.error)
+            const notUpdated = results.find(r => !r.error && (!r.data || r.data.length === 0))
             if (failed) {
                 alert('저장 실패: ' + failed.error.message)
+            } else if (notUpdated) {
+                alert('저장 실패: UPDATE 권한이 없습니다. Supabase에서 UPDATE 정책을 추가하세요.')
             } else {
                 btn.textContent = '저장됨 ✓'
             }
