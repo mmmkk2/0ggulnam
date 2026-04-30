@@ -77,7 +77,10 @@
 
             fetch(post.url)
                 .then(r => { if (!r.ok) throw new Error(r.status); return r.text() })
-                .then(html => { document.getElementById('viewer').srcdoc = html })
+                .then(html => {
+                    const injected = html.replace('</head>', '<style>body { padding-left: 1.5rem !important; padding-right: 1.5rem !important; }</style></head>')
+                    document.getElementById('viewer').srcdoc = injected
+                })
                 .catch(() => {
                     document.getElementById('viewer').outerHTML = '<div class="error">파일을 불러올 수 없습니다.</div>'
                 })
