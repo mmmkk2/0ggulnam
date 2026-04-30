@@ -241,12 +241,13 @@
             }
 
             msg.className = 'msg ok'
-            msg.textContent = '✓ 업로드 완료! 목록에 바로 반영됩니다.'
+            msg.textContent = '✓ 업로드 완료! 목록으로 이동합니다.'
             document.getElementById('title').value = ''
             document.getElementById('file').value = ''
             document.getElementById('fileArea').textContent = '클릭하여 파일 선택 (.html)'
             document.getElementById('fileArea').classList.remove('selected')
             btn.disabled = false
+            setTimeout(() => window.location.href = '/', 900)
         }
 
         async function logout() {
