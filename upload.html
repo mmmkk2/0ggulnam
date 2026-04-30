@@ -90,6 +90,12 @@
             text-decoration: none;
         }
         .back:hover { color: #000; }
+        .help-text {
+            font-size: 0.82rem;
+            color: #666;
+            margin: -8px 0 16px;
+            line-height: 1.4;
+        }
     </style>
 </head>
 <body>
@@ -102,6 +108,7 @@
             클릭하거나 파일을 끌어다 놓아 선택 (.html)
         </div>
         <input type="file" id="file" accept=".html" onchange="onFileChange()" />
+        <p class="help-text">업로드 시 제목과 설명은 자동으로 완성됩니다.</p>
         <button id="btn" onclick="upload()">업로드</button>
         <button id="logout-btn" type="button" onclick="logout()" style="margin-top:10px; background:#fff; color:#000; border:1px solid #ddd;">로그아웃</button>
         <div class="msg" id="msg"></div>
