@@ -156,37 +156,54 @@
             const btn = document.getElementById('upload-btn')
             btn.href = session ? '/upload.html' : '/login.html?redirect=/upload.html'
 
-            const { data: posts } = await client
+            const { data: posts, error } = await client
                 .from('posts')
                 .select('*')
                 .order('created_at', { ascending: false })
 
-            if (posts && posts.length > 0) {
-                const container = document.getElementById('posts-nav')
-                posts.forEach(post => {
-                    const date = new Date(post.created_at).toLocaleDateString('ko-KR', { month: '2-digit', day: '2-digit' })
-                    const itemWrapper = document.createElement('div')
-                    itemWrapper.className = 'user-item'
+            console.log('posts query', { posts, error, session })
 
-                    const link = document.createElement('a')
-                    link.className = 'item-link'
-                    link.href = post.url
-                    link.target = '_blank'
-                    link.innerHTML = `<span>📄 ${post.title}</span><span class="date">${date}</span>`
-                    itemWrapper.appendChild(link)
-
-                    if (session && post.user_id === session.user.id) {
-                        const deleteBtn = document.createElement('button')
-                        deleteBtn.className = 'delete-btn'
-                        deleteBtn.type = 'button'
-                        deleteBtn.textContent = '삭제'
-                        deleteBtn.onclick = () => deletePost(post.id, itemWrapper)
-                        itemWrapper.appendChild(deleteBtn)
-                    }
-
-                    container.appendChild(itemWrapper)
-                })
+            const container = document.getElementById('posts-nav')
+            if (error) {
+                const errEl = document.createElement('div')
+                errEl.style.color = '#e00'
+                errEl.textContent = '목록을 불러오는 중 오류가 발생했습니다: ' + error.message
+                container.appendChild(errEl)
+                return
             }
+
+            if (!posts || posts.length === 0) {
+                const emptyEl = document.createElement('div')
+                emptyEl.style.color = '#666'
+                emptyEl.style.padding = '16px 0'
+                emptyEl.textContent = '현재 목록에 등록된 항목이 없습니다. 업로드 후 다시 확인하세요.'
+                container.appendChild(emptyEl)
+                return
+            }
+
+            posts.forEach(post => {
+                const date = new Date(post.created_at).toLocaleDateString('ko-KR', { month: '2-digit', day: '2-digit' })
+                const itemWrapper = document.createElement('div')
+                itemWrapper.className = 'user-item'
+
+                const link = document.createElement('a')
+                link.className = 'item-link'
+                link.href = post.url || '#'
+                link.target = '_blank'
+                link.innerHTML = `<span>📄 ${post.title || '제목 없음'}</span><span class="date">${date}</span>`
+                itemWrapper.appendChild(link)
+
+                if (session && post.user_id === session.user.id) {
+                    const deleteBtn = document.createElement('button')
+                    deleteBtn.className = 'delete-btn'
+                    deleteBtn.type = 'button'
+                    deleteBtn.textContent = '삭제'
+                    deleteBtn.onclick = () => deletePost(post.id, itemWrapper)
+                    itemWrapper.appendChild(deleteBtn)
+                }
+
+                container.appendChild(itemWrapper)
+            })
         }
 
         init()
