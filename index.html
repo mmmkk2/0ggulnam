@@ -140,7 +140,10 @@
     <div class="container">
         <div class="header">
             <h1>영끌남 특강 복습</h1>
-            <a href="/upload.html" class="upload-btn" id="upload-btn">+</a>
+            <div style="display:flex;gap:8px;align-items:center;">
+                <button id="save-order-btn" onclick="saveOrder()" style="display:none;font-size:0.8rem;padding:6px 12px;border:1px solid #000;background:#000;color:#fff;border-radius:6px;cursor:pointer;">완료</button>
+                <a href="/upload.html" class="upload-btn" id="upload-btn">+</a>
+            </div>
         </div>
         <nav id="posts-nav"></nav>
     </div>
@@ -167,6 +170,7 @@
             const { data: { session } } = await client.auth.getSession()
             const btn = document.getElementById('upload-btn')
             btn.href = session ? '/upload.html' : '/login.html?redirect=/upload.html'
+            if (session) document.getElementById('save-order-btn').style.display = 'block'
 
             const { data: posts, error } = await client
                 .from('posts')
@@ -210,7 +214,7 @@
                     container.querySelectorAll('.user-item').forEach(i => i.classList.remove('drag-over'))
                     if (el !== dragSrc) el.classList.add('drag-over')
                 })
-                el.addEventListener('drop', async e => {
+                el.addEventListener('drop', e => {
                     e.preventDefault()
                     if (!dragSrc || dragSrc === el) return
                     const items = [...container.querySelectorAll('.user-item')]
@@ -218,12 +222,19 @@
                     const tgtIdx = items.indexOf(el)
                     if (srcIdx < tgtIdx) el.after(dragSrc)
                     else el.before(dragSrc)
-
-                    const newItems = [...container.querySelectorAll('.user-item')]
-                    await Promise.all(newItems.map((item, idx) =>
-                        client.from('posts').update({ sort_order: idx }).eq('id', item.dataset.id)
-                    ))
                 })
+            }
+
+            async function saveOrder() {
+                const btn = document.getElementById('save-order-btn')
+                btn.textContent = '저장 중...'
+                btn.disabled = true
+                const items = [...container.querySelectorAll('.user-item')]
+                await Promise.all(items.map((item, idx) =>
+                    client.from('posts').update({ sort_order: idx }).eq('id', item.dataset.id)
+                ))
+                btn.textContent = '완료'
+                btn.disabled = false
             }
 
             posts.forEach(post => {
