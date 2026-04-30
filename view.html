@@ -16,12 +16,18 @@
             flex-shrink: 0;
         }
         .back-btn {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
             text-decoration: none;
             color: #666;
             font-size: 0.85rem;
             border: 1px solid #ddd;
-            padding: 5px 12px;
-            border-radius: 6px;
+            padding: 8px 16px;
+            border-radius: 20px;
+            background: #fff;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+            z-index: 9999;
         }
         .back-btn:hover { background: #000; color: #fff; border-color: #000; }
         .title { font-size: 0.9rem; color: #333; font-family: -apple-system, sans-serif; }
@@ -39,9 +45,9 @@
 </head>
 <body>
     <div class="topbar">
-        <a href="/" class="back-btn">← 목록</a>
         <span class="title" id="page-title"></span>
     </div>
+    <a href="/" class="back-btn">← 목록</a>
     <iframe id="viewer" sandbox="allow-scripts allow-same-origin"></iframe>
 
     <script>
