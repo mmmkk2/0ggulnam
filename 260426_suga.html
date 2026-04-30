@@ -41,10 +41,10 @@
         body::before {
             content: '';
             position: fixed;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             background:
                 radial-gradient(circle at 20% 20%, rgba(14, 165, 233, 0.08) 0%, transparent 50%),
                 radial-gradient(circle at 80% 30%, rgba(139, 92, 246, 0.06) 0%, transparent 40%),
@@ -55,10 +55,8 @@
         }
 
         @keyframes gradientFloat {
-            0%, 100% { transform: translate(0, 0) rotate(0deg); }
-            25% { transform: translate(2%, 1%) rotate(1deg); }
-            50% { transform: translate(0, 2%) rotate(0deg); }
-            75% { transform: translate(-1%, 1%) rotate(-1deg); }
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.85; }
         }
 
         body::after {
