@@ -132,9 +132,20 @@
             user-select: none;
         }
         .drag-handle:active { cursor: grabbing; }
+        .user-item { position: relative; }
         .user-item.dragging { opacity: 0.4; }
-        .user-item.drag-above { border-top: 3px solid #000; margin-top: -1px; }
-        .user-item.drag-below { border-bottom: 3px solid #000; margin-bottom: -1px; }
+        .user-item.drag-above::before,
+        .user-item.drag-below::after {
+            content: '';
+            position: absolute;
+            left: -10px;
+            right: -10px;
+            height: 3px;
+            background: #000;
+            border-radius: 2px;
+        }
+        .user-item.drag-above::before { top: -6px; }
+        .user-item.drag-below::after { bottom: -6px; }
     </style>
 </head>
 <body>
@@ -286,7 +297,7 @@
                 itemWrapper.className = 'user-item'
                 itemWrapper.dataset.id = post.id
 
-                if (session && post.user_id === session.user.id) {
+                if (session) {
                     const handle = document.createElement('span')
                     handle.className = 'drag-handle'
                     handle.textContent = '⠿'
@@ -303,7 +314,7 @@
                 link.innerHTML = `<span class="date">${date}</span><span>📄 ${post.title || '제목 없음'}</span>`
                 itemWrapper.appendChild(link)
 
-                if (session && post.user_id === session.user.id) {
+                if (session) {
                     const deleteBtn = document.createElement('button')
                     deleteBtn.className = 'delete-btn'
                     deleteBtn.type = 'button'
