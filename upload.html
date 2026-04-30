@@ -58,6 +58,7 @@
             transition: all 0.2s;
         }
         .file-area:hover { border-color: #999; color: #666; }
+        .file-area.dragover { border-color: #000; background: #fafafa; }
         .file-area.selected { border-color: #000; color: #333; border-style: solid; }
         button {
             width: 100%;
@@ -98,7 +99,7 @@
         <input type="text" id="title" placeholder="특강 제목을 입력하세요" />
         <label>HTML 파일</label>
         <div class="file-area" id="fileArea" onclick="document.getElementById('file').click()">
-            클릭하여 파일 선택 (.html)
+            클릭하거나 파일을 끌어다 놓아 선택 (.html)
         </div>
         <input type="file" id="file" accept=".html" onchange="onFileChange()" />
         <button id="btn" onclick="upload()">업로드</button>
@@ -118,14 +119,57 @@
         client.auth.onAuthStateChange((event, session) => {
             if (event === 'INITIAL_SESSION' && !session) location.href = '/login.html?redirect=/upload.html'
         })
-        
+
+        setupDragDrop()
 
         function onFileChange() {
-            const file = document.getElementById('file').files[0]
+            handleFile(document.getElementById('file').files[0])
+        }
+
+        function setupDragDrop() {
+            const fileInput = document.getElementById('file')
             const area = document.getElementById('fileArea')
-            if (file) {
-                area.textContent = '📄 ' + file.name
-                area.classList.add('selected')
+
+            area.addEventListener('dragover', event => {
+                event.preventDefault()
+                area.classList.add('dragover')
+            })
+
+            area.addEventListener('dragleave', () => {
+                area.classList.remove('dragover')
+            })
+
+            area.addEventListener('drop', event => {
+                event.preventDefault()
+                area.classList.remove('dragover')
+                const file = event.dataTransfer.files[0]
+                if (file) {
+                    const dataTransfer = new DataTransfer()
+                    dataTransfer.items.add(file)
+                    fileInput.files = dataTransfer.files
+                    handleFile(file)
+                }
+            })
+        }
+
+        function handleFile(file) {
+            const area = document.getElementById('fileArea')
+            if (!file) return
+
+            area.textContent = '📄 ' + file.name
+            area.classList.add('selected')
+
+            const titleInput = document.getElementById('title')
+            if (!titleInput.value.trim()) {
+                const reader = new FileReader()
+                reader.onload = () => {
+                    const text = reader.result
+                    const match = text.match(/<title[^>]*>([\s\S]*?)<\/title>/i)
+                    if (match && match[1]) {
+                        titleInput.value = match[1].trim()
+                    }
+                }
+                reader.readAsText(file)
             }
         }
 
