@@ -275,7 +275,7 @@
                 document.getElementById('edit-toggle-btn').style.display = 'block'
                 bottomBar.innerHTML = `<button onclick="logout()" style="background:none;border:none;color:#bbb;font-size:0.75rem;cursor:pointer;padding:4px 8px;">로그아웃</button>`
             } else {
-                bottomBar.innerHTML = `<a href="/login.html" style="color:#bbb;font-size:0.75rem;text-decoration:none;">로그인</a>`
+                bottomBar.innerHTML = `<a href="/login.html" style="color:#bbb;font-size:0.75rem;text-decoration:none;">관리자</a>`
             }
 
             const { data: posts, error } = await client
