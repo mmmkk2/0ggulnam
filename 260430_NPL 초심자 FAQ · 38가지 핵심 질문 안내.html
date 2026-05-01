@@ -1,0 +1,1559 @@
+<!DOCTYPE html>
+<!-- saved from url=(0032)https://nplww.tax.pub/index.html -->
+<html lang="ko"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NPL 초심자 FAQ · 38가지 핵심 질문 안내</title>
+<link href="./NPL 초심자 FAQ · 38가지 핵심 질문 안내_files/css2" rel="stylesheet">
+<style>
+:root {
+    --background: #f8fafc;
+    --foreground: #0a0a0a;
+    --card: #ffffff;
+    --card-foreground: #0a0a0a;
+    --muted: #f1f5f9;
+    --muted-foreground: #64748b;
+    --border: #e2e8f0;
+    --primary: #18181b;
+    --primary-foreground: #fafafa;
+    --accent: #0ea5e9;
+    --accent-light: #e0f2fe;
+    --success: #22c55e;
+    --warning: #eab308;
+    --error: #ef4444;
+    --violet: #8b5cf6;
+    --radius: 12px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; scroll-padding-top: 24px; }
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.6;
+    background: var(--background);
+    color: var(--foreground);
+    min-height: 100vh;
+    position: relative;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: -50%; left: -50%;
+    width: 200%; height: 200%;
+    background:
+        radial-gradient(circle at 20% 20%, rgba(14, 165, 233, 0.08) 0%, transparent 50%),
+        radial-gradient(circle at 80% 30%, rgba(139, 92, 246, 0.06) 0%, transparent 40%),
+        radial-gradient(circle at 40% 80%, rgba(34, 197, 94, 0.05) 0%, transparent 45%),
+        radial-gradient(circle at 90% 80%, rgba(249, 115, 22, 0.04) 0%, transparent 40%);
+    z-index: -1;
+    animation: gradientFloat 20s ease-in-out infinite;
+}
+
+@keyframes gradientFloat {
+    0%, 100% { transform: translate(0, 0) rotate(0deg); }
+    25% { transform: translate(2%, 1%) rotate(1deg); }
+    50% { transform: translate(0, 2%) rotate(0deg); }
+    75% { transform: translate(-1%, 1%) rotate(-1deg); }
+}
+
+body::after {
+    content: '';
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background-image:
+        linear-gradient(rgba(148, 163, 184, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(148, 163, 184, 0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+    z-index: -1;
+    pointer-events: none;
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 32px 24px;
+    position: relative;
+    z-index: 1;
+}
+
+/* ========== 헤더 ========== */
+.header { margin-bottom: 32px; }
+
+.header-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 14px;
+    background: linear-gradient(135deg, rgba(14, 165, 233, 0.15) 0%, rgba(139, 92, 246, 0.1) 100%);
+    color: #0284c7;
+    font-size: 13px;
+    font-weight: 600;
+    border-radius: 100px;
+    letter-spacing: -0.01em;
+    border: 1px solid rgba(14, 165, 233, 0.2);
+    margin-bottom: 12px;
+}
+
+h1 {
+    font-size: 33px;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    margin-bottom: 8px;
+}
+
+.subtitle {
+    color: var(--muted-foreground);
+    font-size: 16px;
+}
+
+/* ========== 섹션 ========== */
+.section { margin-bottom: 72px; scroll-margin-top: 24px; }
+.section-title {
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* ========== Callout ========== */
+.callout {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    border-radius: 14px;
+    margin-bottom: 32px;
+    background: #ffffff;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06), 0 0 1px rgba(0,0,0,0.1);
+}
+.callout-header {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    gap: 14px;
+    margin-bottom: 20px;
+}
+.callout-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    flex-shrink: 0;
+    color: white;
+}
+.callout-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--foreground);
+}
+.callout-body { padding-left: 0; }
+.callout-text {
+    font-size: 14px;
+    color: #515154;
+    line-height: 1.7;
+}
+.callout-text strong { color: #1d1d1f; font-weight: 600; }
+.callout-text ul, .callout-text ol { padding-left: 20px; margin-top: 8px; }
+.callout-text li { margin-bottom: 6px; }
+
+.callout.blue .callout-icon { background: linear-gradient(135deg, #0071e3 0%, #40a9ff 100%); }
+.callout.green .callout-icon { background: linear-gradient(135deg, #34c759 0%, #30d158 100%); }
+.callout.yellow .callout-icon { background: linear-gradient(135deg, #ff9f0a 0%, #ffb340 100%); }
+.callout.red .callout-icon { background: linear-gradient(135deg, #ff3b30 0%, #ff6961 100%); }
+.callout.violet .callout-icon { background: linear-gradient(135deg, #af52de 0%, #bf5af2 100%); }
+.callout.teal .callout-icon { background: linear-gradient(135deg, #5ac8fa 0%, #64d2ff 100%); }
+.callout.orange .callout-icon { background: linear-gradient(135deg, #ff9500 0%, #ffaa33 100%); }
+.callout.gray .callout-icon { background: linear-gradient(135deg, #8e8e93 0%, #aeaeb2 100%); }
+
+/* ========== 카테고리 네비게이션 ========== */
+.cat-nav-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-bottom: 32px;
+}
+.cat-nav-card {
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border: 1px solid rgba(226, 232, 240, 0.6);
+}
+.cat-nav-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+}
+.cat-nav-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 26px;
+    flex-shrink: 0;
+    color: white;
+    margin-bottom: 16px;
+}
+.cat-nav-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: #1d1d1f;
+    margin-bottom: 6px;
+    letter-spacing: -0.01em;
+}
+.cat-nav-desc {
+    font-size: 13px;
+    color: var(--muted-foreground);
+    line-height: 1.5;
+    margin-bottom: 12px;
+}
+.cat-nav-count {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px 10px;
+    border-radius: 100px;
+    background: rgba(14, 165, 233, 0.1);
+    color: #0284c7;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+/* ========== 전체 질문 목차 (Index) ========== */
+.toc-card {
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(226, 232, 240, 0.8);
+    border-radius: var(--radius);
+    overflow: hidden;
+    margin-bottom: 40px;
+}
+.toc-header {
+    padding: 20px 24px;
+    border-bottom: 1px solid rgba(226, 232, 240, 0.6);
+    background: linear-gradient(180deg, rgba(248, 250, 252, 0.7) 0%, transparent 100%);
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    gap: 12px;
+}
+.toc-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    flex-shrink: 0;
+    color: white;
+    background: linear-gradient(135deg, #0071e3 0%, #40a9ff 100%);
+}
+.toc-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--foreground);
+}
+.toc-body { padding: 20px 24px 24px; }
+.toc-cat-block { margin-bottom: 20px; }
+.toc-cat-block:last-child { margin-bottom: 0; }
+.toc-cat-label {
+    font-size: 14px;
+    font-weight: 700;
+    color: #1d1d1f;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+.toc-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+    list-style: none;
+}
+.toc-list a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 14px;
+    background: var(--muted);
+    border-radius: 10px;
+    text-decoration: none;
+    color: #1d1d1f;
+    font-size: 14px;
+    transition: all 0.2s ease;
+}
+.toc-list a:hover {
+    background: rgba(0, 113, 227, 0.08);
+    transform: translateX(4px);
+}
+.toc-num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    border-radius: 8px;
+    background: white;
+    color: #0071e3;
+    font-size: 13px;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+/* ========== FAQ 카드 ========== */
+.faq-card {
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(226, 232, 240, 0.8);
+    border-radius: var(--radius);
+    overflow: hidden;
+    transition: all 0.3s ease;
+    margin-bottom: 24px;
+    scroll-margin-top: 24px;
+}
+.faq-card:hover {
+    background: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
+    border-color: rgba(203, 213, 225, 0.8);
+}
+.faq-card-header {
+    padding: 20px 24px;
+    border-bottom: 1px solid rgba(226, 232, 240, 0.6);
+    background: linear-gradient(180deg, rgba(248, 250, 252, 0.5) 0%, transparent 100%);
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    gap: 14px;
+}
+.faq-num {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 17px;
+    font-weight: 700;
+    flex-shrink: 0;
+    color: white;
+    background: linear-gradient(135deg, #0071e3 0%, #40a9ff 100%);
+}
+.faq-question {
+    font-size: 17px;
+    font-weight: 600;
+    color: #1d1d1f;
+    line-height: 1.5;
+    letter-spacing: -0.01em;
+}
+.faq-card-body { padding: 20px 24px 24px; }
+.faq-answer {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+}
+.faq-answer-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #34c759 0%, #30d158 100%);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+}
+.faq-answer-text {
+    flex: 1;
+    font-size: 15px;
+    color: #1d1d1f;
+    line-height: 1.7;
+}
+.faq-answer-text p { margin-bottom: 12px; }
+.faq-answer-text p:last-child { margin-bottom: 0; }
+.faq-answer-text strong { font-weight: 600; color: #0071e3; }
+.faq-answer-text ul, .faq-answer-text ol { padding-left: 20px; margin: 10px 0; }
+.faq-answer-text li { margin-bottom: 6px; font-size: 15px; }
+
+/* 카테고리별 FAQ 번호 색상 */
+.faq-card.cat1 .faq-num { background: linear-gradient(135deg, #0071e3 0%, #40a9ff 100%); }
+.faq-card.cat2 .faq-num { background: linear-gradient(135deg, #34c759 0%, #30d158 100%); }
+.faq-card.cat3 .faq-num { background: linear-gradient(135deg, #af52de 0%, #bf5af2 100%); }
+.faq-card.cat4 .faq-num { background: linear-gradient(135deg, #ff9500 0%, #ffaa33 100%); }
+
+/* ========== 보조 박스 (서류 리스트, 일정 등) ========== */
+.info-box {
+    background: var(--muted);
+    border-radius: 12px;
+    padding: 16px 20px;
+    margin: 14px 0;
+}
+.info-box-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: #1d1d1f;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+.info-box-list {
+    list-style: none;
+    padding-left: 0;
+}
+.info-box-list li {
+    padding: 6px 0;
+    font-size: 14px;
+    color: #515154;
+    border-bottom: 1px dashed rgba(0,0,0,0.06);
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+}
+.info-box-list li:last-child { border-bottom: none; }
+.info-box-list .num {
+    color: #0071e3;
+    font-weight: 600;
+    flex-shrink: 0;
+    min-width: 22px;
+}
+
+/* ========== 시세 박스 ========== */
+.price-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin: 14px 0;
+}
+.price-item {
+    background: linear-gradient(135deg, rgba(241, 245, 249, 0.9) 0%, rgba(226, 232, 240, 0.5) 100%);
+    border-radius: 10px;
+    padding: 14px 16px;
+    border: 1px solid rgba(226, 232, 240, 0.5);
+}
+.price-deposit {
+    font-size: 13px;
+    color: var(--muted-foreground);
+    margin-bottom: 4px;
+    font-weight: 500;
+}
+.price-rent {
+    font-size: 17px;
+    font-weight: 700;
+    color: #0071e3;
+}
+
+/* ========== 일정 타임라인 ========== */
+.steps-list {
+    counter-reset: step;
+    list-style: none;
+    padding: 0;
+    margin: 14px 0;
+}
+.steps-list li {
+    counter-increment: step;
+    position: relative;
+    padding: 12px 14px 12px 56px;
+    background: white;
+    border-radius: 10px;
+    margin-bottom: 8px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+    font-size: 14px;
+    color: #1d1d1f;
+    line-height: 1.5;
+}
+.steps-list li::before {
+    content: counter(step);
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    background: linear-gradient(135deg, #0071e3 0%, #40a9ff 100%);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+/* ========== 뱃지 ========== */
+.badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 3px 10px;
+    font-size: 13px;
+    font-weight: 600;
+    border-radius: 100px;
+    margin: 0 2px;
+}
+.badge-success { background: rgba(34, 197, 94, 0.1); color: #16a34a; }
+.badge-warning { background: rgba(234, 179, 8, 0.1); color: #ca8a04; }
+.badge-error { background: rgba(239, 68, 68, 0.1); color: #dc2626; }
+.badge-info { background: rgba(14, 165, 233, 0.1); color: #0284c7; }
+
+
+/* ========== 예상 질문 ========== */
+.q-list { list-style: none; counter-reset: qc; }
+.q-list li {
+    counter-increment: qc;
+    padding: 14px 18px 14px 56px;
+    position: relative;
+    background: white;
+    border-radius: 12px;
+    margin-bottom: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    font-size: 15px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+.q-list li:hover { transform: translateX(4px); }
+.q-list li::before {
+    content: counter(qc) ")";
+    position: absolute;
+    left: 18px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-weight: 700;
+    color: #0071e3;
+    font-size: 16px;
+}
+
+/* ========== 모바일 1024px ========== */
+@media (max-width: 1024px) {
+    .cat-nav-grid { grid-template-columns: repeat(2, 1fr); }
+    .price-grid { grid-template-columns: 1fr; }
+}
+
+/* ========== 모바일 768px ========== */
+@media (max-width: 768px) {
+    .container { padding: 20px 16px; }
+    h1 { font-size: 26px; }
+    .subtitle { font-size: 15px; }
+    .section { margin-bottom: 48px; }
+    .section-title { font-size: 18px; }
+
+    .callout { padding: 16px; margin-bottom: 24px; }
+    .callout-header {
+        gap: 12px;
+        margin-bottom: 16px;
+        flex-direction: row;
+        align-items: center;
+    }
+    .callout-icon { width: 40px; height: 40px; font-size: 18px; }
+    .callout-title { font-size: 16px; }
+    .callout-text { font-size: 13px; }
+
+    .cat-nav-grid { grid-template-columns: 1fr; gap: 12px; }
+    .cat-nav-card { padding: 20px; }
+    .cat-nav-icon { width: 48px; height: 48px; font-size: 22px; }
+    .cat-nav-title { font-size: 16px; }
+
+    .toc-list { grid-template-columns: 1fr; }
+    .toc-header {
+        flex-direction: row;
+        align-items: center;
+    }
+    .toc-icon { width: 40px; height: 40px; font-size: 18px; }
+    .toc-title { font-size: 16px; }
+
+    .faq-card { margin-bottom: 18px; }
+    .faq-card-header {
+        flex-direction: row;
+        align-items: center;
+        padding: 16px 18px;
+    }
+    .faq-num { width: 40px; height: 40px; font-size: 15px; }
+    .faq-question { font-size: 15px; }
+    .faq-card-body { padding: 16px 18px 18px; }
+    .faq-answer-icon { width: 32px; height: 32px; font-size: 16px; }
+    .faq-answer-text { font-size: 14px; }
+    .faq-answer-text li { font-size: 14px; }
+
+
+}
+
+/* ========== 모바일 480px ========== */
+@media (max-width: 480px) {
+    h1 { font-size: 22px; }
+    .subtitle { font-size: 14px; }
+    .price-rent { font-size: 16px; }
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+    <!-- 헤더 -->
+    <div class="header">
+        <span class="header-badge">📚 NPL 초심자 완벽 가이드</span>
+        <h1>NPL 초심자 FAQ · 38가지 핵심 질문 안내 🏠💼</h1>
+        <p class="subtitle">처음 NPL 투자하시는 분도 끝까지 안심하고 따라올 수 있도록, 아카이브부동산중개법인이 정리한 모든 답변 모음 📋✨</p>
+    </div>
+
+    <!-- 환영 안내 Callout -->
+    <div class="callout blue">
+        <div class="callout-header">
+            <div class="callout-icon">👋</div>
+            <div class="callout-title">처음이신 분들께 드리는 안내</div>
+        </div>
+        <div class="callout-body">
+            <div class="callout-text">
+                <strong>NPL이 뭔지조차 처음 들어보신 분들도 걱정 마세요!</strong> 이 페이지는 4개 카테고리 · 38개 질문에 대한 답변을 모두 정리한 통합 가이드예요.<br><br>
+                아래 <strong>📑 카테고리 빠른 이동</strong>이나 <strong>📋 전체 질문 목차</strong>에서 궁금한 항목을 클릭하시면 <strong>한 번의 클릭으로 답변</strong>까지 바로 이동해요. 페이지 우측 하단의 <strong>↑ 위로 가기 버튼</strong>으로 언제든 처음으로 돌아오실 수 있어요.
+            </div>
+        </div>
+    </div>
+
+    <!-- 카테고리 빠른 이동 -->
+    <div class="section">
+        <div class="section-title">📑 카테고리 빠른 이동 · 4개 분야</div>
+        <div class="cat-nav-grid">
+            <a href="https://nplww.tax.pub/index.html#cat1" class="cat-nav-card">
+                <div class="cat-nav-icon" style="background: linear-gradient(135deg, #0071e3 0%, #40a9ff 100%);">💳</div>
+                <div class="cat-nav-title">1. 자격 요건 및 자금 조달</div>
+                <div class="cat-nav-desc">계약·대출·잔금·자서·서류 등 투자 진입 전 필수 안내</div>
+                <span class="cat-nav-count">📌 14개 질문</span>
+            </a>
+            <a href="https://nplww.tax.pub/index.html#cat2" class="cat-nav-card">
+                <div class="cat-nav-icon" style="background: linear-gradient(135deg, #34c759 0%, #30d158 100%);">💰</div>
+                <div class="cat-nav-title">2. 세금 및 주택 수 관리</div>
+                <div class="cat-nav-desc">주임사·종부세·법인 세제·전입신고 등 세무 운영 핵심</div>
+                <span class="cat-nav-count">📌 6개 질문</span>
+            </a>
+            <a href="https://nplww.tax.pub/index.html#cat3" class="cat-nav-card">
+                <div class="cat-nav-icon" style="background: linear-gradient(135deg, #af52de 0%, #bf5af2 100%);">👥</div>
+                <div class="cat-nav-title">3. 실전 운영 및 임대 관리</div>
+                <div class="cat-nav-desc">명도·세입자·수리·청소·열쇠 등 실제 운영 가이드</div>
+                <span class="cat-nav-count">📌 8개 질문</span>
+            </a>
+            <a href="https://nplww.tax.pub/index.html#cat4" class="cat-nav-card">
+                <div class="cat-nav-icon" style="background: linear-gradient(135deg, #ff9500 0%, #ffaa33 100%);">📈</div>
+                <div class="cat-nav-title">4. 실무 심화 및 사후 관리</div>
+                <div class="cat-nav-desc">페이백·매각·금리 리스크·초보 진입 가능성 등</div>
+                <span class="cat-nav-count">📌 10개 질문</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- 전체 질문 목차 -->
+    <div class="section">
+        <div class="section-title">📋 전체 질문 목차 · 클릭하면 바로 이동</div>
+        <div class="toc-card">
+            <div class="toc-header">
+                <div class="toc-icon">🗂️</div>
+                <div class="toc-title">38개 질문 한눈에 보기</div>
+            </div>
+            <div class="toc-body">
+
+                <div class="toc-cat-block">
+                    <div class="toc-cat-label">💳 1. 자격 요건 및 자금 조달 (14개)</div>
+                    <ul class="toc-list">
+                        <li><a href="https://nplww.tax.pub/index.html#q1"><span class="toc-num">1</span> 계약금 단순 변심 취소</a></li>
+                        <li><a href="https://nplww.tax.pub/index.html#q2"><span class="toc-num">2</span> 신용불량자 명의 매입</a></li>
+                        <li><a href="https://nplww.tax.pub/index.html#q3"><span class="toc-num">3</span> 대출 부결 시 환불 여부</a></li>
+                        <li><a href="https://nplww.tax.pub/index.html#q4"><span class="toc-num">4</span> 잔금 기일 연장·지연</a></li>
+                        <li><a href="https://nplww.tax.pub/index.html#q5"><span class="toc-num">5</span> 1인당 호실 제한</a></li>
+                        <li><a href="https://nplww.tax.pub/index.html#q6"><span class="toc-num">6</span> 대출 한도·금리·법인</a></li>
+                        <li><a href="https://nplww.tax.pub/index.html#q7"><span class="toc-num">7</span> 자서(대출 서류) 절차</a></li>
+                        <li><a href="https://nplww.tax.pub/index.html#q8"><span class="toc-num">8</span> 채권·매수대리·NPL용역 계약서</a></li>
+                        <li><a href="https://nplww.tax.pub/index.html#q9"><span class="toc-num">9</span> 법인·개인 제출 서류 차이</a></li>
+                        <li><a href="https://nplww.tax.pub/index.html#q10"><span class="toc-num">10</span> 위임장 주소 기재 기준</a></li>
+                        <li><a href="https://nplww.tax.pub/index.html#q11"><span class="toc-num">11</span> 계약 직후 첫 준비 서류</a></li>
+                        <li><a href="https://nplww.tax.pub/index.html#q12"><span class="toc-num">12</span> 서류 작성 실수 시</a></li>
+                        <li><a href="https://nplww.tax.pub/index.html#q13"><span class="toc-num">13</span> 계약~배당 전체 일정</a></li>
+                        <li><a href="https://nplww.tax.pub/index.html#q14"><span class="toc-num">14</span> 소유권 이전 소요 기간</a></li>
+                    </ul>
+                </div>
+
+                <div class="toc-cat-block">
+                    <div class="toc-cat-label">💰 2. 세금 및 주택 수 관리 (6개)</div>
+                    <ul class="toc-list">
+                        <li><a href="https://nplww.tax.pub/index.html#q15"><span class="toc-num">15</span> 오피스텔 주택 수 포함 여부</a></li>
+                        <li><a href="https://nplww.tax.pub/index.html#q16"><span class="toc-num">16</span> 주임사 미등록 시</a></li>
+                        <li><a href="https://nplww.tax.pub/index.html#q17"><span class="toc-num">17</span> 임대사업자 등록 방식</a></li>
+                        <li><a href="https://nplww.tax.pub/index.html#q18"><span class="toc-num">18</span> 법인 매입 이자 비용 처리</a></li>
+                        <li><a href="https://nplww.tax.pub/index.html#q19"><span class="toc-num">19</span> 법무사 비용 별도 여부</a></li>
+                        <li><a href="https://nplww.tax.pub/index.html#q20"><span class="toc-num">20</span> 대출 후 전입신고 가능 여부</a></li>
+                    </ul>
+                </div>
+
+                <div class="toc-cat-block">
+                    <div class="toc-cat-label">👥 3. 실전 운영 및 임대 관리 (8개)</div>
+                    <ul class="toc-list">
+                        <li><a href="https://nplww.tax.pub/index.html#q21"><span class="toc-num">21</span> 직접 집 내부 확인 가능?</a></li>
+                        <li><a href="https://nplww.tax.pub/index.html#q22"><span class="toc-num">22</span> 명도(기존 거주자 퇴거)</a></li>
+                        <li><a href="https://nplww.tax.pub/index.html#q23"><span class="toc-num">23</span> 세입자 모집·임대 대행</a></li>
+                        <li><a href="https://nplww.tax.pub/index.html#q24"><span class="toc-num">24</span> 수리·도배·유지보수</a></li>
+                        <li><a href="https://nplww.tax.pub/index.html#q25"><span class="toc-num">25</span> 임차 시세 수준</a></li>
+                        <li><a href="https://nplww.tax.pub/index.html#q26"><span class="toc-num">26</span> 입주 청소 비용·일정</a></li>
+                        <li><a href="https://nplww.tax.pub/index.html#q27"><span class="toc-num">27</span> 현관 비밀번호·열쇠 인도</a></li>
+                        <li><a href="https://nplww.tax.pub/index.html#q28"><span class="toc-num">28</span> 월세 입금·연체 관리</a></li>
+                    </ul>
+                </div>
+
+                <div class="toc-cat-block">
+                    <div class="toc-cat-label">📈 4. 실무 심화 및 사후 관리 (10개)</div>
+                    <ul class="toc-list">
+                        <li><a href="https://nplww.tax.pub/index.html#q29"><span class="toc-num">29</span> 페이백 지급 시점</a></li>
+                        <li><a href="https://nplww.tax.pub/index.html#q30"><span class="toc-num">30</span> 낙찰 후 사후 관리</a></li>
+                        <li><a href="https://nplww.tax.pub/index.html#q31"><span class="toc-num">31</span> 타지 거주자 관리</a></li>
+                        <li><a href="https://nplww.tax.pub/index.html#q32"><span class="toc-num">32</span> 향후 매각 환금성</a></li>
+                        <li><a href="https://nplww.tax.pub/index.html#q33"><span class="toc-num">33</span> 경매 취소 시 자금 안전성</a></li>
+                        <li><a href="https://nplww.tax.pub/index.html#q34"><span class="toc-num">34</span> 법원·세무서 직접 방문 여부</a></li>
+                        <li><a href="https://nplww.tax.pub/index.html#q35"><span class="toc-num">35</span> NPL 초보 진입 가능 여부</a></li>
+                        <li><a href="https://nplww.tax.pub/index.html#q36"><span class="toc-num">36</span> 첫 부동산 투자자도 가능?</a></li>
+                        <li><a href="https://nplww.tax.pub/index.html#q37"><span class="toc-num">37</span> 일반 경매 vs NPL 장점</a></li>
+                        <li><a href="https://nplww.tax.pub/index.html#q38"><span class="toc-num">38</span> 금리 인상 리스크</a></li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- ========== 카테고리 1 ========== -->
+    <div class="section" id="cat1">
+        <div class="section-title">💳 1. 자격 요건 및 자금 조달</div>
+
+        <!-- Q1 -->
+        <div class="faq-card cat1" id="q1">
+            <div class="faq-card-header">
+                <div class="faq-num">1</div>
+                <div class="faq-question">계약금 입금 후 단순 변심으로 취소하고 싶어요.</div>
+            </div>
+            <div class="faq-card-body">
+                <div class="faq-answer">
+                    <div class="faq-answer-icon">👨‍💼</div>
+                    <div class="faq-answer-text">
+                        <p><strong>불가해요.</strong> 본 계약금은 해당 물건의 경매 낙찰을 위한 계약금으로 즉시 사용되기 때문에, 입금 완료 후 단순 변심에 의한 환불이나 취소는 절대 불가능해요.</p>
+                        <p>⚠️ 신중하게 결정해 주세요.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Q2 -->
+        <div class="faq-card cat1" id="q2">
+            <div class="faq-card-header">
+                <div class="faq-num">2</div>
+                <div class="faq-question">신용불량자 명의로 매입이 가능한가요?</div>
+            </div>
+            <div class="faq-card-body">
+                <div class="faq-answer">
+                    <div class="faq-answer-icon">👨‍💼</div>
+                    <div class="faq-answer-text">
+                        <p>본인 명의의 <strong>대출이나 소유권 이전이 불가능</strong>하므로 원칙적으로 어려워요.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Q3 -->
+        <div class="faq-card cat1" id="q3">
+            <div class="faq-card-header">
+                <div class="faq-num">3</div>
+                <div class="faq-question">계약금 입금 후 대출 부결 시 환불되나요?</div>
+            </div>
+            <div class="faq-card-body">
+                <div class="faq-answer">
+                    <div class="faq-answer-icon">👨‍💼</div>
+                    <div class="faq-answer-text">
+                        <p><strong>불가해요.</strong></p>
+                        <p>대출은 개인의 신용 영역이므로, 안내해 드린 가이드를 참고하시고 <strong>반드시 본인의 대출 가용 범위를 사전에 직접 확인</strong>하셔야 해요.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Q4 -->
+        <div class="faq-card cat1" id="q4">
+            <div class="faq-card-header">
+                <div class="faq-num">4</div>
+                <div class="faq-question">잔금 기일을 연장하거나, 잔금일에 대출 실행이 지연되면 어떻게 처리되나요?</div>
+            </div>
+            <div class="faq-card-body">
+                <div class="faq-answer">
+                    <div class="faq-answer-icon">👨‍💼</div>
+                    <div class="faq-answer-text">
+                        <p><strong>정해진 기일 안에 잔금을 납입하시는 게 원칙</strong>이에요. 기일을 못 지키시면 계약금 몰취 같은 불이익이 생길 수 있어요.</p>
+                        <p>⚠️ 보통 법원 경매에서 잔금이 미납되면 <strong>연 15% 정도의 지연손해금</strong>이 부과된다고 안내되고 있어요.</p>
+                        <p>다만 은행이랑 법원과 협의하면 <strong>최대 약 1개월 범위</strong>까지 잔금 일정을 조정해드린 사례도 있어요. 이건 케이스마다 협의 결과에 따라 달라질 수 있어요.</p>
+                        <p>📞 잔금 실행에 차질이 예상되시면 <strong>즉시 아카이브중개법인 측으로 공유</strong>해 주세요. 그러면 병행해서 은행 절차를 같이 진행해드릴 수 있어요.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Q5 -->
+        <div class="faq-card cat1" id="q5">
+            <div class="faq-card-header">
+                <div class="faq-num">5</div>
+                <div class="faq-question">1인당 몇 호실까지 계약 가능한가요?</div>
+            </div>
+            <div class="faq-card-body">
+                <div class="faq-answer">
+                    <div class="faq-answer-icon">👨‍💼</div>
+                    <div class="faq-answer-text">
+                        <p>이번 물건은 압도적인 가격 메리트와 희소성 유지를 위해 <strong>1인당 최대 3개 호실까지만</strong> 계약을 제한하고 있어요.</p>
+                        <p>🤝 더 많은 분께 기회를 드리기 위함이니 양해 부탁드려요.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Q6 -->
+        <div class="faq-card cat1" id="q6">
+            <div class="faq-card-header">
+                <div class="faq-num">6</div>
+                <div class="faq-question">대출은 어떻게 진행되며, 한도·금리는 어느 수준이고 법인 명의도 가능한가요?</div>
+            </div>
+            <div class="faq-card-body">
+                <div class="faq-answer">
+                    <div class="faq-answer-icon">👨‍💼</div>
+                    <div class="faq-answer-text">
+                        <p>대출은 <strong>경락잔금대출</strong>을 통해 진행되며, 대표님들의 편의를 위해 경락잔금대출을 전문으로 하는 <strong>상담사를 연결</strong>해 드리고 있어요.</p>
+                        <p>💰 일반적으로 대출 금액은 <strong>낙찰가의 약 70% 수준</strong>, 금리는 <strong>약 4.5% 전후</strong>로 실행되는 사례가 많아요.</p>
+                        <p>다만 개인의 신용도·소득·부채비율·주거래 이력·은행별 내부 심사 기준에 따라 결과가 달라질 수 있으므로, <strong>주거래 은행이나 거주지 주변 은행</strong>을 함께 알아보시는 것도 권장드려요.</p>
+                        <p>🏢 <strong>법인 명의 매입도 가능</strong>해요.</p>
+                        <p>다만 <strong>손실법인은 불가능</strong>하고, 신규법인·기존법인의 경우 대표자의 신용도 및 은행 평가 사항에 따라 결과가 달라질 수 있어요. 개인 명의 대출도 병행 검토하시는 방향을 권장드리며, 은행별·시점별로 정책이 달라질 수 있으므로 가능 여부는 진행 시점에 담당 은행과 재확인해 주세요.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Q7 -->
+        <div class="faq-card cat1" id="q7">
+            <div class="faq-card-header">
+                <div class="faq-num">7</div>
+                <div class="faq-question">자서(대출 서류 작성)는 어디서 진행하며, 반드시 본인이 방문해야 하나요?</div>
+            </div>
+            <div class="faq-card-body">
+                <div class="faq-answer">
+                    <div class="faq-answer-icon">👨‍💼</div>
+                    <div class="faq-answer-text">
+                        <p>원칙적으로 자서는 <strong>낙찰자 본인이 해당 은행 지점에 직접 방문</strong>하셔서 진행하시는 게 일반적이에요. (은행별 방침에 따라 조금 달라질 수도 있어요)</p>
+                        <p>📋 자서 때 보통 필요한 구비서류는 아래와 같아요. (은행별로 필요 서류가 다를 수도 있어요)</p>
+                        <div class="info-box">
+                            <div class="info-box-title">📑 자서 구비서류 14종</div>
+                            <ul class="info-box-list">
+                                <li><span class="num">1.</span> 주민등록등본 1부</li>
+                                <li><span class="num">2.</span> 주민등록초본 2부 (과거 주소지 포함)</li>
+                                <li><span class="num">3.</span> 인감증명서 2부 (주민센터 발급본, 전자민원창구 발급본 불가)</li>
+                                <li><span class="num">4.</span> 가족관계증명원 1부</li>
+                                <li><span class="num">5.</span> 국세완납증명서 1부</li>
+                                <li><span class="num">6.</span> 지방세완납증명서 1부</li>
+                                <li><span class="num">7.</span> 지방세 세목별 과세증명원 1부 (과세물건지 포함)</li>
+                                <li><span class="num">8.</span> 납입내역증명서 1부</li>
+                                <li><span class="num">9.</span> 재직증명서 1부</li>
+                                <li><span class="num">10.</span> 사업자등록증 사본 및 사업자등록증명원 각 1부</li>
+                                <li><span class="num">11.</span> 소득금액증명원 (직전 2개년)</li>
+                                <li><span class="num">12.</span> 과세표준증명원 (직전 연도)</li>
+                                <li><span class="num">13.</span> 신분증, 인감도장</li>
+                                <li><span class="num">14.</span> 입찰보증금 영수증, 대금납부통지서</li>
+                            </ul>
+                        </div>
+                        <p>⚠️ 은행이랑 지점 내부 규정에 따라 추가 서류가 필요할 수도 있어요. <strong>자서 전에 담당자한테 최종 서류 목록을 한 번 더 확인</strong>해 보시면 안전해요.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Q8 -->
+        <div class="faq-card cat1" id="q8">
+            <div class="faq-card-header">
+                <div class="faq-num">8</div>
+                <div class="faq-question">채권계약서, 매수대리계약서, NPL용역계약서는 어떻게 작성하나요?</div>
+            </div>
+            <div class="faq-card-body">
+                <div class="faq-answer">
+                    <div class="faq-answer-icon">👨‍💼</div>
+                    <div class="faq-answer-text">
+                        <p>원칙은 <strong>부산이랑 서울 각 일정에 맞춰 직접 만나뵙고 날인</strong>을 진행하는 거예요.</p>
+                        <p>다만 직접 오시기 어려우시면 <strong>날인이랑 간인 후에 등기로 보내주셔도</strong> 돼요.</p>
+                        <div class="info-box">
+                            <div class="info-box-title">📋 작성 계약서 종류</div>
+                            <ul class="info-box-list">
+                                <li><span class="num">•</span> 채권 계약서: <strong>원본 2부</strong> (도장 및 간인)</li>
+                                <li><span class="num">•</span> 매수대리 계약서: <strong>원본 2부</strong> (도장 및 간인)</li>
+                                <li><span class="num">•</span> NPL 용역 계약서: <strong>원본 2부</strong> (도장 및 간인)</li>
+                                <li><span class="num">•</span> 은행 제출용 기타 서류: PDF(전자파일) 1부, 카카오톡 또는 이메일</li>
+                            </ul>
+                        </div>
+                        <div class="info-box">
+                            <div class="info-box-title">📮 발송지</div>
+                            <ul class="info-box-list">
+                                <li><span class="num">📍</span> 부산광역시 중구 남포동 1가 15-7, 4층 <strong>아카이브부동산중개(주)</strong></li>
+                            </ul>
+                        </div>
+                        <p>✉️ 회신 시점에 당사 날인 및 대부법인 날인 완료 후 <strong>1부를 재발송</strong>드려요.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Q9 -->
+        <div class="faq-card cat1" id="q9">
+            <div class="faq-card-header">
+                <div class="faq-num">9</div>
+                <div class="faq-question">법인과 개인의 제출 서류가 다른가요?</div>
+            </div>
+            <div class="faq-card-body">
+                <div class="faq-answer">
+                    <div class="faq-answer-icon">👨‍💼</div>
+                    <div class="faq-answer-text">
+                        <p><strong>네, 구분돼요.</strong> 보통 필요한 서류는 아래와 같아요. 법원이랑 은행 요구사항이 바뀌면 추가 서류가 생길 수도 있어요.</p>
+                        <div class="info-box">
+                            <div class="info-box-title">🏢 법인 제출 서류</div>
+                            <ul class="info-box-list">
+                                <li><span class="num">•</span> 법인 등기사항전부증명서 (발급일 3개월 이내)</li>
+                                <li><span class="num">•</span> 법인 사업자등록증 사본</li>
+                                <li><span class="num">•</span> 법인 인감증명서</li>
+                                <li><span class="num">•</span> 위임장 (법인 인감도장 날인)</li>
+                            </ul>
+                        </div>
+                        <div class="info-box">
+                            <div class="info-box-title">👤 개인 제출 서류</div>
+                            <ul class="info-box-list">
+                                <li><span class="num">•</span> 인감증명서 (주민센터 발급본만 인정, 전자민원용 불가)</li>
+                                <li><span class="num">•</span> 위임장 (인감도장 날인, 주소는 인감증명서 주소와 동일하게 기재)</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Q10 -->
+        <div class="faq-card cat1" id="q10">
+            <div class="faq-card-header">
+                <div class="faq-num">10</div>
+                <div class="faq-question">위임장 작성 시 주소는 어느 기준으로 기재하나요?</div>
+            </div>
+            <div class="faq-card-body">
+                <div class="faq-answer">
+                    <div class="faq-answer-icon">👨‍💼</div>
+                    <div class="faq-answer-text">
+                        <p>꼭 <strong>인감증명서 상의 주소랑 똑같이 기재</strong>해 주셔야 해요.</p>
+                        <p>📍 실거주지가 다르시더라도 <strong>인감증명서 주소를 우선 기준</strong>으로 작성해 주세요.</p>
+                        <p>⚠️ 주소가 안 맞으면 법원 접수 단계에서 <strong>보완 요청</strong>이 들어올 수 있어요.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Q11 -->
+        <div class="faq-card cat1" id="q11">
+            <div class="faq-card-header">
+                <div class="faq-num">11</div>
+                <div class="faq-question">계약 직후 제가 가장 먼저 준비해야 할 서류는 무엇인가요?</div>
+            </div>
+            <div class="faq-card-body">
+                <div class="faq-answer">
+                    <div class="faq-answer-icon">👨‍💼</div>
+                    <div class="faq-answer-text">
+                        <p><strong>신분증 사본과 등본</strong> 정도면 시작할 수 있어요.</p>
+                        <p>📌 단계별로 필요한 서류 리스트를 <strong>저희가 미리 체크</strong>해 드려요. 너무 걱정하지 않으셔도 돼요.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Q12 -->
+        <div class="faq-card cat1" id="q12">
+            <div class="faq-card-header">
+                <div class="faq-num">12</div>
+                <div class="faq-question">서류를 준비하다가 실수하면 어떡하나요?</div>
+            </div>
+            <div class="faq-card-body">
+                <div class="faq-answer">
+                    <div class="faq-answer-icon">👨‍💼</div>
+                    <div class="faq-answer-text">
+                        <p>모든 서류는 <strong>저희가 작성 예시를 보내드리고 최종 검토</strong>를 해드려요.</p>
+                        <p>✅ 실수하셔도 바로잡아 드리니 <strong>걱정 마세요!</strong></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Q13 -->
+        <div class="faq-card cat1" id="q13">
+            <div class="faq-card-header">
+                <div class="faq-num">13</div>
+                <div class="faq-question">계약부터 배당까지 전체 일정은 어떻게 진행되나요?</div>
+            </div>
+            <div class="faq-card-body">
+                <div class="faq-answer">
+                    <div class="faq-answer-icon">👨‍💼</div>
+                    <div class="faq-answer-text">
+                        <p>본 건의 표준 진행 순서는 아래와 같아요.</p>
+                        <ol class="steps-list">
+                            <li><strong>계약금 입금</strong> (호실당 500만 원)</li>
+                            <li><strong>호실 선정 시 보증금 입금</strong> 후 계약금 반환</li>
+                            <li><strong>낙찰 (입찰일)</strong> 및 매수대리비용 입금</li>
+                            <li><strong>서류 준비 및 자서</strong> (대출 진행)</li>
+                            <li><strong>잔금 납부</strong> (은행 실행분 및 자기자금)</li>
+                            <li><strong>배당 수령</strong></li>
+                            <li><strong>페이백 환급</strong> (배당 완료 당일 송금)</li>
+                        </ol>
+                        <p>⏰ 위 일정은 <strong>예정 일정</strong>이에요. 법원 배당기일 조정, 대출 심사 지연, 관계 기관 행정 처리 상황에 따라 바뀔 수도 있어요. 일정이 바뀌면 별도 공지로 다시 안내해드릴게요.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Q14 -->
+        <div class="faq-card cat1" id="q14">
+            <div class="faq-card-header">
+                <div class="faq-num">14</div>
+                <div class="faq-question">낙찰 이후 소유권 이전까지 기간이 얼마나 걸리나요?</div>
+            </div>
+            <div class="faq-card-body">
+                <div class="faq-answer">
+                    <div class="faq-answer-icon">👨‍💼</div>
+                    <div class="faq-answer-text">
+                        <p>통상적으로 <strong>잔금 납부 후 약 한 달 정도</strong> 기간이면 완료되며, 저희가 절차별 일정과 서류 준비를 상세히 가이드해 드려요. 📋</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========== 카테고리 2 ========== -->
+    <div class="section" id="cat2">
+        <div class="section-title">💰 2. 세금 및 주택 수 관리</div>
+
+        <!-- Q15 -->
+        <div class="faq-card cat2" id="q15">
+            <div class="faq-card-header">
+                <div class="faq-num">15</div>
+                <div class="faq-question">오피스텔은 주택 수에 포함되어 세금 폭탄 맞는 것 아닌가요?</div>
+            </div>
+            <div class="faq-card-body">
+                <div class="faq-answer">
+                    <div class="faq-answer-icon">👨‍💼</div>
+                    <div class="faq-answer-text">
+                        <p>걱정 마세요! <strong>'주택임대사업자(주임사)' 등록</strong>을 하시면 세금 폭탄 걱정 없이 안전하게 운영하실 수 있어요. ✅</p>
+                        <div class="info-box">
+                            <div class="info-box-title">💡 주택임대사업자(주임사)란?</div>
+                            <ul class="info-box-list">
+                                <li><span class="num">📌</span> 주택임대사업자는 <strong>"주택을 임대하기 위한 사업체"</strong>를 등록하는 제도예요.</li>
+                                <li><span class="num">📌</span> 즉, 본인이 거주 목적으로 보유한 주택과는 <strong>성격이 완전히 다른 '사업용 자산'</strong>으로 분류돼요.</li>
+                                <li><span class="num">📌</span> 그래서 주임사로 등록된 오피스텔은 <strong>개인의 주택 수에 포함되지 않아요.</strong></li>
+                                <li><span class="num">📌</span> 사업체가 보유한 임대 자산이지, 본인이 사는 주택이 아니라는 뜻이에요.</li>
+                            </ul>
+                        </div>
+                        <div class="info-box">
+                            <div class="info-box-title">🎁 주임사 등록 시 받을 수 있는 세제 혜택</div>
+                            <ul class="info-box-list">
+                                <li><span class="num">✅</span> <strong>종합부동산세(종부세) 합산 배제</strong> - 주택 수에서 빠지므로 종부세 부담 줄어들어요.</li>
+                                <li><span class="num">✅</span> <strong>취득세 감면</strong> - 일정 요건 충족 시 취득세 감면 혜택 적용돼요.</li>
+                                <li><span class="num">✅</span> <strong>재산세 감면</strong> - 일정 요건 하에 재산세도 감면받을 수 있어요.</li>
+                                <li><span class="num">✅</span> <strong>양도세 중과 배제</strong> - 추후 매각 시 양도세 중과 대상에서 제외 가능해요.</li>
+                            </ul>
+                        </div>
+                        <p>📞 세제 혜택의 구체적인 적용 범위는 개인별 보유 부동산 현황과 소득 구조에 따라 달라질 수 있으니, <strong>당사 제휴 세무법인을 통해 개별 상담을 받아보시는 걸 권장</strong>드려요.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Q16 -->
+        <div class="faq-card cat2" id="q16">
+            <div class="faq-card-header">
+                <div class="faq-num">16</div>
+                <div class="faq-question">주임사 등록을 안 하면 어떻게 되나요?</div>
+            </div>
+            <div class="faq-card-body">
+                <div class="faq-answer">
+                    <div class="faq-answer-icon">👨‍💼</div>
+                    <div class="faq-answer-text">
+                        <p>주임사 등록을 하지 않고 주거용으로 임대할 경우 <strong>주택 수에 포함</strong>돼요.</p>
+                        <p>📌 주택 수 산입을 피하려면 <strong>주임사를 등록</strong>하거나, 아예 <strong>업무용 임대차로 운영</strong>하여 사업자용으로(전입신고 불가) 활용해야 해요.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Q17 -->
+        <div class="faq-card cat2" id="q17">
+            <div class="faq-card-header">
+                <div class="faq-num">17</div>
+                <div class="faq-question">임대사업자 등록 방식은 어떻게 결정하면 되나요?</div>
+            </div>
+            <div class="faq-card-body">
+                <div class="faq-answer">
+                    <div class="faq-answer-icon">👨‍💼</div>
+                    <div class="faq-answer-text">
+                        <p>오피스텔은 운영 방식에 따라 <strong>세무 처리가 달라질 수 있어요.</strong></p>
+                        <div class="info-box">
+                            <div class="info-box-title">🗂️ 운영 방식별 등록 안내</div>
+                            <ul class="info-box-list">
+                                <li><span class="num">•</span> <strong>임대 목적 보유:</strong> 일반임대사업자 또는 주택임대사업자(주임사) 등록이 일반적</li>
+                                <li><span class="num">•</span> <strong>단기 매각 목적:</strong> 매매사업자 등록이 일반적</li>
+                            </ul>
+                        </div>
+                        <p>⚠️ 세무상 유불리는 개인별 소득 구조, 보유 부동산 현황, 향후 계획에 따라 상이하므로, <strong>반드시 세무 전문가와의 개별 상담</strong>을 통해 결정해 주세요.</p>
+                        <p>🤝 당사 <strong>제휴 세무법인 소개</strong>가 가능하며, 희망 시 개별 연락 주세요.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Q18 -->
+        <div class="faq-card cat2" id="q18">
+            <div class="faq-card-header">
+                <div class="faq-num">18</div>
+                <div class="faq-question">법인으로 매입 시 대출 이자 비용 처리가 가능한가요?</div>
+            </div>
+            <div class="faq-card-body">
+                <div class="faq-answer">
+                    <div class="faq-answer-icon">👨‍💼</div>
+                    <div class="faq-answer-text">
+                        <p><strong>네, 법인의 경우 대출 이자 및 유지 관리 비용을 경비로 처리</strong>하여 법인세 절감 효과를 누릴 수 있는 장점이 있어요. 💡</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Q19 -->
+        <div class="faq-card cat2" id="q19">
+            <div class="faq-card-header">
+                <div class="faq-num">19</div>
+                <div class="faq-question">등기 칠 때 들어가는 법무사 비용은 별도인가요?</div>
+            </div>
+            <div class="faq-card-body">
+                <div class="faq-answer">
+                    <div class="faq-answer-icon">👨‍💼</div>
+                    <div class="faq-answer-text">
+                        <p><strong>네, 취득세와 법무사 대행 비용 등 부대비용은 낙찰가와 별도로 준비</strong>하셔야 하며, 상세 견적을 미리 산출해 드려요. 📊</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Q20 -->
+        <div class="faq-card cat2" id="q20">
+            <div class="faq-card-header">
+                <div class="faq-num">20</div>
+                <div class="faq-question">대출 실행 후 전입신고가 가능한가요?</div>
+            </div>
+            <div class="faq-card-body">
+                <div class="faq-answer">
+                    <div class="faq-answer-icon">👨‍💼</div>
+                    <div class="faq-answer-text">
+                        <p>사업자대출로 실행되시면, 은행 약정에 따라 <strong>대출 실행 후 일정 기간(보통 약 3개월) 전입신고가 제한</strong>될 수 있어요.</p>
+                        <p>⚠️ 이건 대출 상품이랑 은행별 약정에 따라 다 달라요. <strong>본인 약정서랑 담당 은행에 꼭 한 번 더 확인</strong>해 보셔야 해요.</p>
+                        <p>🚨 전입 제한 기간을 어기시면 <strong>대출 조건이 바뀌거나 회수 사유</strong>가 될 수 있으니 꼭 주의해 주세요.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========== 카테고리 3 ========== -->
+    <div class="section" id="cat3">
+        <div class="section-title">👥 3. 실전 운영 및 임대 관리</div>
+
+        <!-- Q21 -->
+        <div class="faq-card cat3" id="q21">
+            <div class="faq-card-header">
+                <div class="faq-num">21</div>
+                <div class="faq-question">직접 집 내부를 보고 결정할 수 있나요?</div>
+            </div>
+            <div class="faq-card-body">
+                <div class="faq-answer">
+                    <div class="faq-answer-icon">👨‍💼</div>
+                    <div class="faq-answer-text">
+                        <p>현재 <strong>경·공매 절차가 진행 중인 매물</strong>이므로 내부 출입은 어려워요.</p>
+                        <p>📷 대신 저희가 준비한 <strong>고화질 실사 사진과 영상</strong>을 통해 확인하실 수 있도록 지원해요.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Q22 -->
+        <div class="faq-card cat3" id="q22">
+            <div class="faq-card-header">
+                <div class="faq-num">22</div>
+                <div class="faq-question">명도(기존 거주자 퇴거)는 누가 진행하며, 세입자가 협조하지 않을 경우 어떻게 처리되나요?</div>
+            </div>
+            <div class="faq-card-body">
+                <div class="faq-answer">
+                    <div class="faq-answer-icon">👨‍💼</div>
+                    <div class="faq-answer-text">
+                        <p>명도는 법적·행정적으로 <strong>낙찰자 본인의 권한 및 책임</strong>에 속하는 사항이에요. 당사(아카이브부동산중개법인)는 법률상 명도 권한을 보유하지 않아요.</p>
+                        <p>🤝 다만 원활한 진행을 위해 당사는 <strong>가능한 범위 내에서 아래와 같이 조력</strong>하고 있어요.</p>
+                        <div class="info-box">
+                            <div class="info-box-title">🛠️ 당사 조력 범위</div>
+                            <ul class="info-box-list">
+                                <li><span class="num">•</span> 기존 관리단 협조 요청 및 사전 조율</li>
+                                <li><span class="num">•</span> 세입자 연락처 확보 및 전달 (통상 제공되지 않는 정보이나 협조를 통해 확보)</li>
+                                <li><span class="num">•</span> NPL 매각 절차 내 명도 관련 가이드라인 제시</li>
+                                <li><span class="num">•</span> 법무적 가이드를 통한 소유권 확보 지원</li>
+                            </ul>
+                        </div>
+                        <p>⚖️ 기존 세입자와의 협의가 원활하지 않을 경우, <strong>전문가의 가이드에 따라 법적 명도 절차(필요 시 인도명령 등)</strong>를 밟으면 해결 가능하며, 낙찰자로서의 정당한 권리 행사 과정을 지원해 드려요.</p>
+                        <p>실제 통화·협의·법적 절차의 최종 진행과 결과는 낙찰자 본인의 판단과 상황에 따라 달라질 수 있어요.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Q23 -->
+        <div class="faq-card cat3" id="q23">
+            <div class="faq-card-header">
+                <div class="faq-num">23</div>
+                <div class="faq-question">세입자는 어떻게 구하며, 임대 계약과 민원 응대까지 대행이 가능한가요?</div>
+            </div>
+            <div class="faq-card-body">
+                <div class="faq-answer">
+                    <div class="faq-answer-icon">👨‍💼</div>
+                    <div class="faq-answer-text">
+                        <p>개별적으로 채우셔도 되고, 저희가 <strong>직접 운영하는 부산 원룸 채널 중 최대 규모 '집함보자'</strong>를 통해 진행하셔도 돼요.</p>
+                        <p>🏘️ 로컬 부동산들과의 긴밀한 협업을 통해 <strong>공실을 최단기간에 채울 수 있도록 지원</strong>하고 있으며, 희망하시는 보증금과 월세를 말씀해 주시면 그에 맞춰 순차적으로 임대차 계약을 진행해 드려요.</p>
+                        <p>📨 임대 계약서 작성을 위해 <strong>직접 부동산에 방문하실 필요는 없어요.</strong></p>
+                        <p>위임장을 우체국 등기로 보내주시면 <strong>부동산 방문 없이 임대차 계약 전 과정을 안전하게 대행</strong>해 드리며, 계약서 원본은 다시 댁으로 보내드리므로 타지에서도 편하게 관리받으실 수 있어요.</p>
+                        <p>🔧 임대 개시 후 <strong>시설 민원이나 수리 요청은 전문 관리 서비스를 이용</strong>하시면 응대를 대행해 드리므로, 집주인으로서의 수익은 챙기시면서 운영 스트레스는 최소화하실 수 있어요.</p>
+                        <p>💡 공실 기간 및 임차 조건은 시장 상황과 수요에 따라 달라질 수 있음을 참고 부탁드려요.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Q24 -->
+        <div class="faq-card cat3" id="q24">
+            <div class="faq-card-header">
+                <div class="faq-num">24</div>
+                <div class="faq-question">수리·도배 상태는 어떤가요? 유지보수 업체도 소개받을 수 있나요?</div>
+            </div>
+            <div class="faq-card-body">
+                <div class="faq-answer">
+                    <div class="faq-answer-icon">👨‍💼</div>
+                    <div class="faq-answer-text">
+                        <p>본건은 <strong>현 상태 인수 조건</strong>이며, 대단지 브랜드 오피스텔인 만큼 저희가 <strong>건물 관리단 및 유지보수 업체와 직접 소통</strong>하여 투자자분들이 필요한 부분에 대해 합리적으로 협의하실 수 있도록 가교 역할을 해드려요.</p>
+                        <p>🛠️ 도배·장판 등 개별 수리가 필요하신 경우 <strong>당사 협력 유지보수 업체를 연결</strong>해 드리며, <strong>직접 발품 팔지 않고도 수리를 진행</strong>하실 수 있어요.</p>
+                        <p>💰 세부 단가 및 시공 범위는 업체와의 개별 협의에 따라 달라질 수 있어요.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Q25 -->
+        <div class="faq-card cat3" id="q25">
+            <div class="faq-card-header">
+                <div class="faq-num">25</div>
+                <div class="faq-question">임차 시세는 어느 수준인가요?</div>
+            </div>
+            <div class="faq-card-body">
+                <div class="faq-answer">
+                    <div class="faq-answer-icon">👨‍💼</div>
+                    <div class="faq-answer-text">
+                        <p><strong>2026년 상반기에 광고 진행 중인 일반 시세</strong>는 아래와 같아요.</p>
+                        <div class="price-grid">
+                            <div class="price-item">
+                                <div class="price-deposit">보증금 500만 원</div>
+                                <div class="price-rent">월세 65만 원</div>
+                            </div>
+                            <div class="price-item">
+                                <div class="price-deposit">보증금 1,000만 원</div>
+                                <div class="price-rent">월세 60만 원</div>
+                            </div>
+                            <div class="price-item">
+                                <div class="price-deposit">보증금 2,000만 원</div>
+                                <div class="price-rent">월세 55만 원</div>
+                            </div>
+                            <div class="price-item">
+                                <div class="price-deposit">보증금 2,800~3,000만 원</div>
+                                <div class="price-rent">월세 50만 원</div>
+                            </div>
+                        </div>
+                        <p>📌 관리비는 별도로 부과돼요.</p>
+                        <p>⚠️ 위 시세는 시장 수요·공급, 계절적 요인, 건물 내 공실률 같은 것에 따라 <strong>변동될 수 있어요.</strong> 실제 계약 조건도 임차인 협의 결과에 따라 달라질 수 있어요.</p>
+                        <p>📞 임차 희망 조건을 당사로 전달해 주시면 해당 조건 기준으로 <strong>광고를 진행</strong>해드려요.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Q26 -->
+        <div class="faq-card cat3" id="q26">
+            <div class="faq-card-header">
+                <div class="faq-num">26</div>
+                <div class="faq-question">입주 청소는 얼마에, 언제 진행되나요?</div>
+            </div>
+            <div class="faq-card-body">
+                <div class="faq-answer">
+                    <div class="faq-answer-icon">👨‍💼</div>
+                    <div class="faq-answer-text">
+                        <p>당사 협력업체를 통해 단체로 진행하시면 <strong>호실당 약 12만 원</strong>으로 협의되어 있어요.</p>
+                        <p>🎁 (표준 단가 15만 원 대비 단체 할인이 적용된 가격이에요)</p>
+                        <p>📅 진행 일정은 <strong>명도가 완료된 호실부터 순차로 진행</strong>돼요. 희망 일정을 당사에 전달해 주시면 업체랑 조율해서 진행해드릴게요.</p>
+                        <p>✅ 청소 품질이랑 범위는 협력업체 자체 기준에 따르고요, 청소 결과에 대한 최종 책임은 청소 업체에 있어요.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Q27 -->
+        <div class="faq-card cat3" id="q27">
+            <div class="faq-card-header">
+                <div class="faq-num">27</div>
+                <div class="faq-question">현관 비밀번호나 열쇠는 언제 어떻게 받게 되나요?</div>
+            </div>
+            <div class="faq-card-body">
+                <div class="faq-answer">
+                    <div class="faq-answer-icon">👨‍💼</div>
+                    <div class="faq-answer-text">
+                        <p><strong>소유권 이전이 완료된 후 저희가 현장을 최종 점검하고 전달</strong>해 드려요.</p>
+                        <p>🔐 <strong>전 거주자와 마주칠 필요 없이</strong> 안전하게 인도받으실 수 있어요.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Q28 -->
+        <div class="faq-card cat3" id="q28">
+            <div class="faq-card-header">
+                <div class="faq-num">28</div>
+                <div class="faq-question">매달 들어오는 월세 확인과 연체 관리는 어떻게 하나요?</div>
+            </div>
+            <div class="faq-card-body">
+                <div class="faq-answer">
+                    <div class="faq-answer-icon">👨‍💼</div>
+                    <div class="faq-answer-text">
+                        <p><strong>본인 계좌로 입금되는 월세를 확인</strong>하시면 되며, 전문 관리 업체를 이용하시면 <strong>미납 체크와 독촉까지 모두 대신</strong> 해드려요. 💼</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========== 카테고리 4 ========== -->
+    <div class="section" id="cat4">
+        <div class="section-title">📈 4. 실무 심화 및 사후 관리</div>
+
+        <!-- Q29 -->
+        <div class="faq-card cat4" id="q29">
+            <div class="faq-card-header">
+                <div class="faq-num">29</div>
+                <div class="faq-question">페이백(환급금)은 언제 지급되나요?</div>
+            </div>
+            <div class="faq-card-body">
+                <div class="faq-answer">
+                    <div class="faq-answer-icon">👨‍💼</div>
+                    <div class="faq-answer-text">
+                        <p><strong>배당이 완료된 당일에 지급</strong>해드리는 걸 원칙으로 해요. 지급 전에 아래 서류를 받아야 해요.</p>
+                        <div class="info-box">
+                            <div class="info-box-title">📋 페이백 지급 전 제출 서류</div>
+                            <ul class="info-box-list">
+                                <li><span class="num">•</span> <strong>사후정산 페이백 지급확인서</strong> (인감도장 날인, 원본 제출)</li>
+                                <li><span class="num">•</span> 계좌 정보 및 개인정보 제공 동의</li>
+                            </ul>
+                        </div>
+                        <p>⚠️ 대부법인 내부 방침상 <strong>전자서명은 인정되지 않아요.</strong> 꼭 인감 날인 원본을 제출해 주셔야 해요.</p>
+                        <p>📌 서류 접수 지연이나 대부법인 내부 결재 지연 같은 사유가 생기면 지급 일정이 조정될 수도 있어요.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Q30 -->
+        <div class="faq-card cat4" id="q30">
+            <div class="faq-card-header">
+                <div class="faq-num">30</div>
+                <div class="faq-question">낙찰 후에도 사후 관리를 도와주시나요?</div>
+            </div>
+            <div class="faq-card-body">
+                <div class="faq-answer">
+                    <div class="faq-answer-icon">👨‍💼</div>
+                    <div class="faq-answer-text">
+                        <p><strong>전문 세무사, 임대 매칭, 전문 관리 업체 연결</strong> 등 투자자분들의 운영 편의를 위한 인프라를 지속적으로 안내해 드려요. 🤝</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Q31 -->
+        <div class="faq-card cat4" id="q31">
+            <div class="faq-card-header">
+                <div class="faq-num">31</div>
+                <div class="faq-question">부산 지역이 아닌 타지에 살아도 관리가 원활할까요?</div>
+            </div>
+            <div class="faq-card-body">
+                <div class="faq-answer">
+                    <div class="faq-answer-icon">👨‍💼</div>
+                    <div class="faq-answer-text">
+                        <p><strong>네, 실제로 저희 투자자분들 중에는 서울에서 관리하시는 분들이 상당히 많아요.</strong></p>
+                        <p>🏢 기본적으로 노후 건물이 아니라 <strong>특별히 손댈 곳이 없으며</strong>, 필요한 부분은 저희가 관리단과 직접 협의하여 조율해 드려요.</p>
+                        <p>📡 <strong>비대면 임대 관리 시스템</strong>을 통해 타지에 계셔도 부산에 내려오실 일 없이 원격으로 편리하게 운영하실 수 있어요.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Q32 -->
+        <div class="faq-card cat4" id="q32">
+            <div class="faq-card-header">
+                <div class="faq-num">32</div>
+                <div class="faq-question">나중에 원하는 시점에 매각이 원활하게 이루어질까요? 매수자 연결도 지원되나요?</div>
+            </div>
+            <div class="faq-card-body">
+                <div class="faq-answer">
+                    <div class="faq-answer-icon">👨‍💼</div>
+                    <div class="faq-answer-text">
+                        <p>환금성은 시장 상황에 따르나, 본 물건은 <strong>입지적 희소성과 NPL 특유의 가격 경쟁력</strong>을 갖추고 있어 추후 시장에서 충분한 주목을 받을 수 있는 조건을 갖추고 있어요.</p>
+                        <p>🤝 매각을 희망하시는 시점이 되면, <strong>당사 아카이브부동산중개의 인프라를 활용하여</strong> 적절한 시기에 매각이 이루어질 수 있도록 매수자 연결을 적극 지원해 드려요.</p>
+                        <p>⚠️ 다만 실제 매각 시기·가격·조건은 시장 상황, 금리, 수요 변화에 따라 달라질 수 있어요.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Q33 -->
+        <div class="faq-card cat4" id="q33">
+            <div class="faq-card-header">
+                <div class="faq-num">33</div>
+                <div class="faq-question">만약 경매가 도중에 취소되면 제가 넣은 돈은 안전한가요?</div>
+            </div>
+            <div class="faq-card-body">
+                <div class="faq-answer">
+                    <div class="faq-answer-icon">👨‍💼</div>
+                    <div class="faq-answer-text">
+                        <p><strong>네, 절차상 취소 시 투자 자금이 안전하게 보호되고 반환될 수 있도록 법무적 조치를 다 하고 있어요.</strong> 🛡️</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Q34 -->
+        <div class="faq-card cat4" id="q34">
+            <div class="faq-card-header">
+                <div class="faq-num">34</div>
+                <div class="faq-question">법원이나 세무서에 제가 직접 가야 할 일이 많나요?</div>
+            </div>
+            <div class="faq-card-body">
+                <div class="faq-answer">
+                    <div class="faq-answer-icon">👨‍💼</div>
+                    <div class="faq-answer-text">
+                        <p><strong>대부분의 행정 절차는 대행 시스템으로 운영</strong>돼요.</p>
+                        <p>📋 안내해 드리는 서류만 준비해 주시면 <strong>현장 방문 없이도 투자가 가능</strong>해요.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Q35 -->
+        <div class="faq-card cat4" id="q35">
+            <div class="faq-card-header">
+                <div class="faq-num">35</div>
+                <div class="faq-question">NPL 투자는 전문가의 영역이라 들었는데, 초보 투자자가 지금 진입해도 괜찮을까요?</div>
+            </div>
+            <div class="faq-card-body">
+                <div class="faq-answer">
+                    <div class="faq-answer-icon">👨‍💼</div>
+                    <div class="faq-answer-text">
+                        <p>NPL은 <strong>복잡한 권리 분석이 필요한 시장</strong>이에요.</p>
+                        <p>✅ 하지만 투자자분들이 이번 과정에서는 <strong>모든 리스크를 사전에 필터링하여 수익을 가져갈 수 있는 구조로 세팅</strong>해 두었기 때문에 직접 하실 필요는 없어요.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Q36 -->
+        <div class="faq-card cat4" id="q36">
+            <div class="faq-card-header">
+                <div class="faq-num">36</div>
+                <div class="faq-question">집을 한 번도 사본 적 없는 사람도 이번 투자를 따라갈 수 있나요?</div>
+            </div>
+            <div class="faq-card-body">
+                <div class="faq-answer">
+                    <div class="faq-answer-icon">👨‍💼</div>
+                    <div class="faq-answer-text">
+                        <p><strong>네, 충분히 가능해요.</strong></p>
+                        <p>🎯 <strong>생애 첫 투자</strong>를 하시는 분들도 매뉴얼대로만 따라오시면 안전하게 소유권을 가져오실 수 있도록 설계되어 있어요.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Q37 -->
+        <div class="faq-card cat4" id="q37">
+            <div class="faq-card-header">
+                <div class="faq-num">37</div>
+                <div class="faq-question">일반 경매와 비교했을 때 NPL이 초보에게 더 유리한 점이 무엇인가요?</div>
+            </div>
+            <div class="faq-card-body">
+                <div class="faq-answer">
+                    <div class="faq-answer-icon">👨‍💼</div>
+                    <div class="faq-answer-text">
+                        <p>일반 경매는 <strong>무한 경쟁</strong>이지만, NPL은 <strong>채권을 미리 확보하여 경쟁 없이 우량 물건을 싼 가격에 선점</strong>할 수 있다는 점이 유리해요. 🏆</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Q38 -->
+        <div class="faq-card cat4" id="q38">
+            <div class="faq-card-header">
+                <div class="faq-num">38</div>
+                <div class="faq-question">금리가 더 오를 경우 손해를 볼까 봐 걱정돼요.</div>
+            </div>
+            <div class="faq-card-body">
+                <div class="faq-answer">
+                    <div class="faq-answer-icon">👨‍💼</div>
+                    <div class="faq-answer-text">
+                        <p>NPL은 <strong>시세보다 현저히 낮게 사기 때문에 금리 변동에 대한 안전 마진이 커요.</strong></p>
+                        <p>🛡️ <strong>확실한 월세 수요가 있는 입지만 골랐으므로</strong> 리스크 방어가 가능해요.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- 마무리 안내 -->
+    <div class="callout green">
+        <div class="callout-header">
+            <div class="callout-icon">✅</div>
+            <div class="callout-title">끝까지 읽어주셔서 감사해요!</div>
+        </div>
+        <div class="callout-body">
+            <div class="callout-text">
+                추가 궁금하신 점이 있다면 <strong>아카이브부동산중개법인</strong>으로 언제든 연락 주세요.<br>
+                📍 부산광역시 중구 남포동 1가 15-7, 4층 · ☎️ 별도 안내된 연락처<br>
+                <strong>여러분의 첫 NPL 투자를 끝까지 함께할게요. 🤝</strong>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+
+
+</body></html>

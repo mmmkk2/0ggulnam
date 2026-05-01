@@ -15,10 +15,16 @@
             border-bottom: 1px solid #eee;
             flex-shrink: 0;
         }
-        .back-btn {
+        .float-btns {
             position: fixed;
             bottom: 24px;
             right: 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            z-index: 9999;
+        }
+        .float-btn {
             text-decoration: none;
             color: #666;
             font-size: 0.85rem;
@@ -27,9 +33,13 @@
             border-radius: 20px;
             background: #fff;
             box-shadow: 0 2px 8px rgba(0,0,0,0.12);
-            z-index: 9999;
+            cursor: pointer;
+            text-align: center;
         }
-        .back-btn:hover { background: #000; color: #fff; border-color: #000; }
+        .float-btn:hover { background: #000; color: #fff; border-color: #000; }
+        @media (max-width: 768px) {
+            .float-btns { bottom: 16px; right: 12px; }
+        }
         .title { font-size: 0.9rem; color: #333; font-family: -apple-system, sans-serif; }
         iframe { flex: 1; border: none; width: 100%; }
         .error {
@@ -47,7 +57,10 @@
     <div class="topbar">
         <span class="title" id="page-title"></span>
     </div>
-    <a href="/" class="back-btn">← 목록</a>
+    <div class="float-btns">
+        <button class="float-btn" onclick="document.getElementById('viewer').contentWindow.scrollTo({top:0,behavior:'smooth'})">↑ 맨위로</button>
+        <a href="/" class="float-btn">← 목록</a>
+    </div>
     <iframe id="viewer" sandbox="allow-scripts allow-same-origin"></iframe>
 
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
