@@ -59,7 +59,7 @@
     </div>
     <div class="float-btns">
         <a href="/" class="float-btn">← 목록</a>
-        <button class="float-btn" onclick="document.getElementById('viewer').contentWindow.scrollTo({top:0,behavior:'smooth'})">↑ 맨위로</button>
+        <button class="float-btn" onclick="document.getElementById('viewer').contentWindow.postMessage('scrollTop','*')">↑ 맨위로</button>
     </div>
     <iframe id="viewer" sandbox="allow-scripts allow-same-origin"></iframe>
 
@@ -72,8 +72,28 @@
 
         const params = new URLSearchParams(location.search)
         const id = params.get('id')
+        const directUrl = params.get('url')
+
+        const scrollListener = `<script>window.addEventListener('message',function(e){if(e.data==='scrollTop'){window.scrollTo({top:0,behavior:'smooth'});document.documentElement.scrollTop=0;document.body.scrollTop=0;}})<\/script>`
+
+        function loadHtml(html) {
+            const injected = html
+                .replace('</head>', '<style>@media (min-width: 768px) { body { padding-left: 1.5rem !important; padding-right: 1.5rem !important; } }</style></head>')
+                .replace('</body>', scrollListener + '</body>')
+            document.getElementById('viewer').srcdoc = injected
+        }
 
         async function init() {
+            if (directUrl) {
+                fetch(directUrl)
+                    .then(r => { if (!r.ok) throw new Error(r.status); return r.text() })
+                    .then(loadHtml)
+                    .catch(() => {
+                        document.getElementById('viewer').outerHTML = '<div class="error">파일을 불러올 수 없습니다.</div>'
+                    })
+                return
+            }
+
             if (!id) {
                 document.getElementById('viewer').outerHTML = '<div class="error">ID가 없습니다.</div>'
                 return
@@ -90,10 +110,7 @@
 
             fetch(post.url)
                 .then(r => { if (!r.ok) throw new Error(r.status); return r.text() })
-                .then(html => {
-                    const injected = html.replace('</head>', '<style>@media (min-width: 768px) { body { padding-left: 1.5rem !important; padding-right: 1.5rem !important; } }</style></head>')
-                    document.getElementById('viewer').srcdoc = injected
-                })
+                .then(loadHtml)
                 .catch(() => {
                     document.getElementById('viewer').outerHTML = '<div class="error">파일을 불러올 수 없습니다.</div>'
                 })
