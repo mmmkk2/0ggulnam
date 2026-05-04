@@ -59,7 +59,7 @@
     </div>
     <div class="float-btns">
         <a href="/" class="float-btn">← 목록</a>
-        <button class="float-btn" onclick="document.getElementById('viewer').contentWindow.postMessage('scrollTop','*')">↑ 맨위로</button>
+        <button class="float-btn" onclick="scrollToTop()">↑ 맨위로</button>
     </div>
     <iframe id="viewer" sandbox="allow-scripts allow-same-origin"></iframe>
 
@@ -74,12 +74,17 @@
         const id = params.get('id')
         const directUrl = params.get('url')
 
-        const scrollListener = `<script>window.addEventListener('message',function(e){if(e.data==='scrollTop'){window.scrollTo({top:0,behavior:'smooth'});document.documentElement.scrollTop=0;document.body.scrollTop=0;}})<\/script>`
+        function scrollToTop() {
+            const iframe = document.getElementById('viewer')
+            try {
+                const doc = iframe.contentDocument
+                doc.documentElement.scrollTop = 0
+                doc.body.scrollTop = 0
+            } catch(e) {}
+        }
 
         function loadHtml(html) {
-            const injected = html
-                .replace('</head>', '<style>@media (min-width: 768px) { body { padding-left: 1.5rem !important; padding-right: 1.5rem !important; } }</style></head>')
-                .replace('</body>', scrollListener + '</body>')
+            const injected = html.replace('</head>', '<style>@media (min-width: 768px) { body { padding-left: 1.5rem !important; padding-right: 1.5rem !important; } }</style></head>')
             document.getElementById('viewer').srcdoc = injected
         }
 
