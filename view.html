@@ -74,15 +74,16 @@
         const id = params.get('id')
         const directUrl = params.get('url')
 
+        let cachedSrcdoc = ''
+
         function scrollToTop() {
             const iframe = document.getElementById('viewer')
-            try { iframe.contentWindow.scrollTo(0, 0) } catch(e) {}
-            try { iframe.contentDocument.documentElement.scrollTop = 0 } catch(e) {}
-            try { iframe.contentDocument.body.scrollTop = 0 } catch(e) {}
+            iframe.srcdoc = cachedSrcdoc
         }
 
         function loadHtml(html) {
             const injected = html.replace('</head>', '<style>@media (min-width: 768px) { body { padding-left: 1.5rem !important; padding-right: 1.5rem !important; } }</style></head>')
+            cachedSrcdoc = injected
             document.getElementById('viewer').srcdoc = injected
         }
 
