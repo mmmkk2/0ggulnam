@@ -423,13 +423,6 @@
                     }
                     itemWrapper.appendChild(editBtn)
 
-                    const htmlEditBtn = document.createElement('button')
-                    htmlEditBtn.className = 'delete-btn edit-mode-el'
-                    htmlEditBtn.type = 'button'
-                    htmlEditBtn.textContent = 'HTML'
-                    htmlEditBtn.onclick = () => location.href = `/edit.html?id=${post.id}`
-                    itemWrapper.appendChild(htmlEditBtn)
-
                     const deleteBtn = document.createElement('button')
                     deleteBtn.className = 'delete-btn edit-mode-el'
                     deleteBtn.type = 'button'
