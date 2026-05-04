@@ -76,11 +76,9 @@
 
         function scrollToTop() {
             const iframe = document.getElementById('viewer')
-            try {
-                const doc = iframe.contentDocument
-                doc.documentElement.scrollTop = 0
-                doc.body.scrollTop = 0
-            } catch(e) {}
+            try { iframe.contentWindow.scrollTo(0, 0) } catch(e) {}
+            try { iframe.contentDocument.documentElement.scrollTop = 0 } catch(e) {}
+            try { iframe.contentDocument.body.scrollTop = 0 } catch(e) {}
         }
 
         function loadHtml(html) {
