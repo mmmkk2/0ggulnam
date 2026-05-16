@@ -154,18 +154,16 @@
         <!-- PDF 업로드 -->
         <div id="pdfSection" style="display:none">
             <div class="field">
-                <label>폴더명 (물건명, 없으면 비워두세요)</label>
-                <input type="text" id="pdfFolder" placeholder="예: ABC안성마트" />
-            </div>
-            <div class="field">
-                <label>PDF 파일</label>
+                <label>PDF 파일 또는 폴더</label>
                 <div class="file-area" id="pdfFileArea" onclick="document.getElementById('pdfFile').click()">
-                    클릭하거나 파일을 끌어다 놓아 선택 (.pdf)
+                    클릭하거나 폴더·파일을 끌어다 놓으세요<br>
+                    <span style="font-size:0.75rem;color:#bbb">폴더째 드래그 → 하위 PDF 전부 한번에 업로드</span>
                 </div>
-                <input type="file" id="pdfFile" accept=".pdf" onchange="onPdfFileChange()" />
-                <p class="help-text">파일명 그대로 저장됩니다. 한글 OK.</p>
+                <input type="file" id="pdfFile" accept=".pdf" multiple onchange="onPdfFilesChange()" />
+                <p class="help-text">폴더명/파일명 구조 그대로 저장됩니다.</p>
             </div>
-            <button id="pdfBtn" onclick="uploadPdf()">PDF 업로드</button>
+            <div id="pdfList" style="display:none; margin-bottom:16px; font-size:0.8rem; max-height:160px; overflow-y:auto; border:1px solid #eee; border-radius:6px; padding:10px; line-height:1.8;"></div>
+            <button id="pdfBtn" onclick="uploadPdfs()">PDF 업로드</button>
         </div>
 
         <button id="logout-btn" type="button" onclick="logout()" style="margin-top:10px; background:#fff; color:#000; border:1px solid #ddd;">로그아웃</button>
@@ -264,69 +262,100 @@
                 .replace(/^_+|_+$/g, '') + ext
         }
 
-        function onPdfFileChange() {
-            const file = document.getElementById('pdfFile').files[0]
+        let pdfFiles = []
+
+        function onPdfFilesChange() {
+            const input = document.getElementById('pdfFile')
+            setPdfFiles(Array.from(input.files).filter(f => f.name.endsWith('.pdf')))
+        }
+
+        function setPdfFiles(files) {
+            pdfFiles = files
             const area = document.getElementById('pdfFileArea')
-            if (!file) return
-            area.textContent = '📄 ' + file.name
+            const list = document.getElementById('pdfList')
+            if (!files.length) return
             area.classList.add('selected')
+            area.innerHTML = `📁 PDF ${files.length}개 선택됨`
+            list.style.display = 'block'
+            list.innerHTML = files.map(f => {
+                const p = f.webkitRelativePath || f.name
+                return `<div>📄 ${p}</div>`
+            }).join('')
         }
 
         function setupPdfDragDrop() {
-            const input = document.getElementById('pdfFile')
             const area = document.getElementById('pdfFileArea')
             area.addEventListener('dragover', e => { e.preventDefault(); area.classList.add('dragover') })
             area.addEventListener('dragleave', () => area.classList.remove('dragover'))
             area.addEventListener('drop', e => {
                 e.preventDefault()
                 area.classList.remove('dragover')
-                const file = e.dataTransfer.files[0]
-                if (file) {
-                    const dt = new DataTransfer()
-                    dt.items.add(file)
-                    input.files = dt.files
-                    onPdfFileChange()
+                const items = e.dataTransfer.items
+                if (!items) return
+                const collected = []
+                const readers = []
+                for (const item of items) {
+                    const entry = item.webkitGetAsEntry?.()
+                    if (entry) readers.push(readEntry(entry, collected))
                 }
+                Promise.all(readers).then(() => setPdfFiles(collected.filter(f => f.name.endsWith('.pdf'))))
             })
         }
 
-        async function uploadPdf() {
-            const folder = document.getElementById('pdfFolder').value.trim()
-            const file = document.getElementById('pdfFile').files[0]
+        function readEntry(entry, result) {
+            if (entry.isFile) {
+                return new Promise(resolve => entry.file(f => { result.push(f); resolve() }))
+            }
+            if (entry.isDirectory) {
+                const reader = entry.createReader()
+                return new Promise(resolve => {
+                    const readAll = () => reader.readEntries(entries => {
+                        if (!entries.length) return resolve()
+                        Promise.all(entries.map(e => readEntry(e, result))).then(readAll)
+                    })
+                    readAll()
+                })
+            }
+            return Promise.resolve()
+        }
+
+        async function uploadPdfs() {
             const msg = document.getElementById('msg')
             const btn = document.getElementById('pdfBtn')
+            const list = document.getElementById('pdfList')
 
-            if (!file) { msg.className = 'msg err'; msg.textContent = 'PDF 파일을 선택하세요.'; return }
-
-            btn.disabled = true
-            msg.className = 'msg'
-            msg.textContent = '업로드 중...'
+            if (!pdfFiles.length) { msg.className = 'msg err'; msg.textContent = 'PDF를 선택하세요.'; return }
 
             const { data: { session } } = await client.auth.getSession()
             if (!session) { window.location.href = '/login.html?redirect=/upload.html'; return }
 
-            const path = folder ? `${folder}/${file.name}` : file.name
+            btn.disabled = true
+            let done = 0, failed = 0
 
-            const { error } = await client.storage
-                .from(pdfBucketName)
-                .upload(path, file, { contentType: 'application/pdf', upsert: true })
+            for (const file of pdfFiles) {
+                const path = file.webkitRelativePath || file.name
+                msg.className = 'msg'
+                msg.textContent = `업로드 중... ${done + failed + 1}/${pdfFiles.length}`
 
-            if (error) {
-                msg.className = 'msg err'
-                msg.textContent = '업로드 실패: ' + (error.message || JSON.stringify(error))
-                btn.disabled = false
-                return
+                const { error } = await client.storage
+                    .from(pdfBucketName)
+                    .upload(path, file, { contentType: 'application/pdf', upsert: true })
+
+                if (error) {
+                    failed++
+                    const item = [...list.children].find(el => el.textContent.includes(path))
+                    if (item) item.style.color = '#e00'
+                } else {
+                    done++
+                    const item = [...list.children].find(el => el.textContent.includes(path))
+                    if (item) item.style.color = '#090'
+                }
             }
 
-            const { data: { publicUrl } } = client.storage.from(pdfBucketName).getPublicUrl(path)
-
-            msg.className = 'msg ok'
-            msg.textContent = '✓ 완료! ' + publicUrl
-            document.getElementById('pdfFolder').value = ''
-            document.getElementById('pdfFile').value = ''
-            document.getElementById('pdfFileArea').textContent = '클릭하거나 파일을 끌어다 놓아 선택 (.pdf)'
-            document.getElementById('pdfFileArea').classList.remove('selected')
+            msg.className = failed ? 'msg err' : 'msg ok'
+            msg.textContent = `✓ ${done}개 완료${failed ? ` / ❌ ${failed}개 실패` : ''}`
             btn.disabled = false
+            pdfFiles = []
         }
 
         async function upload() {
