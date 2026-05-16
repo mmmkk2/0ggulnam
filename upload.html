@@ -347,18 +347,27 @@
             btn.disabled = true
             let done = 0, failed = 0
 
+            // 첫 번째 파일만 먼저 시도해서 오류 확인
+            const first = pdfFiles[0]
+            console.log('업로드 시도:', first.path, '/ 파일크기:', first.file.size, '/ 세션:', session.user.email)
+
             for (const { file, path } of pdfFiles) {
                 msg.className = 'msg'
                 msg.textContent = `업로드 중... ${done + failed + 1}/${pdfFiles.length}`
 
-                const { error } = await client.storage
+                const { data, error } = await client.storage
                     .from(pdfBucketName)
                     .upload(path, file, { contentType: 'application/pdf', upsert: true })
+
+                console.log('path:', path, '/ error:', error, '/ data:', data)
 
                 const el = list.querySelector(`[data-path="${CSS.escape(path)}"]`)
                 if (error) {
                     failed++
-                    if (el) { el.style.color = '#e00'; el.title = error.message }
+                    if (el) {
+                        el.style.color = '#e00'
+                        el.textContent = `❌ ${path} — ${error.message}`
+                    }
                 } else {
                     done++
                     if (el) el.style.color = '#090'
