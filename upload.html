@@ -159,7 +159,7 @@
                     클릭하거나 폴더·파일을 끌어다 놓으세요<br>
                     <span style="font-size:0.75rem;color:#bbb">폴더째 드래그 → 하위 PDF 전부 한번에 업로드</span>
                 </div>
-                <input type="file" id="pdfFile" accept=".pdf" multiple onchange="onPdfFilesChange()" />
+                <input type="file" id="pdfFile" accept=".pdf" multiple webkitdirectory onchange="onPdfFilesChange()" />
                 <p class="help-text">폴더명/파일명 구조 그대로 저장됩니다.</p>
             </div>
             <div id="pdfList" style="display:none; margin-bottom:16px; font-size:0.8rem; max-height:160px; overflow-y:auto; border:1px solid #eee; border-radius:6px; padding:10px; line-height:1.8;"></div>
@@ -262,25 +262,33 @@
                 .replace(/^_+|_+$/g, '') + ext
         }
 
+        // {file, path} 쌍으로 저장 (path = Supabase에 올라갈 경로)
         let pdfFiles = []
 
         function onPdfFilesChange() {
             const input = document.getElementById('pdfFile')
-            setPdfFiles(Array.from(input.files).filter(f => f.name.endsWith('.pdf')))
+            const items = Array.from(input.files)
+                .filter(f => f.name.endsWith('.pdf'))
+                .map(f => ({
+                    file: f,
+                    // webkitdirectory 사용 시 webkitRelativePath에 "폴더명/파일명" 자동 포함
+                    // 최상위 폴더명(pdfs) 제거: "pdfs/서브폴더/파일명" → "서브폴더/파일명"
+                    path: f.webkitRelativePath
+                        ? f.webkitRelativePath.split('/').slice(1).join('/')
+                        : f.name
+                }))
+            setPdfFiles(items)
         }
 
-        function setPdfFiles(files) {
-            pdfFiles = files
+        function setPdfFiles(items) {
+            pdfFiles = items
             const area = document.getElementById('pdfFileArea')
             const list = document.getElementById('pdfList')
-            if (!files.length) return
+            if (!items.length) return
             area.classList.add('selected')
-            area.innerHTML = `📁 PDF ${files.length}개 선택됨`
+            area.innerHTML = `📁 PDF ${items.length}개 선택됨`
             list.style.display = 'block'
-            list.innerHTML = files.map(f => {
-                const p = f.webkitRelativePath || f.name
-                return `<div>📄 ${p}</div>`
-            }).join('')
+            list.innerHTML = items.map(({path}) => `<div data-path="${path}">📄 ${path}</div>`).join('')
         }
 
         function setupPdfDragDrop() {
@@ -296,22 +304,29 @@
                 const readers = []
                 for (const item of items) {
                     const entry = item.webkitGetAsEntry?.()
-                    if (entry) readers.push(readEntry(entry, collected))
+                    if (entry) readers.push(readEntry(entry, collected, ''))
                 }
-                Promise.all(readers).then(() => setPdfFiles(collected.filter(f => f.name.endsWith('.pdf'))))
+                Promise.all(readers).then(() => setPdfFiles(collected.filter(({file}) => file.name.endsWith('.pdf'))))
             })
         }
 
-        function readEntry(entry, result) {
+        function readEntry(entry, result, basePath) {
             if (entry.isFile) {
-                return new Promise(resolve => entry.file(f => { result.push(f); resolve() }))
+                return new Promise(resolve => entry.file(f => {
+                    // basePath가 있으면 "서브폴더/파일명", 없으면 "파일명"
+                    const path = basePath ? `${basePath}/${f.name}` : f.name
+                    result.push({ file: f, path })
+                    resolve()
+                }))
             }
             if (entry.isDirectory) {
                 const reader = entry.createReader()
+                // basePath가 비어있으면 최상위 폴더(pdfs)이므로 경로에 포함 안 함
+                const nextBase = basePath ? `${basePath}/${entry.name}` : entry.name
                 return new Promise(resolve => {
                     const readAll = () => reader.readEntries(entries => {
                         if (!entries.length) return resolve()
-                        Promise.all(entries.map(e => readEntry(e, result))).then(readAll)
+                        Promise.all(entries.map(e => readEntry(e, result, nextBase))).then(readAll)
                     })
                     readAll()
                 })
@@ -332,8 +347,7 @@
             btn.disabled = true
             let done = 0, failed = 0
 
-            for (const file of pdfFiles) {
-                const path = file.webkitRelativePath || file.name
+            for (const { file, path } of pdfFiles) {
                 msg.className = 'msg'
                 msg.textContent = `업로드 중... ${done + failed + 1}/${pdfFiles.length}`
 
@@ -341,14 +355,13 @@
                     .from(pdfBucketName)
                     .upload(path, file, { contentType: 'application/pdf', upsert: true })
 
+                const el = list.querySelector(`[data-path="${CSS.escape(path)}"]`)
                 if (error) {
                     failed++
-                    const item = [...list.children].find(el => el.textContent.includes(path))
-                    if (item) item.style.color = '#e00'
+                    if (el) { el.style.color = '#e00'; el.title = error.message }
                 } else {
                     done++
-                    const item = [...list.children].find(el => el.textContent.includes(path))
-                    if (item) item.style.color = '#090'
+                    if (el) el.style.color = '#090'
                 }
             }
 
