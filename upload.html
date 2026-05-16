@@ -154,13 +154,13 @@
         <!-- PDF 업로드 -->
         <div id="pdfSection" style="display:none">
             <div class="field">
-                <label>PDF 파일 또는 폴더</label>
+                <label>PDF 파일 (여러 개 동시 선택 가능)</label>
                 <div class="file-area" id="pdfFileArea" onclick="document.getElementById('pdfFile').click()">
-                    클릭하거나 폴더·파일을 끌어다 놓으세요<br>
-                    <span style="font-size:0.75rem;color:#bbb">폴더째 드래그 → 하위 PDF 전부 한번에 업로드</span>
+                    클릭하거나 파일을 끌어다 놓으세요<br>
+                    <span style="font-size:0.75rem;color:#bbb">파일명은 영문(id).pdf 형식으로 저장됩니다</span>
                 </div>
-                <input type="file" id="pdfFile" accept=".pdf" multiple webkitdirectory onchange="onPdfFilesChange()" />
-                <p class="help-text">폴더명/파일명 구조 그대로 저장됩니다.</p>
+                <input type="file" id="pdfFile" accept=".pdf" multiple onchange="onPdfFilesChange()" />
+                <p class="help-text">예: alike.pdf, barun.pdf, cheong.pdf …</p>
             </div>
             <div id="pdfList" style="display:none; margin-bottom:16px; font-size:0.8rem; max-height:160px; overflow-y:auto; border:1px solid #eee; border-radius:6px; padding:10px; line-height:1.8;"></div>
             <button id="pdfBtn" onclick="uploadPdfs()">PDF 업로드</button>
@@ -269,14 +269,7 @@
             const input = document.getElementById('pdfFile')
             const items = Array.from(input.files)
                 .filter(f => f.name.endsWith('.pdf'))
-                .map(f => ({
-                    file: f,
-                    // webkitdirectory 사용 시 webkitRelativePath에 "폴더명/파일명" 자동 포함
-                    // 최상위 폴더명(pdfs) 제거: "pdfs/서브폴더/파일명" → "서브폴더/파일명"
-                    path: f.webkitRelativePath
-                        ? f.webkitRelativePath.split('/').slice(1).join('/')
-                        : f.name
-                }))
+                .map(f => ({ file: f, path: f.name }))
             setPdfFiles(items)
         }
 
